@@ -4,6 +4,9 @@ module.exports = {
     "./scripts/script.js",
     "./index.html",
     "./css/style.css",
+    "./assets/pages/admin.html",
+    "./assets/pages/hr.html",
+    "./assets/pages/manager.html"
   ],
   theme: {
     extend: {},

@@ -14,8 +14,8 @@ body{
     .text-large{
         font-size: 2.75rem;
     }
-    .border-0{
-        border-width: 1px;
+    .border-me{
+        border-width: 1px !important;
     }
 
 }
