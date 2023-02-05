@@ -38,7 +38,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
             import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
-            import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+            import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
             // TODO: Add SDKs for Firebase products that you want to use
             // https://firebase.google.com/docs/web/setup#available-libraries
             // console.log("free")
@@ -69,28 +69,41 @@
             let password = document.querySelector(".password");
 
 
-            let submitData = (data, userName, emailValue, passwordValue) => {
+            let submitData = (userName, emailValue, passwordValue) => {
                 const db = dataBase
-                let userId = userName + Math.floor(Math.random()*300);
+                let userId = "Admins/";
                 let username = userName;
                 let email = emailValue;
                 let password = passwordValue;
-                set(ref(db, "users/" + userId), {
-                   userId,
+                set(ref(db, "users/" + userId + userName), {
                    userName,
                    email,
                    password
                 });
             }
+            let findData = (userId) =>{
+                const db = dataBase;
+                const starCountRef = ref(db, 'users/Admins/' + userId);
+                onValue(starCountRef, (snapshot) => {
+                    const data = snapshot.val();
+                    console.log(data);
+                });
+            }
             form.addEventListener("submit", (event)=>{
                 event.preventDefault();
+                // if(email.value === "" || password.value === "" || username.value === ""){
+                //     return;
+                // }else{
+                //     submitData(username.value, email.value, password.value);
+                //     email.value = "";
+                //     password.value = "";
+                //     username.value = "";
+                // }
                 if(email.value === "" || password.value === "" || username.value === ""){
                     return;
                 }else{
-                    submitData(data, username.value, email.value, password.value);
-                    email.value = "";
-                    password.value = "";
-                    username.value = "";
+                    console.log(username.value)
+                    findData(username.value);
                 }
             })
             console.log(dataBase);
