@@ -3,6 +3,6 @@
     "tailwindcss": "^3.2.4"
   },
   "scripts": {
-    "build:css" : "tailwind build ./src/style.css -o ./css/style.css"
+    "build:css" : "npx tailwindcss -i ./src/style.css -o /css/style.css --watch"
   }
 }

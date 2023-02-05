@@ -8,15 +8,15 @@ persons.forEach((person) =>{
         // click function checks the text content of the first child to determine which user was clicked
        if(person.firstElementChild.textContent === "Person 1"){
         console.log("admin clicked");
-        location.href="/assets/pages/admin.html"
+        location.href="./public/assets/pages/admin.html"
        }
        else if(person.firstElementChild.textContent === "Person 2"){
         console.log("Manager clicked");
-        location.href = "/assets/pages/manager.html"
+        location.href = "./public/assets/pages/manager.html"
        }
        else if(person.firstElementChild.textContent === "Person 3"){
         console.log("HR clicked");
-        location.href = "/assets/pages/hr.html"
+        location.href = "./public/assets/pages/hr.html"
        }
     })
 })
