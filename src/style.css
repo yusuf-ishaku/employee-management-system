@@ -17,5 +17,9 @@ body{
     .border-me{
         border-width: 1px !important;
     }
-
+    .error{
+        color: red;
+        height: fit-content;
+        padding-bottom: 3px;
+    }
 }
