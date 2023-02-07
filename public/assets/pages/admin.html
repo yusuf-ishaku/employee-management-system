@@ -62,31 +62,44 @@
             // let ref = dataBase.ref("users/admin");
             let data = {
             }
+            // Define Html elements to work it 
             let form = document.querySelector("form")
             let login = document.querySelector(".login");
             let username = document.querySelector(".username");
             let email = document.querySelector(".email");
             let password = document.querySelector(".password");
 
-
+            // function to submit user data to the database
             let submitData = (userName, emailValue, passwordValue) => {
+                // initialize firebase database
                 const db = dataBase
+                // specify variables
                 let userId = "Admins/";
                 let username = userName;
                 let email = emailValue;
                 let password = passwordValue;
+                // create database using values passed in
                 set(ref(db, "users/" + userId + userName), {
                    userName,
                    email,
                    password
                 });
             }
-            let findData = (userId) =>{
+            // function for finding data that has same value as inputted values
+            let findData = (userId, userPassword, useremail) =>{
+                // call database
                 const db = dataBase;
+                // specify path
                 const starCountRef = ref(db, 'users/Admins/' + userId);
+                // specify what to do with retrieved data
+                
                 onValue(starCountRef, (snapshot) => {
                     const data = snapshot.val();
-                    console.log(data);
+                    if(data.password !== userPassword){
+                        console.log("Password incorrect")
+                    }if(data.email !== useremail){
+                        cons
+                    }
                 });
             }
             form.addEventListener("submit", (event)=>{
@@ -99,6 +112,8 @@
                 //     password.value = "";
                 //     username.value = "";
                 // }
+                // form validation
+                // to make sure given values are not empty
                 if(email.value === "" || password.value === "" || username.value === ""){
                     return;
                 }else{
