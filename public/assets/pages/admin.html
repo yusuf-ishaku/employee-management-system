@@ -76,30 +76,48 @@
                     error.innerHTML = "";
                 }
             })
-            // function to submit user data to the database
-            let submitData = (userName, emailValue, passwordValue) => {
-                // initialize firebase database
-                userName = userName.replaceAll()
-                const db = dataBase
-                // specify variables
-                let userId = "Admins/";
-                let username = userName;
-                let email = emailValue;
-                let password = passwordValue;
-                // create database using values passed in
-                set(ref(db, "users/" + userId + userName), {
-                   userName,
-                   email,
-                   password
-                });
-            }
-            // function for naming error
+            // Function for setting error
             let setError = (errormessage) =>{
                 // error.textContent = "";
                 if (error.innerHTML.includes(errormessage) || error.textContent === errormessage){
                     error.innerHTML = ""
                 }
                 error.innerHTML += errormessage
+            }
+            // function to submit user data to the database
+            let submitData = (userName, emailValue, passwordValue) => {
+                // initialize firebase database
+                const db = dataBase;
+                // Remove all whitespaces
+                userName = userName.replaceAll(" ", "")
+                // Check if an account with the username exists
+
+                // spcify path
+                const adminDataRef = ref(db, 'users/Admins/' + userName);
+                // find data at specified path
+                onValue(adminDataRef, (snapshot) =>{
+                    const data = snapshot.val();
+                    // if it doesnt exist, create it
+                    if(!data){
+                        // specify variables
+                        let userId = "Admins/";
+                        let username = userName;
+                        let email = emailValue;
+                        let password = passwordValue;
+                        // create database using values passed in
+                        set(ref(db, "users/" + userId + userName), {
+                            userName,
+                            email,
+                            password
+                        });
+                        email.value = "";
+                        password.value = "";
+                        username.value = "";
+                    }else{
+                        // if it already exists, inform user
+                        setError("<div>Account already exists</div>")
+                    }
+                })
             }
             // function for finding data that has same value as inputted values
             let findData = (userId, userPassword, useremail) =>{
@@ -112,7 +130,7 @@
                     const data = snapshot.val();
                     if(!data){
                         setError("<div>Account not found, create an account instead?</div>")
-                        return
+                        return true;
                     }
                     console.log(data);
                     if(data.password !== userPassword){
@@ -126,22 +144,19 @@
             }
             form.addEventListener("submit", (event)=>{
                 event.preventDefault();
-                // if(email.value === "" || password.value === "" || username.value === ""){
-                //     return;
-                // }else{
-                //     submitData(username.value, email.value, password.value);
-                //     email.value = "";
-                //     password.value = "";
-                //     username.value = "";
-                // }
-                // form validation
-                // to make sure given values are not empty
                 if(email.value === "" || password.value === "" || username.value === ""){
                     return;
                 }else{
-                    console.log(username.value)
-                    findData(username.value, password.value, email.value);
+                    submitData(username.value, email.value, password.value);
                 }
+                // form validation
+                // to make sure given values are not empty
+                // if(email.value === "" || password.value === "" || username.value === ""){
+                //     return;
+                // }else{
+                //     console.log(username.value)
+                //     findData(username.value, password.value, email.value);
+                // }
             })
             console.log(dataBase);
             console.log(app);
