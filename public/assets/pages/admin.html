@@ -95,10 +95,11 @@
                 
                 onValue(starCountRef, (snapshot) => {
                     const data = snapshot.val();
+                    console.log(data)
                     if(data.password !== userPassword){
                         console.log("Password incorrect")
                     }if(data.email !== useremail){
-                        cons
+                        console.log("Email incorrect")
                     }
                 });
             }
@@ -118,7 +119,7 @@
                     return;
                 }else{
                     console.log(username.value)
-                    findData(username.value);
+                    findData(username.value, password.value, email.value);
                 }
             })
             console.log(dataBase);
