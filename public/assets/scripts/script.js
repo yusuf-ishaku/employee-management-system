@@ -19,4 +19,4 @@ persons.forEach((person) =>{
         location.href = "./public/assets/pages/hr.html"
        }
     })
-})
+});

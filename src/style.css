@@ -22,4 +22,13 @@ body{
         height: fit-content;
         padding-bottom: 3px;
     }
+    @media screen and (max-width: 410px) {
+        .form-body{
+            width: 100%;
+        }
+        body{
+            padding: 0.5rem !important;
+        }
+
+    }
 }
