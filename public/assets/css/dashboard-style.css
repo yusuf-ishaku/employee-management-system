@@ -289,18 +289,15 @@ p.price{
 }
 .shopping{
     margin: 2rem auto;
-    max-width:100%;
+    width: fit-content;
     padding: 0.6rem;
-    height: 20rem;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto auto auto ;
-    gap: 0.5rem;
-    row-gap: 1rem;
+    display: flex;
+    gap: 0.8rem;
+    flex-direction: column;
 }
 .item{
-    width: 14rem;
-    height: 22rem;
+    width: 59rem;
+    height: 6rem;
     border-radius: 3px;
     background-color: white;
     box-shadow: var(--box-shadow-1);
@@ -1252,15 +1249,8 @@ span.mojito{
     .container-full{
         gap: 1rem;
     }
-    .shopping{
-        display: grid;
-        grid-template-columns: auto auto auto;
-        justify-content: center;
-        column-gap: 0.5rem;
-    }
-    .shopping > .item{
-        width: 15rem;
-    }
+ 
+   
     .main{
         margin-right: 0.6rem !important;
     }
@@ -1269,15 +1259,8 @@ span.mojito{
     .container-full{
         gap: 0;
     }
-    .shopping{
-        display: grid;
-        grid-template-columns: auto auto;
-        justify-content: center;
-        column-gap: 0.5rem;
-    }
-    .shopping > .item{
-        width: 14rem;
-    }
+   
+   
     .main{
         margin-right: 0.6rem !important;
     }
@@ -1286,33 +1269,10 @@ span.mojito{
     .container-full{
         gap: 0;
     }
-    .shopping{
-        display: grid;
-        grid-template-columns: auto;
-        justify-content: center;
-        column-gap: 0.5rem;
-    }
-    .shopping > .item{
-        width: 17rem;
-    }
+ 
     .main{
         margin-right: 0.6rem !important;
     }
 }
 
-@media screen and (max-width: 609px){
-    .shopping{
-        display: grid;
-        grid-template-columns: auto;
-        justify-content: center;
-        gap: 1.4rem;
-    }
-    .shopping > .item{
-        width: 17rem;
-    }
-}
-@media screen  and (max-width:309px){
-    .shopping > .item{
-        width: 14rem;
-    }
-}
+
