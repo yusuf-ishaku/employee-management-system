@@ -1,11 +1,13 @@
 let definingData = JSON.parse(localStorage.getItem("CompanyuserDatas"));
-// console.log(definingData);
+// Set time for greeting
 let greetingPack = document.querySelector(".time");
 let namegreeting = document.querySelector(".namegreeting");
+// Give addresses if the type of login was an admin
 if(definingData.type === "Admin"){
     namegreeting.textContent = "";
     namegreeting.textContent = `Admin ${definingData.userName}`
 }
+// Greet according to the time of the day
 let greetings = new Date().toLocaleTimeString();
 if(greetings[greetings.length-2] === "P" && greetings[0] <= 4){
     greetingPack.textContent = "";
@@ -20,3 +22,4 @@ if(greetings[greetings.length-2] === "A" && (greetings[0] < 12)){
     greetingPack.textContent = "";
     greetingPack.textContent = "Good Morning, "
 }
+// ------------------------------------------------------------ //

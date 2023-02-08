@@ -114,294 +114,56 @@
                     </div>
                 </div>
                 <div class="shopping">
-                   <div class="item"></div>
-                   <div class="item"></div>
-                   <div class="item"></div>
-                   <div class="item"></div>
-                   <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="item"></div>
+                   <div class="item">
+                    <span class="employeeName"></span>
+                   </div>
                 </div>
             </div>
-            <div class="julie-aspect">
-                <div class="modal">
-                    <div class="modal-pack">
-                        <div class="alert-background">
-                            <div class="alert">
-                                <h2 class="alert-head">You haven't put in your age!</h2>
-                                <div class="alert-textpart">
-                                    <p class="alert-text">Julie works with your age value to determine 
-                                        how much of each of our product you need to consume to achieve the RDA.
-                                    </p>
-                                    <p>To have the best experience using Julie, we highly advice you input your age.</p>
-                                </div>
-                                <div class="buttons">
-                                    <button class="button1">Input age</button>
-                                    <button class="button2">Continue either way</button>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="aside-head">
-                            <p class="paragraph">Julie can help you get personalized smoothie recommendation based on your age, weight,
-                                diet, health issue, allergies, etc.
-                            </p>
-                            <span class="modal-close">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-x-lg" viewBox="0 0 16 16">
-                                    <path
-                                        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                                </svg>
-                            </span>
-                        </div>
-                        <div class="line">
-                            <div class="pole">
-                                <span class="issues">How old are you?</span>
-                                <div class="input-line">
-                                    <input type="number" id="age-input">
-                                    <!-- <div class="checkbox">
-                                            <span class="material-symbols-outlined now">
-                                                check
-                                            </span>
-                                          </div> -->
-                                </div>
-                            </div>
-                            <div class="pole"><span class="issues">Do you have any known allergies?</span>
-                                <div class="input-line">
-                                    <div class="yes">
-                                        <span class="bool">
-                                            <span class="yess">Yes:
-                                                <span class="square yessquare">
-                                                    <span class="material-symbols-outlined">
-                                                        check
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </span>
-                                        <span class="bool">
-                                            <span class="noo">No:
-                                                <span class="square nosquare">
-                                                    <span class="material-symbols-outlined signed">
-                                                        check
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <!-- <div class="checkbox">
-                                            </div> -->
-                                </div>
-                                <div class="allergies" data-visible="false">
-                                    <ul>
-                                        <li class="allergen"><b>Please select:</b></li>
-                                        <li class="allergen">Dairy milk</li>
-                                        <li class="allergen">Lactose intolerance</li>
-                                        <li class="allergen">Gluten</li>
-                                        <li class="allergen other-allergen">
-                                            <span style="display: block;">Other</span>
-                                            <textarea type="text" name="Other Allergen" id="other"
-                                                placeholder="Please state specific allergen"></textarea>
-                                            <button class="finished">Done</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="pole">
-                                <span class="issues">Any prevailing ailment?</span>
-                                <div class="input-line">
-                                    <div class="yes-no">
-                                        <span class="yes">
-                                            Yes:
-                                            <span class="checksquare">
-                                                <span class="material-symbols-outlined">check</span>
-                                            </span>
-                                        </span>
-                                        <span class="no">
-                                            No:
-                                            <span class="checksquare">
-                                                <span class="material-symbols-outlined ticked">check</span>
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="health">
-                                        <ul>
-                                            <li class="illness"><b>Please select:</b></li>
-                                            <li class="illness">Ulcer</li>
-                                            <li class="illness">Diabetes</li>                                            <li class="illness other-condition">
-                                                <span style="display: block;">Other</span>
-                                                <textarea name="other" id="other-condition"
-                                                    placeholder="Please specify ailment"></textarea>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- <div class="checkbox">
-                                            </div> -->
-                                </div>
-                            </div>
-                            <div class="pole"><span class="issues">Are you on a diet?</span>
-                                <div class="input-line">
-                                    <div class="yes-no">
-                                        <span class="yes">
-                                            Yes:
-                                            <span class="checksquare">
-                                                <span class="material-symbols-outlined">check</span>
-                                            </span>
-                                        </span>
-                                        <span class="no">
-                                            No:
-                                            <span class="checksquare">
-                                                <span class="material-symbols-outlined ticked">check</span>
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="diet">
-                                        <ul>
-                                            <li class="diets"><b>Please Select:</b></li>
-                                            <li class="diets">Weight-loss</li>
-                                            <!-- <li class="diets">Weight-gain</li> -->
-                                            <li class="diets other-diet">
-                                                <span style="display: block;">Other</span>
-                                                <textarea name="other" id="other-diet" placeholder="Please specify diet"></textarea>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- <div class="checkbox">
-                                            </div> -->
-                                </div>
-                            </div>
-                            <span>or do you want to get on a diet?</span>
-                            <div class="check-out">
-                                <h4 class="chkt-hd">
-                                    Your selections:
-                                </h4>
-                                <div class="selections">
-            
-                                </div>
-                            </div>
-                            <button class="collate" id="collate"><span class="collater">Collate</span><span class="mojito right-aside2"></span></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="juliepart">
-                    <div class="main-content">
-                        <h2 class="julie-intro">This is Julie, our special product recommendation expert.</h2>
-                        <p class="paragraph">
-                            Knowing that everyone in the world is unique and special,
-                            Julie helps you find which of our products
-                            best suits you.
-                        </p>
-                    </div>
-                    <div >
-                        <h3>What are you looking for?</h3>
-                        <!-- <div class="classes">
-                            <div class="class">Smoothies-for-weight loss</div>
-                            <div class="class">Light and Healthy</div>
-                            <div class="class">One for the road</div>
-                            <div class="class">Fine wine</div>
-                        </div> -->
-                        <button class="juliacount" id="juliaCount"><span>Run Personalized Suggestions</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right-short"
-                                viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="suggested_smoothies">
-                        <h1 class="suggested_head">Julie suggests:</h1>
-                        <div class="run">
-                            <p class="run-text">Run Personalized Suggestions to see what julie has for you.</p>
-                        </div>
-                        <div class="smoothies">
-                        </div>
-                    </div>
-                </div>
-          </div>
-          <div class="meeting-part">
-            <div class="heading meeting-heading">
-                <div class="home-part">
-                    <h2 class="welcome">Meetings</h2>
-                </div>
-            </div>
-            <div class="part1">
-                <div class="profile meetings-part">
-                    <span class="text book">
-                     Book a meeting
-                    </span>
-                </div>
-                <div class="favourites meetings-part">
-                    <span class="text">Reschedule/Cancel</span>
-                </div>
-            </div>
-            <div class="meeting">
-                <h2 class="meeting-text">Live Meetings</h2>
-                <div class="meeting-box personal">
-                  <div class="meet"></div>
-                  <div class="meet-info">
-                    <div class="info">
-                        <span class="info-text">
-                            You do not have any meetings scheduled for now.<br>
-                        </span>
-                        <span class="info-info">
-                            Your next meeting is scheduled for:<br>
-                            Date:<br>
-                            Time:<br>
-                        </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="meeting-box">
-                  <div class="meet"></div>
-                    <div class="meet-info">
-                      <div class="info">
-                        <span class="info-text">
-                           Dr. Stephan Uko<br>
-                        </span>
-                        <span class="info-info">
-                           Time: Monday 11 November, 11:30am (10 minutes from now);
-                        </span>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </div>
-        <section class="cart">
-            <div class="sector-model">
-                <div class="desc-square">
-                 
-                </div>
-            </div>
-           <div class="cart-header">
-                <h2 class="y-ct">Your Cart</h2>
-           </div>
-           <div class="cart-items">
-            <div class="no-item crt-emt">
-                <h1 class="no-item-info">
-                    Your Cart is Empty
-                </h1>
-                <p class="cntn-shpg">Your cart items, <a href="#" class="shop">continue shopping</a> to add items to your cart!</p>
-            </div>
-            <div class="big-crt">
-                <div class="checkout-btn"><button class="checkout-crt">Check Out Cart</button></div>
-                <div class="crt-is">
-             
-                </div>
-            </div>
-           </div>
-        </section>
-        <div class="chatapp">
-            <div>
-                <h3>You have not started chatting with anyone</h3>
-            </div>
-            <div>
-                <input type="text" id="message" placeholder="enter something">
-                <button class="red" id="chat-submit">submit</button>
-            </div>
-        </div>
         </main> 
     </div>
+
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+            import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+            // console.log("free")
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyD24YFDeLj8YCKE54t_gUGArF4gQyhTU7o",
+                authDomain: "employee-attendance-cfb9e.firebaseapp.com",
+                databaseURL: "https://employee-attendance-cfb9e-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "employee-attendance-cfb9e",
+                storageBucket: "employee-attendance-cfb9e.appspot.com",
+                messagingSenderId: "217106293826",
+                appId: "1:217106293826:web:b7def8cb3e3d60272f39db",
+                measurementId: "G-KCYR70J6QF"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const dataBase = getDatabase(app);
+
+            const db = dataBase;
+            const employeeAccountRef = ref(db, "employees/");
+            let dataLine = document.querySelector(".shopping")
+            onValue(employeeAccountRef, (snapshot) =>{
+               let employeeData = snapshot.val();
+               if(!employeeData){
+                dataLine.innerHTML += `<div class="item"></div>`
+               }else{
+                employeeData.map((data)=>{
+                return(
+                    dataLine.innerHTML += `<div id=${data.id} class="item">${data.employeename}</div>`
+                )
+               })
+               }
+            })
+    </script>    
     <script src="../scripts/dashboard-scripts.js"></script>
 </body>
 </html>
