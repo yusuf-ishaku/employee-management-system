@@ -25,6 +25,27 @@ if(greetings[greetings.length-2] === "A" && (greetings[0] < 12)){
 // ------------------------------------------------------------ //
 
 let addNew = document.querySelector(".createNew");
-addNew.addEventListener("click", () =>{
-    console.log("REa")
-})
+let displayModal = () =>{
+        let modal = document.querySelector(".modal");
+        let modalpack = document.querySelector(".modal-pack")
+        if(modal.classList.contains("displayblock")){
+            modal.classList.remove('displayblock');
+          
+        }else{
+            modal.classList.add("displayblock");
+            modalpack.style.transform = "translateY(0rem)"
+        }
+}
+addNew.addEventListener("click", displayModal);
+
+window.onclick = (event) => {
+    // console.log("hads")
+    let modal = document.querySelector(".modal")
+    let modalpack = document.querySelector(".modal-pack")
+    if (event.target == modal) {
+      modal.classList.remove("displayblock");
+      modalpack.style.transform = "translateY(30rem)"
+      let main = document.querySelector(".main");
+      main.style.overflow = "scroll";
+    }
+}
