@@ -163,12 +163,12 @@
                             delete
                         </span>
                    </div>
-                   <div class="createNew">
-                        <span class="material-symbols-outlined block">
-                           add
-                        </span>
-                        <span>Add New Employee</span>
-                    </div>
+                </div>
+                <div class="createNew">
+                    <span class="material-symbols-outlined block">
+                       add
+                    </span>
+                    <span>Add New Employee</span>
                 </div>
             </div>
         </main> 
@@ -231,7 +231,7 @@
                     if (snapshot.exists()) {
                         let employeeData = snapshot.val();
                         employeeData.push(...[{name, id, role}]);
-                            console.log(employeeData);
+                            // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData)
                     } else {
                         console.log("No data available");

@@ -9,11 +9,12 @@ if(definingData.type === "Admin"){
 }
 // Greet according to the time of the day
 let greetings = new Date().toLocaleTimeString();
-if(greetings[greetings.length-2] === "P" && greetings[0] <= 4){
+console.log(greetings)
+if(greetings[greetings.length-2] === "P" && greetings[1] <= 4){
     greetingPack.textContent = "";
     greetingPack.textContent = "Good Afternoon, "
 };
-if(greetings[greetings.length-2] === "P" && (greetings[0] > 4 && greetings[0] < 12)){
+if(greetings[greetings.length-2] === "P" && (greetings[0] > 4 && greetings[1] > 0)){
     greetingPack.textContent = "";
     greetingPack.textContent = "Good Evening, "
 }
