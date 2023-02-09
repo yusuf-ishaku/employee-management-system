@@ -9,16 +9,17 @@ if(definingData.type === "Admin"){
 }
 // Greet according to the time of the day
 let greetings = new Date().toLocaleTimeString();
-console.log(greetings)
-if(greetings[greetings.length-2] === "P" && greetings[1] <= 4){
+// console.log(greetings)
+// console.log(greetings[0] + greetings[1])
+if(greetings[greetings.length-2] === "P" && (greetings[0] + greetings[1]) <= 4){
     greetingPack.textContent = "";
     greetingPack.textContent = "Good Afternoon, "
 };
-if(greetings[greetings.length-2] === "P" && (greetings[0] > 4 && greetings[1] > 0)){
+if(greetings[greetings.length-2] === "P" && (greetings[0] + greetings[1]) > 4){
     greetingPack.textContent = "";
     greetingPack.textContent = "Good Evening, "
 }
-if(greetings[greetings.length-2] === "A" && (greetings[0] < 12)){
+if(greetings[greetings.length-2] === "A" && (greetings[0]+ greetings[1] < 12)){
     console.log("Morning");
     greetingPack.textContent = "";
     greetingPack.textContent = "Good Morning, "
