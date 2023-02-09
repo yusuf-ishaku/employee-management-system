@@ -23,3 +23,8 @@ if(greetings[greetings.length-2] === "A" && (greetings[0] < 12)){
     greetingPack.textContent = "Good Morning, "
 }
 // ------------------------------------------------------------ //
+
+let addNew = document.querySelector(".createNew");
+addNew.addEventListener("click", () =>{
+    console.log("REa")
+})
