@@ -203,26 +203,28 @@
             const db = dataBase;
             const employeeAccountRef = ref(db, "employees/");
             let dataLine = document.querySelector(".shopping")
-            // onValue(employeeAccountRef, (snapshot) =>{
-            //    let employeeData = snapshot.val();
-            //    if(!employeeData){
-            //     document.querySelector(".item").classList.add("none")
-            //    }else{
-            // //     employeeData.map((data)=>{
-            // //     return(
-            // //         dataLine.innerHTML += ` <div class="item">
-            // //             <span id="1" class="number">.</span>
-            // //             <span class="employeeName">${data.employeeName}</span>
-            // //             <span class="role">${data.employeeRole}</span>
-            // //             <span class="material-symbols-outlined block">
-            // //                 delete
-            // //             </span>
-            // //        </div>`
-            // //     )
-            // //    })
-            //     console.log(employeeData)
-            //    }
-            // });
+            onValue(employeeAccountRef, (snapshot) =>{
+               let employeeData = snapshot.val();
+               if(!employeeData){
+                document.querySelector(".item").classList.add("none")
+               }else{
+                dataLine.innerHTML = ""
+                employeeData.map((data)=>{
+                   
+                return(
+                    dataLine.innerHTML += ` <div class="item">
+                        <span id="1" class="number">.</span>
+                        <span class="employeeName">${data.name}</span>
+                        <span class="role">${data.role}</span>
+                        <span class="material-symbols-outlined block">
+                            delete
+                        </span>
+                   </div>`
+                )
+               })
+                console.log(employeeData)
+               }
+            });
             let addEmployeeData = (name, id, role) => {
                 const dbRef = ref(db);
                 get(child(dbRef, `employees/`)).then((snapshot) => {
