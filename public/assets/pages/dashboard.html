@@ -90,24 +90,9 @@
         <main class="main">
             <div class="modal">
                 <div class="modal-pack">
-                    <div class="alert-background">
-                        <div class="alert">
-                            <h2 class="alert-head">You haven't put in your age!</h2>
-                            <div class="alert-textpart">
-                                <p class="alert-text">Julie works with your age value to determine 
-                                    how much of each of our product you need to consume to achieve the RDA.
-                                </p>
-                                <p>To have the best experience using Julie, we highly advice you input your age.</p>
-                            </div>
-                            <div class="buttons">
-                                <button class="button1">Input age</button>
-                                <button class="button2">Continue either way</button>
-                            </div>
-                        </div> 
-                    </div>
                     <div class="aside-head">
-                        <p class="paragraph">Julie can help you get personalized smoothie recommendation based on your age, weight,
-                            diet, health issue, allergies, etc.
+                        <p class="paragraph">
+                            Create New Employee Account
                         </p>
                         <span class="modal-close">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -119,129 +104,28 @@
                     </div>
                     <div class="line">
                         <div class="pole">
-                            <span class="issues">How old are you?</span>
+                            <span class="issues">First Name</span>
                             <div class="input-line">
-                                <input type="number" id="age-input">
-                                <!-- <div class="checkbox">
-                                        <span class="material-symbols-outlined now">
-                                            check
-                                        </span>
-                                      </div> -->
+                                <input type="text" placeholder="First Name" class="inputs" id="fname">
                             </div>
                         </div>
-                        <div class="pole"><span class="issues">Do you have any known allergies?</span>
+                        <div class="pole"><span class="issues">Last Name</span>
                             <div class="input-line">
-                                <div class="yes">
-                                    <span class="bool">
-                                        <span class="yess">Yes:
-                                            <span class="square yessquare">
-                                                <span class="material-symbols-outlined">
-                                                    check
-                                                </span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                    <span class="bool">
-                                        <span class="noo">No:
-                                            <span class="square nosquare">
-                                                <span class="material-symbols-outlined signed">
-                                                    check
-                                                </span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <!-- <div class="checkbox">
-                                        </div> -->
-                            </div>
-                            <div class="allergies" data-visible="false">
-                                <ul>
-                                    <li class="allergen"><b>Please select:</b></li>
-                                    <li class="allergen">Dairy milk</li>
-                                    <li class="allergen">Lactose intolerance</li>
-                                    <li class="allergen">Gluten</li>
-                                    <li class="allergen other-allergen">
-                                        <span style="display: block;">Other</span>
-                                        <textarea type="text" name="Other Allergen" id="other"
-                                            placeholder="Please state specific allergen"></textarea>
-                                        <button class="finished">Done</button>
-                                    </li>
-                                </ul>
+                                <input type="text" placeholder="Last Name" class="inputs" id="lname">
                             </div>
                         </div>
                         <div class="pole">
-                            <span class="issues">Any prevailing ailment?</span>
+                            <span class="issues">ID Number</span>
                             <div class="input-line">
-                                <div class="yes-no">
-                                    <span class="yes">
-                                        Yes:
-                                        <span class="checksquare">
-                                            <span class="material-symbols-outlined">check</span>
-                                        </span>
-                                    </span>
-                                    <span class="no">
-                                        No:
-                                        <span class="checksquare">
-                                            <span class="material-symbols-outlined ticked">check</span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="health">
-                                    <ul>
-                                        <li class="illness"><b>Please select:</b></li>
-                                        <li class="illness">Ulcer</li>
-                                        <li class="illness">Diabetes</li>                                            <li class="illness other-condition">
-                                            <span style="display: block;">Other</span>
-                                            <textarea name="other" id="other-condition"
-                                                placeholder="Please specify ailment"></textarea>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- <div class="checkbox">
-                                        </div> -->
+                                <input type="text" placeholder="TJ/19/234" class="inputs" id="id-number">
                             </div>
                         </div>
-                        <div class="pole"><span class="issues">Are you on a diet?</span>
+                        <div class="pole"><span class="issues">Role</span>
                             <div class="input-line">
-                                <div class="yes-no">
-                                    <span class="yes">
-                                        Yes:
-                                        <span class="checksquare">
-                                            <span class="material-symbols-outlined">check</span>
-                                        </span>
-                                    </span>
-                                    <span class="no">
-                                        No:
-                                        <span class="checksquare">
-                                            <span class="material-symbols-outlined ticked">check</span>
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="diet">
-                                    <ul>
-                                        <li class="diets"><b>Please Select:</b></li>
-                                        <li class="diets">Weight-loss</li>
-                                        <!-- <li class="diets">Weight-gain</li> -->
-                                        <li class="diets other-diet">
-                                            <span style="display: block;">Other</span>
-                                            <textarea name="other" id="other-diet" placeholder="Please specify diet"></textarea>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- <div class="checkbox">
-                                        </div> -->
+                                <input type="text" placeholder="E.g. Product Manager" class="inputs" id="role">
                             </div>
                         </div>
-                        <span>or do you want to get on a diet?</span>
-                        <div class="check-out">
-                            <h4 class="chkt-hd">
-                                Your selections:
-                            </h4>
-                            <div class="selections">
-        
-                            </div>
-                        </div>
-                        <button class="collate" id="collate"><span class="collater">Collate</span><span class="mojito right-aside2"></span></button>
+                        <button class="collate" id="collate"><span class="collater">Add New</span><span class="mojito right-aside2"></span></button>
                     </div>
                 </div>
             </div>
@@ -324,21 +208,46 @@
                if(!employeeData){
                 document.querySelector(".item").classList.add("none")
                }else{
-                employeeData.map((data)=>{
-                return(
-                    dataLine.innerHTML += ` <div class="item">
-                        <span id="1" class="number">.</span>
-                        <span class="employeeName">${data.employeeName}</span>
-                        <span class="role">${data.employeeRole}</span>
-                        <span class="material-symbols-outlined block">
-                            delete
-                        </span>
-                   </div>`
-                )
-               })
+            //     employeeData.map((data)=>{
+            //     return(
+            //         dataLine.innerHTML += ` <div class="item">
+            //             <span id="1" class="number">.</span>
+            //             <span class="employeeName">${data.employeeName}</span>
+            //             <span class="role">${data.employeeRole}</span>
+            //             <span class="material-symbols-outlined block">
+            //                 delete
+            //             </span>
+            //        </div>`
+            //     )
+            //    })
+                console.log(employeeData)
                }
             });
-
+            let addEmployeeData = (name, id, role) =>{
+                set(ref(db, "employees/") ,{
+                            name,
+                            id,
+                            role
+                });
+            }
+            let submit = document.getElementById("collate");
+            submit.onclick = () =>{
+                let fname = document.getElementById("fname").value;
+                let lname = document.getElementById("lname").value;
+                let id = document.getElementById("id-number").value;
+                let role = document.getElementById("role").value;
+                let theName = fname + " " + lname
+                if(fname.value === "" || lname.value ==="" || id.value === "" || role.value === ""){
+                    alert("Input missing");
+                }else{
+                    console.log(theName, id, role)
+                    addEmployeeData(theName, id, role);
+                    document.getElementById("fname").value = "";
+                    document.getElementById("lname").value = "";
+                    document.getElementById("id-number").value = "";
+                    document.getElementById("role").value = "";
+                }
+            }
     </script>    
     <script src="../scripts/dashboard-scripts.js"></script>
 </body>
