@@ -203,17 +203,19 @@
             const db = dataBase;
             const employeeAccountRef = ref(db, "employees/");
             let dataLine = document.querySelector(".shopping")
+           
             onValue(employeeAccountRef, (snapshot) =>{
                let employeeData = snapshot.val();
                if(!employeeData){
                 document.querySelector(".item").classList.add("none")
                }else{
                 dataLine.innerHTML = ""
-                employeeData.map((data)=>{
+                employeeData.map((data, x)=>{
                    
                 return(
-                    dataLine.innerHTML += ` <div class="item">
-                        <span id="1" class="number">.</span>
+                   
+                    dataLine.innerHTML += ` <div onclick = "maneuver(this)" class="item" id = ${x}>
+                        <span id="1" class="number">${x + 1}</span>
                         <span class="employeeName">${data.name}</span>
                         <span class="role">${data.role}</span>
                         <span class="material-symbols-outlined block">

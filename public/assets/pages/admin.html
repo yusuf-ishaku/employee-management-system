@@ -106,8 +106,8 @@
                         console.log("Email incorrect");
                         setError("<div>Email incorrect</div>")
                     }if(data.password === userPassword && data.email === useremail){
-                        let usersLoggedIn = JSON.parse(localStorage.getItem("CompanyuserDatas"))
-                        if(!usersLoggedIn)localStorage.setItem("CompanyuserDatas", JSON.stringify(data));
+                        
+                        sessionStorage.setItem("CompanyuserDatas", JSON.stringify(data));
                         location.href = "../pages/dashboard.html";
                     }
                 });
