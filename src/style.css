@@ -22,6 +22,10 @@ body{
         height: fit-content;
         padding-bottom: 3px;
     }
+    .person{
+        height: 15rem;
+    }
+   
     @media screen and (max-width: 410px) {
         .form-body{
             width: 100%;
@@ -29,6 +33,9 @@ body{
         body{
             padding: 0.5rem !important;
         }
-
+        .persons{
+            display: flex;
+            flex-direction: column;
+        }
     }
 }
