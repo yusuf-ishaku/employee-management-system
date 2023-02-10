@@ -101,20 +101,20 @@
                 // Check if an account with the username exists
 
                 // spcify path
-                const adminDataRef = ref(db, 'users/Admins/' + userName);
+                const adminDataRef = ref(db, 'users/HR Registrars/' + userName);
                 // find data at specified path
                 onValue(adminDataRef, (snapshot) =>{
                     const data = snapshot.val();
                     // if it doesnt exist, create it
                     if(!data){
                         // specify variables
-                        let userId = "Admins/";
+                        let userId = "HR Registrars/";
                         let username = userName;
                         let email = emailValue;
                         let password = passwordValue;
                         let displayName = userNameForDisplay;
                         let idCardValue = idValue
-                        let type = "Admin"
+                        let type = "HR Registrar"
                         // create database using values passed in
                         set(ref(db, "users/" + userId + userName), {
                             userName,
@@ -141,7 +141,7 @@
                     password.value = "";
                     username.value = "";
                     idVal.value = "";
-                    location.href = "../pages/admin.html";
+                    location.href = "../pages/hr.html";
                 }
                 // form validation
                 // to make sure given values are not empty
