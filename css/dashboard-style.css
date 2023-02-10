@@ -1173,36 +1173,7 @@ span.modal-close{
 span.paragraph{
     display: block;
 }
-span.mojito{
-    display: inline-block;
-    width: 33px;
-    height: 33px;
-    border: 6px solid rgb(220, 228, 242);
-    border-left-color: rgb(0, 0, 255) ;
-    border-radius: 50%;
-    background-color: white;
-    animation: goround 1.5s infinite;
-}
-.chatapp{
-    display: none;
-}
-@keyframes goround {
-    0%{
-        transform: rotate(0deg);
-    }
-    /* 25%{
-        transform: rotate(90deg);
-    } */
-    /* 50%{
-        transform: rotate(180deg);
-    } */
-    /* 75%{
-        transform: rotate(270deg);
-    } */
-    100%{
-        transform: rotate(360deg);
-    }
-}
+
 @media screen and (max-width:992px){
     .main-part{
         padding-bottom: 3rem;

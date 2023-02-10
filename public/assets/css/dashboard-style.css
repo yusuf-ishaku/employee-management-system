@@ -414,6 +414,7 @@ p.price{
     padding: 0.3rem;
     border-radius: 0.3rem;
 }
+
 .modal {
     display: none; /* Hidden by default */
     /* display: flex;
