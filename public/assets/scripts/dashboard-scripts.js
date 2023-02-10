@@ -1,4 +1,4 @@
-let definingData = JSON.parse(localStorage.getItem("CompanyuserDatas"));
+let definingData = JSON.parse(sessionStorage.getItem("CompanyuserDatas"));
 // Set time for greeting
 let greetingPack = document.querySelector(".time");
 let namegreeting = document.querySelector(".namegreeting");
