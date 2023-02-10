@@ -673,6 +673,14 @@ video {
   height: 80%;
 }
 
+.h-auto {
+  height: auto;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -736,6 +744,10 @@ video {
 
 .w-11\/12 {
   width: 91.666667%;
+}
+
+.w-16 {
+  width: 4rem;
 }
 
 .border-collapse {
@@ -1048,6 +1060,39 @@ video {
 
 .person{
   height: 15rem;
+}
+
+.mojito{
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+  border: 6px solid rgb(220, 228, 242);
+  border-left-color: rgb(0, 0, 255) ;
+  border-radius: 50%;
+  background-color: white;
+  animation: goround 1.5s infinite;
+}
+
+@keyframes goround {
+  0%{
+    transform: rotate(0deg);
+  }
+
+  /* 25%{
+            transform: rotate(90deg);
+        } */
+
+  /* 50%{
+            transform: rotate(180deg);
+        } */
+
+  /* 75%{
+            transform: rotate(270deg);
+        } */
+
+  100%{
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (max-width: 410px) {
