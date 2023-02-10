@@ -2,10 +2,17 @@ let definingData = JSON.parse(sessionStorage.getItem("CompanyuserDatas"));
 // Set time for greeting
 let greetingPack = document.querySelector(".time");
 let namegreeting = document.querySelector(".namegreeting");
+let displayingType = (container, type) =>{
+    container.textContent = "";
+    container.textContent = `Admin ${type}`
+}
 // Give addresses if the type of login was an admin
 if(definingData.type === "Admin"){
-    namegreeting.textContent = "";
-    namegreeting.textContent = `Admin ${definingData.userName}`
+   displayingType(namegreeting, definingData.userName);
+}else if(definingData.type === "Manager"){
+    displayingType(namegreeting, definingData.userName);
+}else if(definingData.type === "HR Registrar"){
+    displayingType(namegreeting, definingData.userName);
 }
 // Greet according to the time of the day
 let greetings = new Date().toLocaleTimeString();
