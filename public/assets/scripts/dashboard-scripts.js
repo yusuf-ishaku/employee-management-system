@@ -8,11 +8,11 @@ let displayingType = (container, type) =>{
 }
 // Give addresses if the type of login was an admin
 if(definingData.type === "Admin"){
-   displayingType(namegreeting, definingData.userName);
+   displayingType(namegreeting, definingData.displayName);
 }else if(definingData.type === "Manager"){
-    displayingType(namegreeting, definingData.userName);
+    displayingType(namegreeting, definingData.displayName);
 }else if(definingData.type === "HR Registrar"){
-    displayingType(namegreeting, definingData.userName);
+    displayingType(namegreeting, definingData.displayName);
 }
 // Greet according to the time of the day
 let greetings = new Date().toLocaleTimeString();

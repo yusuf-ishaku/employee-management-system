@@ -103,18 +103,19 @@
                 // spcify path
                 const adminDataRef = ref(db, 'users/Managers/' + userName);
                 // find data at specified path
-                onValue(adminDataRef, (snapshot) =>{
-                    const data = snapshot.val();
-                    // if it doesnt exist, create it
-                    if(!data){
-                        // specify variables
-                        let userId = "Managers/";
+                const dbRef = ref(getDatabase());
+                get(child(dbRef, `users/Admins/${userName}`)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        setError("<div>Account Already Exists, sign in</div>");
+                    } else {
+                             // specify variables
+                        let userId = "Admins/";
                         let username = userName;
                         let email = emailValue;
                         let password = passwordValue;
                         let displayName = userNameForDisplay;
                         let idCardValue = idValue
-                        let type = "Manager"
+                        let type = "Admin"
                         // create database using values passed in
                         set(ref(db, "users/" + userId + userName), {
                             userName,
@@ -124,11 +125,12 @@
                             displayName,
                             idCardValue
                         });
-                    }else{
-                        // if it already exists, inform user
-                        setError("<div>Account already exists</div>")
+                        location.href = "../pages/manager.html"
                     }
-                })
+                }).catch((error) => {
+                    console.error(error);
+                });
+                
             }
             // Submit data function
             form.addEventListener("submit", (event)=>{
@@ -141,7 +143,7 @@
                     password.value = "";
                     username.value = "";
                     idVal.value = "";
-                    location.href = "../pages/manager.html";
+                    // location.href = "../pages/manager.html";
                 }
                 // form validation
                 // to make sure given values are not empty
