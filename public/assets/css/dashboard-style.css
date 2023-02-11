@@ -276,13 +276,27 @@ p.price{
     /* background-color: var(--color-background*/
     background-color: rgb(254, 241, 58);
 }
-.profile, .favourites{
+.hr{
+    width: auto;
+    box-shadow: var(--box-shadow-1);
+    border-radius: var(--border-radius-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    height: 8rem;
+    transition: all 300ms ease-in;
+    /* background-color: var(--color-background*/
+    background-color: rgb(58, 254, 205);
+}
+.profile, .favourites, .hr{
     width: 40%;
 }
 .profile > .text{
     color: white;
 }
-.profile:hover, .favourites:hover{
+.profile:hover, .favourites:hover, .hr:hover{
     box-shadow: none;
     cursor: pointer;
     /* background-color: white; */
@@ -293,7 +307,7 @@ p.price{
     height: 2.8rem;
 }
 .shopping{
-    margin: 2rem auto;
+    margin: 0.5rem auto;
     width: fit-content;
     padding: 0.6rem;
     display: flex;
@@ -863,6 +877,15 @@ span.x{
 .entername, .tag{
     color: var(--color-green);
 }
+.employee-part{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    padding: 0.6rem;
+}
+.em-hd{
+    padding-left: 1.4rem;
+}
 @media screen and (max-width:630px) {
     .right-aside {
         display: none;
@@ -887,7 +910,7 @@ span.x{
         align-items: center;
         justify-content: center;
     }
-    .favourites, .profile{
+    .favourites, .profile, .hr{
         width: 80%;
     }
 }
