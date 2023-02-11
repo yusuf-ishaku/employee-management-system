@@ -40,7 +40,7 @@
     <script defer type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
             import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
-            import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+            import { getDatabase, ref, set, onValue, child, get } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
             // TODO: Add SDKs for Firebase products that you want to use
             // https://firebase.google.com/docs/web/setup#available-libraries
             // console.log("free")
@@ -111,13 +111,13 @@
                     }if(data.password === userPassword && data.email === useremail){
                         sessionStorage.setItem("CompanyuserDatas", JSON.stringify(data));
                         document.querySelector(".mojito").classList.add("chatapp");
-                        document.querySelector(".init-text").classList.remove("chatapp")
+                        document.querySelector(".init-text").classList.remove("chatapp");
                         location.href = "../pages/dashboard.html";
                     }
                     } else {
                              // specify variables
-                             setError("<div>Account not found, create an account instead?</div>")
-                        return true;
+                        setError("<div>Account not found, create an account instead?</div>")
+                        // return true;
                     }
                 }).catch((error) => {
                     console.error(error);
@@ -136,7 +136,7 @@
                     password.value = "";
                     email.value = "";
                     document.querySelector(".mojito").classList.remove("chatapp");
-                    document.querySelector(".init-text").classList.add("chatapp")
+                    document.querySelector(".init-text").classList.add("chatapp");
                 }
             })
     </script>
