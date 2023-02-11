@@ -99,13 +99,14 @@
                 let userNameForDisplay = userName
                 userName = userName.replaceAll(" ", "");
                
-                // Check if an account with the username exists
-
-                // spcify path
+                
+                
                 const adminDataRef = ref(db, 'users/Admins/' + userName);
                 // find data at specified path
-                const dbRef = ref(getDatabase());
+                const dbRef = ref(db);
+
                 get(child(dbRef, `users/Admins/${userName}`)).then((snapshot) => {
+                    // Check if an account with the username exists
                     if (snapshot.exists()) {
                         setError("<div>Account Already Exists, sign in</div>");
                     } else {
@@ -126,9 +127,10 @@
                             displayName,
                             idCardValue
                         });
-                        location.href = "../pages/admin.html";
+                        
                         document.querySelector(".mojito").classList.add("chatapp");
-                        document.querySelector(".init-text").classList.remove("chatapp")
+                        document.querySelector(".init-text").classList.remove("chatapp");
+                        location.href = "../pages/admin.html";
                     }
                 }).catch((error) => {
                     console.error(error);
