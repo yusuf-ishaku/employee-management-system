@@ -87,29 +87,35 @@
             // Clear whitespace
             userId = userId.replaceAll(" ", "")
             // specify path
-            const starCountRef = ref(db, 'users/Managers/' + userId);
-            // specify what to do with retrieved data
-            onValue(starCountRef, (snapshot) => {
-                const data = snapshot.val();
-                if(!data){
-                    setError("<div>Account not found, create an account instead?</div>")
-                    return true;
-                }
-                console.log(data);
-                if(data.password !== userPassword){
-                    console.log("Password incorrect")
-                   setError("<div>Password Incorrect</div>")
-                }if(data.email !== useremail){
-                    console.log("Email incorrect");
-                    setError("<div>Email incorrect</div>")
-                }if(data.password === userPassword && data.email === useremail){
-                    sessionStorage.setItem("CompanyuserDatas", JSON.stringify(data));
-                    document.querySelector(".mojito").classList.add("chatapp");
-                    document.querySelector(".init-text").classList.remove("chatapp")
-                    location.href = "../pages/dashboard.html";
-                }
-            });
+            const dbRef = ref(db);
+                get(child(dbRef, `users/Managers/${userId}`)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const data = snapshot.val();
+                        console.log(data);
+                        if (data.password !== userPassword) {
+                            console.log("Password incorrect")
+                            setError("<div>Password Incorrect</div>")
+                        } if (data.email !== useremail) {
+                            console.log("Email incorrect");
+                            setError("<div>Email incorrect</div>")
+                        } if (data.password === userPassword && data.email === useremail) {
+                            sessionStorage.setItem("CompanyuserDatas", JSON.stringify(data));
+                            document.querySelector(".mojito").classList.add("chatapp");
+                            document.querySelector(".init-text").classList.remove("chatapp")
+                            location.href = "../pages/dashboard.html";
+                        }
+                    } else {
+                             // specify variables
+                             setError("<div>Account not found, create an account instead?</div>")
+                    }
+                }).catch((error) => {
+                    console.error(error);
+                });
         }
+                
+            // const starCountRef = ref(db, 'users/Managers/' + userId);
+            // specify what to do with retrieved data
+
         form.addEventListener("submit", (event)=>{
             event.preventDefault();   
             // form validate  

@@ -40,7 +40,7 @@
     <script defer type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
-        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+        import { getDatabase, ref, set, onValue, get, child } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
         // console.log("free")
@@ -91,29 +91,54 @@
             // Clear whitespace
             userId = userId.replaceAll(" ", "")
             // specify path
-            const starCountRef = ref(db, 'users/HR Registrars/' + userId);
+            // const starCountRef = ref(db, 'users/HR Registrars/' + userId);
+            const dbRef = ref(db)
             // specify what to do with retrieved data
-            onValue(starCountRef, (snapshot) => {
-                const data = snapshot.val();
-                if(!data){
-                    setError("<div>Account not found, create an account instead?</div>")
-                    return true;
-                }
-                console.log(data);
-                if(data.password !== userPassword){
-                    console.log("Password incorrect")
-                   setError("<div>Password Incorrect</div>")
-                }if(data.email !== useremail){
-                    console.log("Email incorrect");
-                    setError("<div>Email incorrect</div>")
-                }if(data.password === userPassword && data.email === useremail){
-                    sessionStorage.setItem("CompanyuserDatas", JSON.stringify(data));
-                    document.querySelector(".mojito").classList.add("chatapp");
-                    document.querySelector(".init-text").classList.remove("chatapp")
-                    location.href = "../pages/dashboard.html";
-                }
-            });
-        }
+            get(child(dbRef, `users/HR Registrars/${userId}`)).then((snapshot) => {
+                    // Check if an account with the username exists
+                    if (snapshot.exists()) {
+                        let data = snapshot.val()
+                        console.log(data);
+                    if (data.password !== userPassword) {
+                            console.log("Password incorrect")
+                            setError("<div>Password Incorrect</div>")
+                    } if (data.email !== useremail) {
+                            console.log("Email incorrect");
+                            setError("<div>Email incorrect</div>")
+                    } if (data.password === userPassword && data.email === useremail) {
+                            sessionStorage.setItem("CompanyuserDatas", JSON.stringify(data));
+                            document.querySelector(".mojito").classList.add("chatapp");
+                            document.querySelector(".init-text").classList.remove("chatapp")
+                            location.href = "../pages/dashboard.html";
+                    }
+                    } else {
+                        setError("<div>Account doesn't exist, create new account.</div>")
+                    }
+                }).catch((error) => {
+                    console.error(error);
+                });
+                
+            }
+            // onValue(starCountRef, (snapshot) => {
+            //     const data = snapshot.val();
+            //     if(!data){
+            //         setError("<div>Account not found, create an account instead?</div>")
+            //         return true;
+            //     }
+            //     console.log(data);
+            //     if(data.password !== userPassword){
+            //         console.log("Password incorrect")
+            //        setError("<div>Password Incorrect</div>")
+            //     }if(data.email !== useremail){
+            //         console.log("Email incorrect");
+            //         setError("<div>Email incorrect</div>")
+            //     }if(data.password === userPassword && data.email === useremail){
+            //         sessionStorage.setItem("CompanyuserDatas", JSON.stringify(data));
+            //         document.querySelector(".mojito").classList.add("chatapp");
+            //         document.querySelector(".init-text").classList.remove("chatapp")
+            //         location.href = "../pages/dashboard.html";
+            //     }
+            // });
         form.addEventListener("submit", (event)=>{
             event.preventDefault();   
             // form validate  
@@ -126,7 +151,7 @@
                 password.value = "";
                 email.value = "";
                 document.querySelector(".mojito").classList.remove("chatapp");
-                document.querySelector(".init-text").classList.add("chatapp")
+                document.querySelector(".init-text").classList.add("chatapp");
             }
         })
 </script>

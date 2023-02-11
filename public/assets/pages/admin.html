@@ -91,15 +91,17 @@
                 // Clear whitespace
                 userId = userId.replaceAll(" ", "")
                 // specify path
-                const starCountRef = ref(db, 'users/Admins/' + userId);
+                // const starCountRef = ref(db, 'users/Admins/' + userId);
+
                 // specify what to do with retrieved data
-                onValue(starCountRef, (snapshot) => {
-                    const data = snapshot.val();
-                    if(!data){
-                        setError("<div>Account not found, create an account instead?</div>")
-                        return true;
-                    }
-                    console.log(data);
+                const dbRef = ref(db);
+
+                get(child(dbRef, `users/Admins/${userId}`)).then((snapshot) => {
+                    // Check if an account with the username exists
+                    if (snapshot.exists()) {
+                        // setError("<div>Account Already Exists, sign in</div>");
+                        let data = snapshot.val();
+                        console.log(data);
                     if(data.password !== userPassword){
                         console.log("Password incorrect")
                        setError("<div>Password Incorrect</div>")
@@ -112,7 +114,15 @@
                         document.querySelector(".init-text").classList.remove("chatapp")
                         location.href = "../pages/dashboard.html";
                     }
+                    } else {
+                             // specify variables
+                             setError("<div>Account not found, create an account instead?</div>")
+                        return true;
+                    }
+                }).catch((error) => {
+                    console.error(error);
                 });
+                
             }
             form.addEventListener("submit", (event)=>{
                 event.preventDefault();   
