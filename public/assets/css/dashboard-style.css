@@ -307,7 +307,7 @@ p.price{
     height: 2.8rem;
 }
 .shopping{
-    margin: 0.5rem auto;
+    margin: 0rem auto;
     width: fit-content;
     padding: 0.6rem;
     display: flex;
