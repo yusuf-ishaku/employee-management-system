@@ -1,32 +1,34 @@
-let definingData = JSON.parse(sessionStorage.getItem("CompanyuserDatas"));
-// Set time for greeting
+// let definingData = JSON.parse(sessionStorage.getItem("CompanyuserDatas"));
+// // Set time for greeting
 let greetingPack = document.querySelector(".time");
-let namegreeting = document.querySelector(".namegreeting");
-let displayingType = (container, type) =>{
-    container.textContent = "";
-    container.textContent = `Admin ${type}`
-}
-// Give addresses if the type of login was an admin
-if(definingData.type === "Admin"){
-   displayingType(namegreeting, definingData.displayName);
-}else if(definingData.type === "Manager"){
-    displayingType(namegreeting, definingData.displayName);
-}else if(definingData.type === "HR Registrar"){
-    displayingType(namegreeting, definingData.displayName);
-}
+// let namegreeting = document.querySelector(".namegreeting");
+// let displayingType = (container, type) =>{
+//     container.textContent = "";
+//     container.textContent = `Admin ${type}`
+// }
+// // Give addresses if the type of login was an admin
+// if(definingData.type === "Admin"){
+//    displayingType(namegreeting, definingData.displayName);
+// }else if(definingData.type === "Manager"){
+//     displayingType(namegreeting, definingData.displayName);
+// }else if(definingData.type === "HR Registrar"){
+//     displayingType(namegreeting, definingData.displayName);
+// }
 // Greet according to the time of the day
 let greetings = new Date().toLocaleTimeString();
 // console.log(greetings)
 // console.log(greetings[0])
-if(greetings[greetings.length-2] === "P" && (greetings[0] + greetings[1] || greetings[0]) <= 4){
+// console.log(greetings[1])
+// console.log(greetings[greetings.length-2])
+if(greetings[greetings.length-2] === "P" && (greetings[0] + greetings[1] || greetings[0] <= 4)){
     greetingPack.textContent = "";
     greetingPack.textContent = "Good Afternoon, "
 };
-if(greetings[greetings.length-2] === "P" && (greetings[0] + greetings[1]) || greetings[0] > 4){
+if(greetings[greetings.length-2] === "P" && (greetings[0] + greetings[1] || greetings[0] > 4)){
     greetingPack.textContent = "";
     greetingPack.textContent = "Good Evening, "
 }
-if(greetings[greetings.length-2] === "A" && ((greetings[0]+ greetings[1]) || greetings[0] < 12)){
+if(greetings[greetings.length-2] === "A" && (greetings[0]+ greetings[1] || greetings[0] < 12)){
     console.log("Morning");
     greetingPack.textContent = "";
     greetingPack.textContent = "Good Morning, "

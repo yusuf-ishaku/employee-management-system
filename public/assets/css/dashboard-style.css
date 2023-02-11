@@ -826,7 +826,9 @@ span.x{
         padding-top: 2rem;
     }
 }
-
+.material-symbols-outlined{
+    cursor: pointer;
+}
 @media screen and (max-width:630px) {
     .right-aside {
         display: none;
@@ -837,6 +839,10 @@ span.x{
     main.main {
         width: 100vw !important;
         padding-right: 2rem !important;
+    }
+    .welcome{
+        font-size: 0.5rem;
+        font-weight: 400;
     }
 }
 
