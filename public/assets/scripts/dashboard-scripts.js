@@ -72,6 +72,16 @@ window.onclick = (event) => {
     }
 }
 
-let maneuver = (e) => {
-    
-}
+let analytics = document.querySelectorAll(".pk");
+
+analytics.forEach((element) =>{
+    element.addEventListener("click", () =>{
+        if(element.classList.contains("profile")){
+            console.log("profile")
+        }if(element.classList.contains("hr")){
+            console.log("hr")
+        }if(element.classList.contains("favourites")){
+            console.log("manager");
+        }
+    })
+})
