@@ -14,62 +14,62 @@ let payOb = (container, container2, tag, tag2) =>{
     container2.textContent = "";
     container2.textContent = `${tag2}`
 }
-// // Give addresses if the type of login was an admin
+// Give addresses if the type of login was an admin
 if(definingData.type === "Admin"){
-   displayingType(namegreeting, definingData.displayName);
-   payOb(observer, theName, "Administrator", definingData.displayName);
-let analytics = document.querySelectorAll(".pk");
+    displayingType(namegreeting, definingData.displayName);
+    payOb(observer, theName, "Administrator", definingData.displayName);
+    let analytics = document.querySelectorAll(".pk");
 
-analytics.forEach((element) =>{
-    element.addEventListener("click", () =>{
-        if(element.classList.contains("profile")){
-            console.log("profile")
-        }if(element.classList.contains("hr")){
-            console.log("hr")
-        }if(element.classList.contains("favourites")){
-            console.log("manager");
-        }
-    })
+    analytics.forEach((element) => {
+        element.addEventListener("click", () => {
+            if (element.classList.contains("profile")) {
+                console.log("profile")
+            } if (element.classList.contains("hr")) {
+                console.log("hr")
+            } if (element.classList.contains("favourites")) {
+                console.log("manager");
+            }
+        })
 })
 }else if(definingData.type === "Manager"){
     displayingType(namegreeting, definingData.displayName);
-    payOb(observer,theName, "Manager", definingData.displayName);
-let analytics = document.querySelectorAll(".pk");
+    payOb(observer, theName, "Manager", definingData.displayName);
+    let analytics = document.querySelectorAll(".pk");
 
-analytics.forEach((element) =>{
-        if(element.classList.contains("profile")){
-            element.onclick = () =>{
+    analytics.forEach((element) => {
+        if (element.classList.contains("profile")) {
+            element.onclick = () => {
                 console.log("this is manager")
             }
         }
-        if(element.classList.contains("hr")){
-            element.onclick = () =>{
+        if (element.classList.contains("hr")) {
+            element.onclick = () => {
                 console.log("viewing hr")
             }
-        }if(element.classList.contains("favourites")){
+        } if (element.classList.contains("favourites")) {
             console.log("manager");
             element.style.display = "none";
         }
-});
+    });
 }else if(definingData.type === "HR Registrar"){
     displayingType(namegreeting, definingData.displayName);
     payOb(observer, theName, "HR Registrar", definingData.displayName);
-let analytics = document.querySelectorAll(".pk");
+    let analytics = document.querySelectorAll(".pk");
 
-analytics.forEach((element) =>{
-        if(element.classList.contains("profile")){
+    analytics.forEach((element) => {
+        if (element.classList.contains("profile")) {
             console.log("profile");
-            element.onclick = () =>{
+            element.onclick = () => {
                 console.log("this is hr")
             }
-        }if(element.classList.contains("hr")){
+        } if (element.classList.contains("hr")) {
             // console.log("hr");
             element.style.display = "none";
-        }if(element.classList.contains("favourites")){
+        } if (element.classList.contains("favourites")) {
             element.style.display = "none";
         }
-})
-// }
+    })
+}
 // Greet according to the time of the day
 let greetings = new Date().toLocaleTimeString();
 // console.log(greetings)
@@ -115,18 +115,4 @@ window.onclick = (event) => {
       let main = document.querySelector(".main");
       main.style.overflow = "scroll";
     }
-}
-
-// let analytics = document.querySelectorAll(".pk");
-
-// analytics.forEach((element) =>{
-//     element.addEventListener("click", () =>{
-//         if(element.classList.contains("profile")){
-//             console.log("profile")
-//         }if(element.classList.contains("hr")){
-//             console.log("hr")
-//         }if(element.classList.contains("favourites")){
-//             console.log("manager");
-//         }
-//     })
-// })
+};
