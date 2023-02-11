@@ -2,17 +2,28 @@
 // // Set time for greeting
 let greetingPack = document.querySelector(".time");
 // let namegreeting = document.querySelector(".namegreeting");
-// let displayingType = (container, type) =>{
+// let displayingType = (container, container2, type) =>{ 
 //     container.textContent = "";
 //     container.textContent = `Admin ${type}`
 // }
+let observer = document.querySelector(".tag");
+let theName = document.querySelector(".entername")
+let payOb = (container, container2, tag, tag2) =>{
+    container.textContent = "";
+    container.textContent =  `${tag}`
+    container2.textContent = "";
+    container2.textContent = `${tag2}`
+}
 // // Give addresses if the type of login was an admin
 // if(definingData.type === "Admin"){
 //    displayingType(namegreeting, definingData.displayName);
+//    payOb(observer, theName, "Administrator", definingData.displayName)
 // }else if(definingData.type === "Manager"){
 //     displayingType(namegreeting, definingData.displayName);
+//     payOb(observer,theName, "Manager", definingData.displayName)
 // }else if(definingData.type === "HR Registrar"){
 //     displayingType(namegreeting, definingData.displayName);
+//     payOb(observer, theName, "HR Registrar", definingData.displayName);
 // }
 // Greet according to the time of the day
 let greetings = new Date().toLocaleTimeString();
