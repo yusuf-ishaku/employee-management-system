@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HR Log in</title>
+    <title>Manager Log In</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abyssinica+SIL&family=Balsamiq+Sans&family=Dancing+Script:wght@600&family=Jost&family=Lora&family=Montserrat:wght@200&family=Noto+Serif:ital,wght@1,700&family=Pacifico&family=Playfair+Display&family=Poppins&family=Roboto:wght@300;400&family=Source+Code+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="../css/anime-style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/anime-style.css">
 </head>
-<body class="bg-blue-900 px-16">
+<body class="bg-blue-500">
     <div class="flex flex-row sm:w-4/5 w-11/12 m-auto pt-20 h-4/5">
         <div class="form-initiate flex flex-col items-center w-full h-fit bg-white rounded-xl p-4  lg:pb-16 lg:pt-10 sm:-mb-4">
             <p class="form-header text-xl md:text-3xl text-gray-600 block p-2">Welcome back!</p>
@@ -24,15 +24,11 @@
                 <!-- <label for="lname">Last name:</label><br> -->
                 <input type="password" placeholder="**************" id="password" name="password" class="password mb-2 sm:mb-3  block mx-auto focus:outline-none p-1 border-me text-xl border-gray-300 rounded-md sm:w-96 w-full" required>
 
-                <button type="submit" value="Submit" class="login flex items-center justify-center border-me mx-auto sm:w-96 w-full text-xl p-1 bg-blue-900 text-white rounded-md"><span class="init-text">Sign in</span><span class="inline-block chatapp mojito"></span></button>
+                <button type="submit" value="Submit" class="login flex items-center justify-center border-me mx-auto sm:w-96 w-full text-xl p-1 bg-blue-500 text-white rounded-md"><span class="init-text">Sign in</span><span class="inline-block chatapp mojito"></span></button>
             </form>
-            <a href="../pages/createaccount-hr.html"><button  value="Account" class="signup block border-me sm:w-96 w-full text-md sm:text-xl mt-1 p-1 border-blue-900 hover:bg-blue-900 text-blue-900 rounded-md">Create New Account</button></a>
+            <a href="../pages/createaccount-manager.html"><button  value="Account" class="signup block border-me sm:w-96 w-full text-md sm:text-xl mt-1 p-1 bg-white border-blue-500 hover:bg-blue-500 text-blue-500 rounded-md">Create New Account</button></a>
         </div>
     </div>
-
-
-
-
 
 
 
@@ -41,7 +37,7 @@
     <script defer type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
-        import { getDatabase, ref, set, onValue, get, child } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+        import { getDatabase, ref, set, onValue, get , child } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
         // console.log("free")
@@ -92,54 +88,35 @@
             // Clear whitespace
             userId = userId.replaceAll(" ", "")
             // specify path
-            // const starCountRef = ref(db, 'users/HR Registrars/' + userId);
-            const dbRef = ref(db)
-            // specify what to do with retrieved data
-            get(child(dbRef, `users/HR Registrars/${userId}`)).then((snapshot) => {
-                    // Check if an account with the username exists
+            const dbRef = ref(db);
+                get(child(dbRef, `users/Managers/${userId}`)).then((snapshot) => {
                     if (snapshot.exists()) {
-                        let data = snapshot.val()
+                        const data = snapshot.val();
                         console.log(data);
-                    if (data.password !== userPassword) {
+                        if (data.password !== userPassword) {
                             console.log("Password incorrect")
                             setError("<div>Password Incorrect</div>")
-                    } if (data.email !== useremail) {
+                        } if (data.email !== useremail) {
                             console.log("Email incorrect");
                             setError("<div>Email incorrect</div>")
-                    } if (data.password === userPassword && data.email === useremail) {
+                        } if (data.password === userPassword && data.email === useremail) {
                             sessionStorage.setItem("CompanyuserDatas", JSON.stringify(data));
                             document.querySelector(".mojito").classList.add("chatapp");
                             document.querySelector(".init-text").classList.remove("chatapp")
-                            location.href = "../pages/dashboard.html";
-                    }
+                            location.href = "dashboard.html";
+                        }
                     } else {
-                        setError("<div>Account doesn't exist, create new account.</div>")
+                             // specify variables
+                             setError("<div>Account not found, create an account instead?</div>")
                     }
                 }).catch((error) => {
                     console.error(error);
                 });
+        }
                 
-            }
-            // onValue(starCountRef, (snapshot) => {
-            //     const data = snapshot.val();
-            //     if(!data){
-            //         setError("<div>Account not found, create an account instead?</div>")
-            //         return true;
-            //     }
-            //     console.log(data);
-            //     if(data.password !== userPassword){
-            //         console.log("Password incorrect")
-            //        setError("<div>Password Incorrect</div>")
-            //     }if(data.email !== useremail){
-            //         console.log("Email incorrect");
-            //         setError("<div>Email incorrect</div>")
-            //     }if(data.password === userPassword && data.email === useremail){
-            //         sessionStorage.setItem("CompanyuserDatas", JSON.stringify(data));
-            //         document.querySelector(".mojito").classList.add("chatapp");
-            //         document.querySelector(".init-text").classList.remove("chatapp")
-            //         location.href = "../pages/dashboard.html";
-            //     }
-            // });
+            // const starCountRef = ref(db, 'users/Managers/' + userId);
+            // specify what to do with retrieved data
+
         form.addEventListener("submit", (event)=>{
             event.preventDefault();   
             // form validate  
