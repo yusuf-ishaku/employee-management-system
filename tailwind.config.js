@@ -14,9 +14,12 @@ module.exports = {
     "./scripts/script.js",
     "./index.html",
     "./css/style.css",
-    "./public/assets/pages/admin.html",
-    "./assets/pages/hr.html",
-    "./assets/pages/manager.html"
+    "./pages/admin.html",
+    "./pages/hr.html",
+    "./pages/manager.html",
+    "./pages/createaccount-admin.html",
+    "./pages/createaccount-hr.html",
+    "./pages/createaccount-manager.html"
   ],
   theme: {
     extend: {},
