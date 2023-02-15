@@ -116,3 +116,11 @@ window.onclick = (event) => {
       main.style.overflow = "scroll";
     }
 };
+
+
+let maneuver = (e) =>{
+    console.log(e.id);
+    let thevalue = e.id
+    sessionStorage.clear();
+    sessionStorage.setItem("value", JSON.stringify(thevalue))
+}

@@ -202,10 +202,9 @@
                 </div>
             </div>
             
-              
+          
         </main> 
     </div>
-
 
 
 
@@ -240,7 +239,9 @@
             const db = dataBase;
             const employeeAccountRef = ref(db, "employees/");
             let dataLine = document.querySelector(".shopping")
-           
+            // let maneuver = () =>{
+            //     console.log("smile");
+            // }
             onValue(employeeAccountRef, (snapshot) =>{
                let employeeData = snapshot.val();
                if(!employeeData){
@@ -270,6 +271,7 @@
             });
             let addEmployeeData = (name, id, role) => {
                 const dbRef = ref(db);
+               
                 get(child(dbRef, `employees/`)).then((snapshot) => {
                     if (snapshot.exists()) {
                         let employeeData = snapshot.val();
@@ -325,11 +327,8 @@
                     document.querySelector(".init-text").classList.add("chatapp");
                 }
             }
-
-
-            
     </script>    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <script src="../scripts/dashboard-scripts.js"></script>
 </body>
 </html>
