@@ -20,10 +20,10 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
                     datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
+                        label: 'Hours worked',
+                        data: [40, 19, 3, 5, 2],
                         borderWidth: 1
                     }]
                 },
@@ -70,24 +70,28 @@
         // let maneuver = () =>{
         //     console.log("smile");
         // }
-        
+       
+
         let findData = (value) => {
             const dbRef = ref(db);
             
             get(child(dbRef, `employees/${value}`)).then((snapshot) => {
                 if (snapshot.exists()) {
-                    let employeeData = snapshot.val();
-                    employeeData.push(...[{name, id, role}]);
+                    console.log(snapshot.val());
+                    let data = snapshot.val();
+                    let head = document.querySelector("title");
+                    head.textContent = "";
+                    head.textContent = `Weekly chart info for ${data.name}`
                         // console.log(employeeData);
-                        set(ref(db, "employees/"), employeeData)
+                        // set(ref(db, "employees/"), employeeData)
                 } else {
-                    console.log("No data available");
-                    let theData = []
-                    theData.push({name, id, role})
-                    set(ref(db, "employees/"), theData);
+                    let theDoc = document.querySelector("body");
+                    theDoc.innerHTML = "";
+                    theDoc.innerHTML = "<h1>Charting data for this employee does not exist</h1>"
+                    
                 }
-                document.querySelector(".mojito").classList.add("chatapp");
-                document.querySelector(".init-text").classList.remove("chatapp")
+                // document.querySelector(".mojito").classList.add("chatapp");
+                // document.querySelector(".init-text").classList.remove("chatapp")
             }).catch((error) => {
                 console.error(error);
             });
@@ -107,28 +111,9 @@
                 //     }
                 // })
             }
-        let submit = document.getElementById("collate");
-        submit.onclick = () =>{
-            let fname = document.getElementById("fname").value;
-            let lname = document.getElementById("lname").value;
-            let id = document.getElementById("id-number").value;
-            let role = document.getElementById("role").value;
-            // let image = document.getElementById("image").value;
-            // console.log(image)
-            let theName = fname + " " + lname
-            if(fname.value === "" || lname.value ==="" || id.value === "" || role.value === ""){
-                alert("Input missing");
-            }else{
-                console.log(theName, id, role)
-                addEmployeeData(theName, id, role);
-                document.getElementById("fname").value = "";
-                document.getElementById("lname").value = "";
-                document.getElementById("id-number").value = "";
-                document.getElementById("role").value = "";
-                document.querySelector(".mojito").classList.remove("chatapp");
-                document.querySelector(".init-text").classList.add("chatapp");
-            }
-        }
+            let mid = JSON.parse(localStorage.getItem("value"));
+            console.log(mid);
+            findData(mid)
 </script>   
    
 </body>
