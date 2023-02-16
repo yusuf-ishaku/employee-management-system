@@ -372,6 +372,13 @@
                     document.getElementById("role").value = "";
                     document.querySelector(".mojito").classList.remove("chatapp");
                     document.querySelector(".init-text").classList.add("chatapp");
+                    let modal = document.querySelector(".modal")
+                    let modalpack = document.querySelector(".modal-pack")
+                    
+                        modal.classList.remove("displayblock");
+                        modalpack.style.transform = "translateY(30rem)"
+                        let main = document.querySelector(".main");
+                        main.style.overflow = "scroll";
                 }
             }
             // let remove = (e) => {
