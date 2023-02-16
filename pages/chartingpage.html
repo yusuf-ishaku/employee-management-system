@@ -14,29 +14,6 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const ctx = document.getElementById('myChart');
-
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-                    datasets: [{
-                        label: 'Hours worked',
-                        data: [40, 19, 3, 5, 2],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-    </script>
-
 
 
 <script type="module">
@@ -77,11 +54,31 @@
             
             get(child(dbRef, `employees/${value}`)).then((snapshot) => {
                 if (snapshot.exists()) {
-                    console.log(snapshot.val());
+                    // console.log(snapshot.val());
                     let data = snapshot.val();
                     let head = document.querySelector("title");
                     head.textContent = "";
-                    head.textContent = `Weekly chart info for ${data.name}`
+                    head.textContent = `Weekly chart info for ${data.name}`;
+                    const ctx = document.getElementById('myChart');
+
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                            datasets: [{
+                                label: `Hours worked by ${data.name}`,
+                                data: [40, 19, 3, 5, 2],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
                         // console.log(employeeData);
                         // set(ref(db, "employees/"), employeeData)
                 } else {
@@ -112,8 +109,8 @@
                 // })
             }
             let mid = JSON.parse(localStorage.getItem("value"));
-            console.log(mid);
-            findData(mid)
+            // console.log(mid);
+            findData(mid);
 </script>   
    
 </body>

@@ -119,9 +119,10 @@ window.onclick = (event) => {
 
 
 let maneuver = (e) =>{
-    console.log(e)
-    console.log(e.id);
+    // console.log(e)
+    // console.log(e.id);
     let thevalue = e.id
     localStorage.removeItem("value");
-    localStorage.setItem("value", JSON.stringify(thevalue))
+    localStorage.setItem("value", JSON.stringify(thevalue));
+    location.href = "./chartingpage.html";
 }
