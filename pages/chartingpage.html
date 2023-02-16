@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="../css/anime-style.css">
 </head>
 <body>
+    <div class="preload">
+        <span class="finalmojito"></span>
+    </div>
     <div class="main">
         <canvas id="myChart"></canvas>
     </div>
@@ -87,7 +90,7 @@
                     theDoc.innerHTML = "<h1>Charting data for this employee does not exist</h1>"
                     
                 }
-                // document.querySelector(".mojito").classList.add("chatapp");
+                document.querySelector(".preload").classList.add("chatapp");
                 // document.querySelector(".init-text").classList.remove("chatapp")
             }).catch((error) => {
                 console.error(error);

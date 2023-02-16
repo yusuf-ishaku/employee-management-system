@@ -252,12 +252,12 @@
                    
                 return(
                    
-                    dataLine.innerHTML += ` <div onclick = "maneuver(this)" class="item" id = ${x}>
+                    dataLine.innerHTML += ` <div class="item" id = ${x}>
                         <span id="1" class="number">${x + 1}</span>
                         <span class="employeeName">${data.name}</span>
                         <span class="role">${data.role}</span>
                         <span class="role">${data.id}</span>
-                        <span class="material-symbols-outlined block">
+                        <span onclick = "maneuver(this)" class="material-symbols-outlined block">
                             analytics
                         </span>
                         <span class="material-symbols-outlined block">
