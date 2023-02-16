@@ -214,7 +214,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
             import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
-            import { getDatabase, ref, set, onValue, get, child } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+            import { getDatabase, ref, set, onValue, get, child, remove } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
             // TODO: Add SDKs for Firebase products that you want to use
             // https://firebase.google.com/docs/web/setup#available-libraries
             // console.log("free")
@@ -235,7 +235,9 @@
             const app = initializeApp(firebaseConfig);
             const analytics = getAnalytics(app);
             const dataBase = getDatabase(app);
-
+            // let remove = (e) =>{
+            //     console.log(e);
+            // }
             const db = dataBase;
             const employeeAccountRef = ref(db, "employees/");
             let dataLine = document.querySelector(".shopping")
@@ -251,27 +253,68 @@
                 document.querySelector(".item").classList.add("none")
                }else{
                 dataLine.innerHTML = "";
-                employeeData.map((data, x)=>{
+                employeeData.forEach((element, x) => {
+                    let pack = document.createElement('div', HTMLDivElement)
+                    pack.id = x;
+                    pack.classList.add('item');
+                    let number = document.createElement('span', HTMLSpanElement);
+                    number.classList.add("number");
+                    number.textContent = `${x + 1}`;
+                    let eName = document.createElement('span', HTMLSpanElement);
+                    eName.classList.add("employeeName");
+                    eName.textContent = `${element.name}`;
+                    let eRole = document.createElement('span', HTMLSpanElement);
+                    eRole.classList.add("role");
+                    eRole.textContent = `${element.role}`;
+                    let eId = document.createElement('span', HTMLSpanElement);
+                    eId.classList.add("role");
+                    eId.textContent = `${element.id}`;
+                    let eChart = document.createElement('span', HTMLSpanElement);
+                    eChart.classList.add("block", "material-symbols-outlined");
+                    eChart.textContent = "analytics";
+                    eChart.onclick = (e) =>{
+                        let thevalue = e.srcElement.parentElement.id;
+                        localStorage.removeItem("value");
+                        localStorage.setItem("value", JSON.stringify(thevalue));
+                        location.href = "./chartingpage.html";
+                    }
+                    let eDelete = document.createElement("span", HTMLSpanElement);
+                    eDelete.classList.add("block", "material-symbols-outlined");
+                    eDelete.textContent = "delete";
+                    eDelete.onclick = (e) =>{
+                        set(ref(db, `employees/${e.srcElement.parentElement.id}`), null);
+                    }
+                    pack.appendChild(number);
+                    pack.appendChild(eName);
+                    pack.appendChild(eRole);
+                    pack.appendChild(eId);
+                    pack.appendChild(eChart);
+                    pack.appendChild(eDelete)
+                    dataLine.appendChild(pack)
+                });
+            }});
+            //     employeeData.map((data, x)=>{
                    
-                return(
-                   
-                    dataLine.innerHTML += ` <div class="item" id = ${x}>
-                        <span id="1" class="number">${x + 1}</span>
-                        <span class="employeeName">${data.name}</span>
-                        <span class="role">${data.role}</span>
-                        <span class="role">${data.id}</span>
-                        <span onclick = "maneuver(this)" class="material-symbols-outlined block">
-                            analytics
-                        </span>
-                        <span onclick ="remove(this)"class="de material-symbols-outlined block">
-                            delete
-                        </span>
-                   </div>`
-                )
-               })
-                // console.log(employeeData)
-               }
-            });
+            //     return(
+                    
+            //         dataLine.innerHTML += ` <div class="item" id = ${x}>
+            //             <span id="1" class="number">${x + 1}</span>
+            //             <span class="employeeName">${data.name}</span>
+            //             <span class="role">${data.role}</span>
+            //             <span class="role">${data.id}</span>
+            //             <span onclick = "maneuver(this)" class="material-symbols-outlined block">
+            //                 analytics
+            //             </span>
+            //             <span class="de material-symbols-outlined block">
+            //                 delete
+            //             </span>
+            //        </div>`
+            //     )
+            //    })
+            //     // console.log(employeeData)
+            //    }
+            // });
+            
             // console.log(document.querySelector(".de"))
             let addEmployeeData = (name, id, role) => {
                 const dbRef = ref(db);
