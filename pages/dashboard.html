@@ -242,12 +242,15 @@
             // let maneuver = () =>{
             //     console.log("smile");
             // }
+            // const remove = (e) => {
+            //         console.log(e.parentElement.id)
+            // }
             onValue(employeeAccountRef, (snapshot) =>{
                let employeeData = snapshot.val();
                if(!employeeData){
                 document.querySelector(".item").classList.add("none")
                }else{
-                dataLine.innerHTML = ""
+                dataLine.innerHTML = "";
                 employeeData.map((data, x)=>{
                    
                 return(
@@ -260,7 +263,7 @@
                         <span onclick = "maneuver(this)" class="material-symbols-outlined block">
                             analytics
                         </span>
-                        <span class="material-symbols-outlined block">
+                        <span onclick ="remove(this)"class="de material-symbols-outlined block">
                             delete
                         </span>
                    </div>`
@@ -269,6 +272,7 @@
                 // console.log(employeeData)
                }
             });
+            // console.log(document.querySelector(".de"))
             let addEmployeeData = (name, id, role) => {
                 const dbRef = ref(db);
                
@@ -327,6 +331,9 @@
                     document.querySelector(".init-text").classList.add("chatapp");
                 }
             }
+            // let remove = (e) => {
+            //         console.log(e.parentElement.id)
+            // }
     </script>    
     
     <script src="../scripts/dashboard-scripts.js"></script>

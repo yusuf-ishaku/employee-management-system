@@ -1,3 +1,4 @@
+
 let definingData = JSON.parse(sessionStorage.getItem("CompanyuserDatas"));
 // // // Set time for greeting
 let greetingPack = document.querySelector(".time");
@@ -126,3 +127,4 @@ let maneuver = (e) =>{
     localStorage.setItem("value", JSON.stringify(thevalue));
     location.href = "./chartingpage.html";
 }
+

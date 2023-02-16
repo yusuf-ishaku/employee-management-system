@@ -324,7 +324,7 @@ p.price{
     border-radius: 3px;
     background-color: white;
     box-shadow: var(--box-shadow-1);
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .createNew{
     width: 59rem;
