@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js"></script> 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -140,7 +141,10 @@
                         </div>
                         <div class="pole"><span class="issues">Image</span>
                             <div class="input-line">
-                                <input type="file" class="inputs" id="image">
+                                <div class="camera">
+                                    <video id="video">Video stream not available.</video>
+                                    <button id="startbutton">Take photo</button>
+                                </div>
                             </div>
                         </div>
                         <button class="collate" id="collate"><span class="collater"><span class="init-text">Add New</span><span class="mojito chatapp"></span></button>
@@ -210,7 +214,7 @@
 
 
 
-
+    
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
             import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
@@ -315,8 +319,8 @@
             //    }
             // });
             
-            // console.log(document.querySelector(".de"))
-            let addEmployeeData = (name, id, role) => {
+            // console.log(document.querySelector(".de"));
+                let addEmployeeData = (name, id, role) => {
                 const dbRef = ref(db);
                
                 get(child(dbRef, `employees/`)).then((snapshot) => {
@@ -382,9 +386,11 @@
                     
                 }
             }
+           
             // let remove = (e) => {
             //         console.log(e.parentElement.id)
             // }
+        
     </script>    
     
     <script src="../scripts/dashboard-scripts.js"></script>
