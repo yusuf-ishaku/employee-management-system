@@ -93,11 +93,11 @@
                     </span>
                     <h3 class="options">Settings</h3>
                 </a>
-                <a href="#" class="page-link">
+                <a href="../index.html" class="page-link">
                     <span class="material-symbols-sharp">
                         logout
                     </span>
-                    <h3 class="options">Logout</h3>
+                    <h3 class="options">Back</h3>
                 </a>
             </div>
         </aside>
@@ -139,13 +139,16 @@
                                 <input type="text" placeholder="E.g. Product Manager" class="inputs" id="role">
                             </div>
                         </div>
-                        <div class="pole"><span class="issues">Image</span>
-                            <div class="input-line">
-                                <div class="camera">
-                                    <video id="video">Video stream not available.</video>
-                                    <button id="startbutton">Take photo</button>
-                                </div>
-                            </div>
+                        <div class="pole imageline">
+                            <span class="issues">Image</span>
+                              <div class="camera">
+                                <video id="video">Video stream not available.</video>
+                                <button id="startbutton">Take photo</button>
+                              </div>
+                              <canvas id="canvas"> </canvas>
+                              <div class="output">
+                                <img id="photo" alt="The screen capture will appear in this box." />
+                              </div>
                         </div>
                         <button class="collate" id="collate"><span class="collater"><span class="init-text">Add New</span><span class="mojito chatapp"></span></button>
                     </div>
@@ -320,19 +323,19 @@
             // });
             
             // console.log(document.querySelector(".de"));
-                let addEmployeeData = (name, id, role) => {
+                let addEmployeeData = (name, id, role, image) => {
                 const dbRef = ref(db);
                
                 get(child(dbRef, `employees/`)).then((snapshot) => {
                     if (snapshot.exists()) {
                         let employeeData = snapshot.val();
-                        employeeData.push(...[{name, id, role}]);
+                        employeeData.push(...[{name, id, role, image}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData)
                     } else {
                         console.log("No data available");
                         let theData = []
-                        theData.push({name, id, role})
+                        theData.push({name, id, role, image})
                         set(ref(db, "employees/"), theData);
                     }
                     document.querySelector(".mojito").classList.add("chatapp");
@@ -369,14 +372,16 @@
                 let lname = document.getElementById("lname").value;
                 let id = document.getElementById("id-number").value;
                 let role = document.getElementById("role").value;
+                let image = JSON.parse(localStorage.getItem("emimage"));
+
                 // let image = document.getElementById("image").value;
                 // console.log(image)
                 let theName = fname + " " + lname
-                if(fname.value === "" || lname.value ==="" || id.value === "" || role.value === ""){
+                if(fname === "" || lname ==="" || id === "" || role === "" || !image){
                     alert("Input missing");
                 }else{
-                    console.log(theName, id, role)
-                    addEmployeeData(theName, id, role);
+                    console.log(theName, id, role, image);
+                    addEmployeeData(theName, id, role, image);
                     document.getElementById("fname").value = "";
                     document.getElementById("lname").value = "";
                     document.getElementById("id-number").value = "";
@@ -394,5 +399,6 @@
     </script>    
     
     <script src="../scripts/dashboard-scripts.js"></script>
+    <script src="../scripts/chartpage.js"></script>
 </body>
 </html>
