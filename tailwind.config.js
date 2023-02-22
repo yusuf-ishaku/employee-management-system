@@ -19,8 +19,10 @@ module.exports = {
     "./pages/manager.html",
     "./pages/createaccount-admin.html",
     "./pages/createaccount-hr.html",
-    "./pages/createaccount-manager.html".
-    "./pages/forgot-password.html"
+    "./pages/createaccount-manager.html",
+    "./pages/forgot-password.html",
+    "./pages/forgot-password-hr.html",
+    "./pages/forgot-password-manager.html"
   ],
   theme: {
     extend: {},
