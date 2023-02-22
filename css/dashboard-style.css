@@ -988,6 +988,25 @@ span.x{
     .favourites, .profile, .hr{
         width: 80%;
     }
+    .createNew{
+        width: 100% !important;
+        margin: auto;
+    }
+    .item{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+        background-color: rgb(166, 222, 252);
+    }
+    span.employeeName{
+        border: 0px;
+    }
+    span.role, span.employeeName{
+        width: 100%;
+    }
 }
 
 .showing{
