@@ -132,3 +132,47 @@ let maneuver = (e) =>{
     location.href = "./chartingpage.html";
 }
 
+
+
+
+
+let aside = document.querySelector(".aside")
+
+let toggler = document.querySelector("#toggler");
+
+let close = document.querySelector(".icon-close");
+close.addEventListener("click", () =>{
+    let mo = aside.getAttribute("data-visible");
+    if(mo == "false"){
+        aside.setAttribute("data-visible", "true");
+        close.style.display = "inline-block"
+    }else if(mo == "true"){
+        aside.setAttribute("data-visible", "false");
+        close.style.display = "none";
+    }
+    console.log(window.innerWidth)
+});
+
+let defineDisplay = () =>{
+    if(window.innerWidth > 992){
+        let mo = aside.getAttribute("data-visible");
+        if(mo == "true"){
+            aside.setAttribute("data-visible", "false");
+            close.style.display = "none";
+        }
+        console.log("red")
+    }
+};
+
+setInterval(defineDisplay, 100);
+
+toggler.addEventListener("click", () =>{
+    let mo = aside.getAttribute("data-visible");
+    if(mo == "false"){
+        aside.setAttribute("data-visible", "true");
+        close.style.display = "inline-block";
+    }else if(mo == "true"){
+        aside.setAttribute("data-visible", "false");
+        close.style.display = "none";
+    }
+})
