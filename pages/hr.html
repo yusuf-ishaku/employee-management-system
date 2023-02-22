@@ -113,7 +113,7 @@
                             sessionStorage.setItem("CompanyuserDatas", JSON.stringify(data));
                             document.querySelector(".mojito").classList.add("chatapp");
                             document.querySelector(".init-text").classList.remove("chatapp")
-                            location.href = "dashboard.html";
+                            location.replace("dashboard.html");
                     }
                     } else {
                         setError("<div>Account doesn't exist, create new account.</div>")
