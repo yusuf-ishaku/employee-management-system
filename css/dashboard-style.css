@@ -763,6 +763,10 @@ p.price{
 .checksquare > .material-symbols-outlined{
     display: none;
 }
+[aria-disabled ='true']{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 .yes, .no{
     display: flex;
     align-items: center;

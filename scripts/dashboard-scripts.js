@@ -1,11 +1,10 @@
-
-    let definingData = JSON.parse(sessionStorage.getItem("CompanyuserDatas"));
+let definingData = JSON.parse(sessionStorage.getItem("CompanyuserDatas"));
 // // // Set time for greeting
 let greetingPack = document.querySelector(".time");
 let namegreeting = document.querySelector(".namegreeting");
-let displayingType = (container, type) =>{ 
+let displayingType = (container, name, type ) =>{ 
     container.textContent = "";
-    container.textContent = `Admin ${type}`
+    container.textContent = `${type} ${name}`
 }
 let observer = document.querySelector(".tag");
 let theName = document.querySelector(".entername")
@@ -17,7 +16,7 @@ let payOb = (container, container2, tag, tag2) =>{
 }
 // Give addresses if the type of login was an admin
 if(definingData.type === "Admin"){
-    displayingType(namegreeting, definingData.displayName);
+    displayingType(namegreeting, definingData.displayName, definingData.type);
     payOb(observer, theName, "Administrator", definingData.displayName);
     let analytics = document.querySelectorAll(".pk");
 
@@ -33,8 +32,10 @@ if(definingData.type === "Admin"){
         })
 })
 }else if(definingData.type === "Manager"){
-    displayingType(namegreeting, definingData.displayName);
+    displayingType(namegreeting, definingData.displayName, definingData.type);
     payOb(observer, theName, "Manager", definingData.displayName);
+    let cr = document.querySelector(".createNew");
+    cr.setAttribute("aria-disabled", "true");
     let analytics = document.querySelectorAll(".pk");
 
     analytics.forEach((element) => {
@@ -53,7 +54,7 @@ if(definingData.type === "Admin"){
         }
     });
 }else if(definingData.type === "HR Registrar"){
-    displayingType(namegreeting, definingData.displayName);
+    displayingType(namegreeting, definingData.displayName, definingData.type);
     payOb(observer, theName, "HR Registrar", definingData.displayName);
     let analytics = document.querySelectorAll(".pk");
 
@@ -93,7 +94,9 @@ if(greetings[greetings.length-2] === "A" && (greetings[0]+ greetings[1] || greet
 // ------------------------------------------------------------ //
 
 let addNew = document.querySelector(".createNew");
-let displayModal = () =>{
+let displayModal = (e) =>{
+    let deter= e.srcElement;
+    if(!deter.hasAttribute("aria-disabled")){
         let modal = document.querySelector(".modal");
         let modalpack = document.querySelector(".modal-pack")
         if(modal.classList.contains("displayblock")){
@@ -103,6 +106,7 @@ let displayModal = () =>{
             modal.classList.add("displayblock");
             modalpack.style.transform = "translateY(0rem)"
         }
+    }     
 }
 addNew.addEventListener("click", displayModal);
 
