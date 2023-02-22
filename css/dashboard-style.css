@@ -688,7 +688,19 @@ p.price{
     width: 14rem;
     height: 240px;
   }
-  
+  .emimage-container{
+    display: inline-block !important;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 1rem !important;
+  }
+  .emimage{
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50% !important;
+    /* background-color: black; */
+  }
   #photo {
     border: 1px solid black;
     box-shadow: 2px 2px 3px black;

@@ -259,10 +259,11 @@
                if(!employeeData){
                 document.querySelector(".item").classList.add("none")
                }else{
+                if(typeof(employeeData) === "object")employeeData = Object.values(snapshot.val())
                 dataLine.innerHTML = "";
                 employeeData.forEach((element, x) => {
                     let pack = document.createElement('div', HTMLDivElement)
-                    pack.id = x;
+                    pack.id = element.roId;
                     pack.classList.add('item');
                     let number = document.createElement('span', HTMLSpanElement);
                     number.classList.add("number");
@@ -289,9 +290,18 @@
                     eDelete.classList.add("block", "material-symbols-outlined");
                     eDelete.textContent = "delete";
                     eDelete.onclick = (e) =>{
+                        console.log(e.srcElement.parentElement.id)
                         set(ref(db, `employees/${e.srcElement.parentElement.id}`), null);
                     }
-                    pack.appendChild(number);
+                    let employeeImage = document.createElement("img", HTMLImageElement);
+                    employeeImage.classList.add("emimage");
+                    employeeImage.src = `${element.image}`;
+                    employeeImage.alt = "";
+                    let emContainer = document.createElement("div", HTMLDivElement);
+                    emContainer.classList.add('emimage-container');
+                    emContainer.appendChild(employeeImage);
+                    // pack.appendChild(number);
+                    pack.appendChild(emContainer)
                     pack.appendChild(eName);
                     pack.appendChild(eRole);
                     pack.appendChild(eId);
@@ -329,9 +339,19 @@
                 get(child(dbRef, `employees/`)).then((snapshot) => {
                     if (snapshot.exists()) {
                         let employeeData = snapshot.val();
-                        employeeData.push(...[{name, id, role, image}]);
+                        if(typeof(employeeData) === "object"){
+                            employeeData = Object.values(employeeData);
+                            let roId = employeeData.length + 1
+                            employeeData.push(...[{name, id, role, image, roId}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData)
+                        }else{
+                            let roId = employeeData.length + 1
+                            employeeData.push(...[{name, id, role, image, roId}]);
+                            // console.log(employeeData);
+                            set(ref(db, "employees/"), employeeData)
+                        }
+                        
                     } else {
                         console.log("No data available");
                         let theData = []
@@ -373,7 +393,6 @@
                 let id = document.getElementById("id-number").value;
                 let role = document.getElementById("role").value;
                 let image = JSON.parse(localStorage.getItem("emimage"));
-
                 // let image = document.getElementById("image").value;
                 // console.log(image)
                 let theName = fname + " " + lname
@@ -386,6 +405,7 @@
                     document.getElementById("lname").value = "";
                     document.getElementById("id-number").value = "";
                     document.getElementById("role").value = "";
+                    localStorage.removeItem("emimage");
                     document.querySelector(".mojito").classList.remove("chatapp");
                     document.querySelector(".init-text").classList.add("chatapp");
                     
