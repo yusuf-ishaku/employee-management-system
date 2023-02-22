@@ -341,12 +341,12 @@
                         let employeeData = snapshot.val();
                         if(typeof(employeeData) === "object"){
                             employeeData = Object.values(employeeData);
-                            let roId = employeeData.length + 1
+                            let roId = employeeData.length
                             employeeData.push(...[{name, id, role, image, roId}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData)
                         }else{
-                            let roId = employeeData.length + 1
+                            let roId = employeeData.length
                             employeeData.push(...[{name, id, role, image, roId}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData)
@@ -354,8 +354,9 @@
                         
                     } else {
                         console.log("No data available");
-                        let theData = []
-                        theData.push({name, id, role, image})
+                        let theData = [];
+                        let roId = theData.length
+                        theData.push({name, id, role, image, roId})
                         set(ref(db, "employees/"), theData);
                     }
                     document.querySelector(".mojito").classList.add("chatapp");
