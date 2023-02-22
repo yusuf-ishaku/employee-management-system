@@ -88,9 +88,7 @@ main::-webkit-scrollbar-thumb:active{
     cursor: pointer;
     border: 1px solid rgba(152, 151, 151, 0.607);
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0.5rem;
     /* z-index: 9999; */
 }
 .feed{
