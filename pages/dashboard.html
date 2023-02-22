@@ -290,7 +290,7 @@
                     eDelete.classList.add("block", "material-symbols-outlined");
                     eDelete.textContent = "delete";
                     eDelete.onclick = (e) =>{
-                        console.log(e.srcElement.parentElement.id)
+                        // console.log(e.srcElement.parentElement.id)
                         set(ref(db, `employees/${e.srcElement.parentElement.id}`), null);
                     }
                     let employeeImage = document.createElement("img", HTMLImageElement);
