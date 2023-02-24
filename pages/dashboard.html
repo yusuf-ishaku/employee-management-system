@@ -400,14 +400,18 @@
                 let lname = document.getElementById("lname").value;
                 let id = document.getElementById("id-number").value;
                 let role = document.getElementById("role").value;
+                let file = document.querySelector("#file");
                 let image = JSON.parse(localStorage.getItem("emimage"));
+               
                 // let image = document.getElementById("image").value;
                 // console.log(image)
                 let theName = fname + " " + lname
-                if(fname === "" || lname ==="" || id === "" || role === "" || !image){
-                    alert("Input missing");
+                if(fname === "" || lname ==="" || id === "" || role === "" || !image || !file){
+                    // alert("Input missing");
+                    let selectedFile = file.files[0];
+                    console.log(selectedFile)
                 }else{
-                    console.log(theName, id, role, image);
+                    console.log(theName, id, role, image, file);
                     addEmployeeData(theName, id, role, image);
                     document.getElementById("fname").value = "";
                     document.getElementById("lname").value = "";
