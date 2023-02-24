@@ -96,6 +96,13 @@ main::-webkit-scrollbar-thumb:active{
 .feed{
     margin: 0 10px 0 auto;
 }
+span.y{
+    width: 100%;
+    text-align: center;
+}
+.camerapart{
+    display: flex;
+}
 .feed-page{
     color: black;
     margin-left: auto;
