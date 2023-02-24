@@ -2,7 +2,7 @@
     // The width and height of the captured photo. We will set the
     // width to the value defined here, but the height will be
     // calculated based on the aspect ratio of the input stream.
-  
+    let addNew = document.querySelector(".createNew")
     const width = 320; // We will scale the photo width to this
     let height = 0; // This will be computed based on the input stream
   
@@ -123,6 +123,6 @@
   
     // Set up our event listener to run the startup process
     // once loading is complete.
-    window.addEventListener("load", startup, false);
+    addNew.addEventListener("click", startup, false);
   })();
   

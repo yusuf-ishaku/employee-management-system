@@ -101,7 +101,7 @@ let displayModal = (e) =>{
         let modalpack = document.querySelector(".modal-pack")
         if(modal.classList.contains("displayblock")){
             modal.classList.remove('displayblock');
-          
+            
         }else{
             modal.classList.add("displayblock");
             modalpack.style.transform = "translateY(0rem)"
@@ -119,6 +119,15 @@ window.onclick = (event) => {
       modalpack.style.transform = "translateY(30rem)"
       let main = document.querySelector(".main");
       main.style.overflow = "scroll";
+      const mediaStream = video.srcObject;
+      // Through the MediaStream, you can get the MediaStreamTracks with getTracks():
+      const tracks = mediaStream.getTracks();
+
+      // Tracks are returned as an array, so if you know you only have one, you can stop it with: 
+      tracks[0].stop();
+
+      // Or stop all like so:
+      tracks.forEach(track => track.stop())
     }
 };
 
@@ -176,3 +185,8 @@ toggler.addEventListener("click", () =>{
         close.style.display = "none";
     }
 })
+
+
+
+
+
