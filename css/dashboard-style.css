@@ -1008,6 +1008,17 @@ span.x{
         width: 100% !important;
         margin: auto;
     }
+    .imageLine{
+        display: flex;
+        flex-direction: column;
+    }
+    .camerapart{
+        display: flex;
+        flex-direction: column;
+    }
+    .output{
+        width: 100%;
+    }
     .item{
         width: 100%;
         display: flex;
