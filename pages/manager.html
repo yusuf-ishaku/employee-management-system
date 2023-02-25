@@ -95,7 +95,7 @@
                 get(child(dbRef, `users/Managers/${userId}`)).then((snapshot) => {
                     if (snapshot.exists()) {
                         const data = snapshot.val();
-                        console.log(data);
+                        // console.log(data);
                         if (data.password !== userPassword) {
                             console.log("Password incorrect")
                             setError("<div>Password Incorrect</div>")
