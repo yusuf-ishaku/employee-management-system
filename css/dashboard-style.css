@@ -349,7 +349,8 @@ p.price{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
+    margin: 0.5rem auto;
+    margin-top: 1rem;
     /* justify-content: space-between; */
     border-radius: 3px;
     background-color: white;
@@ -867,6 +868,8 @@ p.price{
 }
 .main-part{
     display: none;
+    position: absolute;
+    top: 0 ;
 }
 h4.chkt-hd{
     margin-bottom: 0.4rem;
@@ -903,8 +906,15 @@ span.x{
         display: flex;
         align-items: center;
         justify-content: center;
-        position: absolute;
+        position: fixed;
         z-index: 0;
+    }
+    .main-part{
+        position: relative;
+        top: 4;
+    }
+    .modal{
+        position: fixed;
     }
     .aside > .top > .icon-close{
         display: block;
@@ -974,7 +984,16 @@ span.x{
     margin: 2rem auto;
     padding: 0.6rem;
 }
+.fileinput{
+    width: 100%;
+    height: fit-content;
+    margin-block: 1rem;
+    background-color: rgb(118, 117, 117);
+    padding: 1rem;
+}
 .em-hd{
+    display: block;
+    margin-block: 1rem;
     padding-left: 1.4rem;
 }
 @media screen and (max-width:630px) {

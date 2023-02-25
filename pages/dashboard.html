@@ -154,7 +154,7 @@
                              </div>
                              <span class="y">Or</span>
                              <div class="j">
-                                <input type="file" name="file" id="file">
+                                <input type="file" class="fileinput" name="file" id="file">
                              </div>
                         </div>
                         <button class="collate" id="collate"><span class="collater"><span class="init-text">Add New</span><span class="mojito chatapp"></span></button>
@@ -195,6 +195,12 @@
                 
                 <div class="employee-part">
                     <h3 class="em-hd">Employees</h3>
+                    <div class="createNew">
+                        <span class="material-symbols-outlined block">
+                           add
+                        </span>
+                        <span>Add New Employee</span>
+                    </div>
                     <div class="shopping">
                         <!-- <div class="item">
                             <span id="1" class="number">1.</span>
@@ -208,12 +214,7 @@
                     </div>
                   
                 </div>
-                <div class="createNew">
-                    <span class="material-symbols-outlined block">
-                       add
-                    </span>
-                    <span>Add New Employee</span>
-                </div>
+                
             </div>
             
           
@@ -425,6 +426,15 @@
                             localStorage.removeItem("emimage");
                             document.querySelector(".mojito").classList.remove("chatapp");
                             document.querySelector(".init-text").classList.add("chatapp");
+                            const mediaStream = video.srcObject;
+      // Through the MediaStream, you can get the MediaStreamTracks with getTracks():
+                            const tracks = mediaStream.getTracks();
+
+                            // Tracks are returned as an array, so if you know you only have one, you can stop it with: 
+                            tracks[0].stop();
+
+                            // Or stop all like so:
+                            tracks.forEach(track => track.stop())
                         });
                         // console.log(selectedFile);
                         reader.readAsDataURL(selectedFile);
@@ -441,6 +451,15 @@
                         localStorage.removeItem("emimage");
                         document.querySelector(".mojito").classList.remove("chatapp");
                         document.querySelector(".init-text").classList.add("chatapp");
+                        const mediaStream = video.srcObject;
+      // Through the MediaStream, you can get the MediaStreamTracks with getTracks():
+                    const tracks = mediaStream.getTracks();
+
+                    // Tracks are returned as an array, so if you know you only have one, you can stop it with: 
+                    tracks[0].stop();
+
+                    // Or stop all like so:
+                    tracks.forEach(track => track.stop())
                 }
                 if(image && selectedFile){
                     alert("Cannot accesss two different files at the same time")

@@ -105,11 +105,31 @@ let displayModal = (e) =>{
         }else{
             modal.classList.add("displayblock");
             modalpack.style.transform = "translateY(0rem)"
+            document.querySelector(".main-part").style.top = "0"
         }
     }     
 }
 addNew.addEventListener("click", displayModal);
+let modalclose = document.querySelector(".modal-close");
+modalclose.onclick = (event) =>{
+    // console.log("rad")
+    let modal = document.querySelector(".modal");
+    let modalpack = document.querySelector(".modal-pack")
 
+      modal.classList.remove("displayblock");
+      modalpack.style.transform = "translateY(30rem)"
+      let main = document.querySelector(".main");
+      main.style.overflow = "scroll";
+      const mediaStream = video.srcObject;
+      // Through the MediaStream, you can get the MediaStreamTracks with getTracks():
+      const tracks = mediaStream.getTracks();
+
+      // Tracks are returned as an array, so if you know you only have one, you can stop it with: 
+      tracks[0].stop();
+
+      // Or stop all like so:
+      tracks.forEach(track => track.stop())
+}
 window.onclick = (event) => {
     // console.log("hads")
     let modal = document.querySelector(".modal")
