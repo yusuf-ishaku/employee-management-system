@@ -73,24 +73,24 @@ if(definingData.type === "Admin"){
     })
 }
 // Greet according to the time of the day
-let greetings = new Date().toLocaleTimeString();
+// let greetings = new Date().toLocaleTimeString();
 // console.log(greetings)
 // console.log(greetings[0])
 // console.log(greetings[1])
 // console.log(greetings[greetings.length-2])
-if(greetings[greetings.length-2] === "P" && (greetings[0] + greetings[1] || greetings[0] <= 4)){
-    greetingPack.textContent = "";
-    greetingPack.textContent = "Good Afternoon, "
-};
-if(greetings[greetings.length-2] === "P" && (greetings[0] + greetings[1] || greetings[0] > 4)){
-    greetingPack.textContent = "";
-    greetingPack.textContent = "Good Evening, "
-}
-if(greetings[greetings.length-2] === "A" && (greetings[0]+ greetings[1] || greetings[0] < 12)){
-    console.log("Morning");
-    greetingPack.textContent = "";
-    greetingPack.textContent = "Good Morning, "
-}
+// if(greetings[greetings.length-2] === "P" && (greetings[0] + greetings[1] || greetings[0] <= 4)){
+//     greetingPack.textContent = "";
+//     greetingPack.textContent = "Good Afternoon, "
+// };
+// if(greetings[greetings.length-2] === "P" && (greetings[0] + greetings[1] || greetings[0] > 4)){
+//     greetingPack.textContent = "";
+//     greetingPack.textContent = "Good Evening, "
+// }
+// if(greetings[greetings.length-2] === "A" && (greetings[0]+ greetings[1] || greetings[0] < 12)){
+//     console.log("Morning");
+//     greetingPack.textContent = "";
+//     greetingPack.textContent = "Good Morning, "
+// }
 // ------------------------------------------------------------ //
 
 let addNew = document.querySelector(".createNew");
