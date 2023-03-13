@@ -22,7 +22,8 @@ module.exports = {
     "./pages/createaccount-manager.html",
     "./pages/forgot-password.html",
     "./pages/forgot-password-hr.html",
-    "./pages/forgot-password-manager.html"
+    "./pages/forgot-password-manager.html",
+    "./pages/managers-list.html"
   ],
   theme: {
     extend: {},
