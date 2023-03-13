@@ -23,11 +23,12 @@ if(definingData.type === "Admin"){
     analytics.forEach((element) => {
         element.addEventListener("click", () => {
             if (element.classList.contains("profile")) {
-                console.log("profile")
+                alert("profile")
             } if (element.classList.contains("hr")) {
-                console.log("hr")
+                alert("hr")
             } if (element.classList.contains("favourites")) {
-                console.log("manager");
+                alert("manager");
+                location.href = "../pages/managers-list.html"
             }
         })
 })
@@ -41,15 +42,15 @@ if(definingData.type === "Admin"){
     analytics.forEach((element) => {
         if (element.classList.contains("profile")) {
             element.onclick = () => {
-                console.log("this is manager")
+                alert("this is manager")
             }
         }
         if (element.classList.contains("hr")) {
             element.onclick = () => {
-                console.log("viewing hr")
+                alert("viewing hr")
             }
         } if (element.classList.contains("favourites")) {
-            console.log("manager");
+            alert("manager");
             element.style.display = "none";
         }
     });
@@ -94,6 +95,7 @@ if(definingData.type === "Admin"){
 // ------------------------------------------------------------ //
 
 let addNew = document.querySelector(".createNew");
+if(definingData.type === "Admin")addNew.style.display = "none"
 let displayModal = (e) =>{
     let deter= e.srcElement;
     if(!deter.hasAttribute("aria-disabled")){
