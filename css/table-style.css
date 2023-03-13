@@ -9,6 +9,8 @@ tr:nth-child(even){
 }
 td{
     padding: 0.5rem;
+    border-width: 1px;
+    border-color: rgb(181, 181, 238);
 }
 th{
     text-align: left;

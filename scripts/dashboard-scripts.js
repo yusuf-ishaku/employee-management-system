@@ -27,7 +27,7 @@ if(definingData.type === "Admin"){
             } if (element.classList.contains("hr")) {
                 alert("hr")
             } if (element.classList.contains("favourites")) {
-                alert("manager");
+                // alert("manager");
                 location.href = "../pages/managers-list.html"
             }
         })
