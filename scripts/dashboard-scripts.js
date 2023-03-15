@@ -41,21 +41,25 @@ if(definingData.type === "Admin"){
     displayingType(namegreeting, definingData.displayName, definingData.type);
     payOb(observer, theName, "Manager", definingData.displayName);
     let cr = document.querySelector(".createNew");
-    cr.setAttribute("aria-disabled", "true");
+    cr.style.display = "none"
     let analytics = document.querySelectorAll(".pk");
 
     analytics.forEach((element) => {
+        element.addEventListener("click", () =>{
+            
+        })
         if (element.classList.contains("profile")) {
             element.onclick = () => {
                 alert("this is manager")
             }
         }
         if (element.classList.contains("hr")) {
+            element.style.display = "none";
             element.onclick = () => {
                 alert("viewing hr")
             }
         } if (element.classList.contains("favourites")) {
-            alert("manager");
+            // alert("manager");
             element.style.display = "none";
         }
     });

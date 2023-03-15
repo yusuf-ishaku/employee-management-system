@@ -150,7 +150,7 @@
                         <div class="pole p-4 flex flex-col w-auto bg-blue-700 text-gray-800 rounded-md">
                             <span class="issues">Password</span>
                             <button class="genp "> Generate password</button>
-                            <input readonly=true type="text" class="t inputs password border-me border-gray-400 p-1">
+                            <input id="password" readonly=true type="text" class="t inputs password border-me border-gray-400 p-1">
                         </div>
                         <div class="pole">
                             <span class="issues">ID Number</span>
@@ -364,7 +364,7 @@
             // });
             
             // console.log(document.querySelector(".de"));
-                let addEmployeeData = (name, id, role, image) => {
+                let addEmployeeData = (name, id, role, image, password) => {
                 const dbRef = ref(db);
                
                 get(child(dbRef, `employees/`)).then((snapshot) => {
@@ -373,12 +373,12 @@
                         if(typeof(employeeData) === "object"){
                             employeeData = Object.values(employeeData);
                             let roId = employeeData.length
-                            employeeData.push(...[{name, id, role, image, roId}]);
+                            employeeData.push(...[{name, id, role, image, roId, password}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData)
                         }else{
                             let roId = employeeData.length
-                            employeeData.push(...[{name, id, role, image, roId}]);
+                            employeeData.push(...[{name, id, role, image, roId, password}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData)
                         }
@@ -387,7 +387,7 @@
                         console.log("No data available");
                         let theData = [];
                         let roId = theData.length
-                        theData.push({name, id, role, image, roId})
+                        theData.push({name, id, role, image, roId, password})
                         set(ref(db, "employees/"), theData);
                     }
                     document.querySelector(".mojito").classList.add("chatapp");
@@ -426,11 +426,12 @@
                 let role = document.getElementById("role").value;
                 let file = document.querySelector("#file");
                 let image = JSON.parse(localStorage.getItem("emimage"));
+                let password = document.getElementById("password")
                 let selectedFile = file.files[0];
                 // let image = document.getElementById("image").value;
                 // console.log(image)
                 let theName = fname + " " + lname
-                if(fname === "" || lname ==="" || id === "" || role === "" || !image){
+                if(fname === "" || lname ==="" || id === "" || role === "" || password ==="" || !image){
                     if(fname === "" || lname ==="" || id === "" || role === "")alert("Input missing");
                     if(!image && !selectedFile)alert("No image");
                     if(!image && selectedFile){
@@ -441,7 +442,7 @@
                             console.log(min);
                             image = min;
                             // console.log(theName, id, role, image);
-                            addEmployeeData(theName, id, role, image);
+                            addEmployeeData(theName, id, role, image, password);
                             document.getElementById("fname").value = "";
                             document.getElementById("lname").value = "";
                             document.getElementById("id-number").value = "";
@@ -466,11 +467,12 @@
                 }
                 if(image){
                     // console.log(theName, id, role, image);
-                        addEmployeeData(theName, id, role, image);
+                        addEmployeeData(theName, id, role, image, password);
                         document.getElementById("fname").value = "";
                         document.getElementById("lname").value = "";
                         document.getElementById("id-number").value = "";
                         document.getElementById("role").value = "";
+                        document.getElementById("password").value = "";
                         localStorage.removeItem("emimage");
                         document.querySelector(".mojito").classList.remove("chatapp");
                         document.querySelector(".init-text").classList.add("chatapp");
