@@ -15,10 +15,10 @@
 </head>
 <body class="bg-blue-100 p-10">
     <section class="w-full h-fit rounded-lg mt-8">
-        <button class="w-full my-2 py-3 bg-blue-500 border-white border-2 rounded-md text-white hover:bg-white hover:text-blue-500">
+        <button class="adnm w-full my-2 py-3 bg-blue-500 border-white border-2 rounded-md text-white hover:bg-white hover:text-blue-500">
             Add New Manager
         </button>
-        <form class="w-full bg-white py-4 px-2 my-2">
+        <form class="hidden w-full bg-white py-4 px-2 my-2">
             <span class="p-2 flex flex-col">
                 <label for="manager">Manager Name</label>
                 <input type="text" placeholder="E.g. Mr. Nosa Emmanuel" class="placeholder-gray-600 rounded-sm border-gray-600 border-me p-1">
@@ -29,7 +29,7 @@
             </span>
             <div class="h-fit p-2 flex flex-col w-auto bg-blue-700 text-gray-800 rounded-md">
                 <button class="genp w-fit h-fit my-2 p-2 text-white rounded-md bg-blue-500"> Generate password</button>
-                <input readonly=true type="password" class="border-me border-gray-400 p-1">
+                <input readonly=true type="password" class="t border-me border-gray-400 p-1">
             </div>
             <span class="p-2 flex flex-col">
                 <label for="managerid">Id Card Number</label>
@@ -112,9 +112,9 @@
 
             let generatedPassword = ''
     
-            let char = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*" 
+            let char = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^*" 
     
-            for (i = 1 ; 1 <9; i++){
+            for (let i = 1 ; i < 9; i++){
                 var word = Math.floor(Math.random() * char.length + 1)
                 generatedPassword += char.charAt(word)
             }
@@ -124,7 +124,21 @@
         }
         generatePassword.addEventListener("click", (e)=>{
             e.preventDefault();
-            console.log(generateP)
+            let valuebox = document.querySelector(".t");
+            // valuebox.type = "text"
+            valuebox.value = generateP();
+
+        });
+
+        let adnm = document.querySelector(".adnm");
+        adnm.addEventListener("click", (e)=>{
+            e.preventDefault();
+            let form = document.querySelector('form');
+            if(form.classList.contains("hidden")){
+                form.classList.remove("hidden")
+            }else{
+                form.classList.add("hidden")
+            }
         })
 
        
