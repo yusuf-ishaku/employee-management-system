@@ -90,12 +90,12 @@
         const dataBase = getDatabase(app);
 
         const db = dataBase;
-        const managerRef = ref(db, "users/Managers/");
+        const hrRef = ref(db, "users/HR Registrars/");
 
-        onValue(managerRef, (snapshot)  =>{
-            let managerData = snapshot.val();
-            if(typeof(managerData) === "object")managerData = Object.values(managerData);
-            console.log(managerData);
+        onValue(hrRef, (snapshot)  =>{
+            let hrData = snapshot.val();
+            if(typeof(hrData) === "object")hrData = Object.values(hrData);
+            console.log(hrData);
             let table = document.querySelector(".table")
             managerData.forEach((element, x) => {
                 let line = document.createElement("tr", HTMLTableRowElement);
