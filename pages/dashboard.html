@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="sidebar-menu">
-                <a href="#" class="page-link active home">
+                <a href="#" class="page-link active home safe">
                     <span class="material-symbols-sharp">
                         grid_view
                     </span>
@@ -88,7 +88,7 @@
                     </span>
                     <h3 class="options">Blog</h3>
                 </a> -->
-                <a href="#" class="page-link">
+                <a href="#" class="page-link safe">
                     <span class="material-symbols-sharp">
                         settings
                     </span>
@@ -112,7 +112,7 @@
                     </span>
                     <h3 class="options">Live Activity</h3>
                 </a>
-                <a href="../index.html" class="page-link">
+                <a href="../index.html" class="page-link safe">
                     <span class="material-symbols-sharp">
                         logout
                     </span>
@@ -146,6 +146,11 @@
                             <div class="input-line">
                                 <input type="text" placeholder="Last Name" class="inputs" id="lname">
                             </div>
+                        </div>
+                        <div class="pole p-4 flex flex-col w-auto bg-blue-700 text-gray-800 rounded-md">
+                            <span class="issues">Password</span>
+                            <button class="genp "> Generate password</button>
+                            <input readonly=true type="text" class="t inputs password border-me border-gray-400 p-1">
                         </div>
                         <div class="pole">
                             <span class="issues">ID Number</span>
@@ -484,7 +489,30 @@
                 }
                     
             }
-           
+            let generatePassword = document.querySelector(".genp");
+
+function generateP(){
+
+    let generatedPassword = ''
+
+    let char = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^*" 
+
+    for (let i = 1 ; i < 9; i++){
+        var word = Math.floor(Math.random() * char.length + 1)
+        generatedPassword += char.charAt(word)
+    }
+    
+    // console.log(generatedPassword)
+    return generatedPassword
+}
+generatePassword.addEventListener("click", (e)=>{
+    e.preventDefault();
+    let valuebox = document.querySelector(".t");
+    // valuebox.type = "text"
+    valuebox.value = generateP();
+
+});
+
             // let remove = (e) => {
             //         console.log(e.parentElement.id)
             // }

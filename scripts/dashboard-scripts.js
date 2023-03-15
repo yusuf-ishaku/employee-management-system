@@ -19,7 +19,6 @@ if(definingData.type === "Admin"){
     displayingType(namegreeting, definingData.displayName, definingData.type);
     payOb(observer, theName, "Administrator", definingData.displayName);
     let analytics = document.querySelectorAll(".pk");
-
     analytics.forEach((element) => {
         element.addEventListener("click", () => {
             if (element.classList.contains("profile")) {
@@ -30,7 +29,13 @@ if(definingData.type === "Admin"){
                 // alert("manager");
                 location.href = "../pages/managers-list.html"
             }
-        })
+        });
+    let allLink = document.querySelectorAll(".page-link");
+    allLink.forEach(elem =>{
+        if(!elem.classList.contains("safe")){
+            elem.style.display = "none"
+        }
+    })
 })
 }else if(definingData.type === "Manager"){
     displayingType(namegreeting, definingData.displayName, definingData.type);
@@ -58,7 +63,6 @@ if(definingData.type === "Admin"){
     displayingType(namegreeting, definingData.displayName, definingData.type);
     payOb(observer, theName, "HR Registrar", definingData.displayName);
     let analytics = document.querySelectorAll(".pk");
-
     analytics.forEach((element) => {
         if (element.classList.contains("profile")) {
             console.log("profile");
@@ -70,6 +74,12 @@ if(definingData.type === "Admin"){
             element.style.display = "none";
         } if (element.classList.contains("favourites")) {
             element.style.display = "none";
+        }
+    })
+    let allLink = document.querySelectorAll(".page-link");
+    allLink.forEach(elem =>{
+        if(!elem.classList.contains("safe")){
+            elem.style.display = "none"
         }
     })
 }
