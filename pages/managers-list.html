@@ -28,8 +28,8 @@
                 <input type="text" placeholder="example@example.com" class="placeholder-gray-600 rounded-sm border-gray-600 border-me p-1">
             </span>
             <div class="h-fit p-2 flex flex-col w-auto bg-blue-700 text-gray-800 rounded-md">
-                <button class="w-fit h-fit bg-blue-500"> Generate password</button>
-                <input type="password" class="border-me border-gray-400 p-1">
+                <button class="genp w-fit h-fit my-2 p-2 text-white rounded-md bg-blue-500"> Generate password</button>
+                <input readonly=true type="password" class="border-me border-gray-400 p-1">
             </div>
             <span class="p-2 flex flex-col">
                 <label for="managerid">Id Card Number</label>
@@ -105,7 +105,29 @@
 
                 table.appendChild(line);
             });
+        });
+        let generatePassword = document.querySelector(".genp");
+
+        function generateP(){
+
+            let generatedPassword = ''
+    
+            let char = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*" 
+    
+            for (i = 1 ; 1 <9; i++){
+                var word = Math.floor(Math.random() * char.length + 1)
+                generatedPassword += char.charAt(word)
+            }
+            
+            // console.log(generatedPassword)
+            return generatedPassword
+        }
+        generatePassword.addEventListener("click", (e)=>{
+            e.preventDefault();
+            console.log(generateP)
         })
+
+       
     </script>
 </body>
 </html>
