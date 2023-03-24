@@ -44,6 +44,7 @@ if(definingData.type === "Admin"){
     displayingType(namegreeting, definingData.displayName, definingData.type);
     payOb(observer, theName, "Manager", definingData.displayName);
     let cr = document.querySelector(".createNew");
+    document.querySelector(".unsafe").style.display = "none"
     cr.style.display = "none"
     let analytics = document.querySelectorAll(".pk");
 
@@ -67,8 +68,12 @@ if(definingData.type === "Admin"){
 }else if(definingData.type === "HR Registrar"){
     displayingType(namegreeting, definingData.displayName, definingData.type);
     payOb(observer, theName, "HR Registrar", definingData.displayName);
-    document.querySelector('.unsafe').classList.add("safe")
     let analytics = document.querySelectorAll(".pk");
+    // document.querySelector(".unsafe").style.display = "flex !important";
+    let unsafe = document.querySelector(".unsafe");
+    
+    unsafe.classList.add("the-flex")
+    console.log(unsafe)
     analytics.forEach((element) => {
         if (element.classList.contains("profile")) {
             console.log("profile");

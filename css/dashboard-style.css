@@ -403,6 +403,9 @@ section.unsafe{
     padding: 0.3rem;
     margin-bottom: 10px;
 }
+.the-flex{
+    display: flex !important;
+}
 .eye{
     display: flex;
     flex: row;
