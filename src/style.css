@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+    font-family: 'Poppins';
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+@layer utilities{
+    .text-large{
+        font-size: 2.75rem;
+    }
+    .border-me{
+        border-width: 1px !important;
+    }
+    .error{
+        color: red;
+        height: fit-content;
+        padding-bottom: 3px;
+    }
+    .person{
+        height: 15rem;
+    }
+
+    @media screen and (max-width: 410px) {
+        .form-body{
+            width: 100%;
+        }
+        body{
+            padding: 0.5rem !important;
+        }
+        .persons{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

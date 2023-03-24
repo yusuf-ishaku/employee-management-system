@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js"></script> 
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abyssinica+SIL&family=Balsamiq+Sans&family=Dancing+Script:wght@600&family=Jost&family=Lora&family=Montserrat&family=Pacifico&family=Playfair+Display&family=Roboto:wght@300;400&family=Source+Code+Pro&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../css/dashboard-style.css">
+    <link rel="stylesheet" href="../css/anime-style.css">
+    <link rel="stylesheet" href="../css/table-style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navigator" id="toggler" data-visible="false">
+            <span class="material-symbols-outlined">
+            menu
+            </span>
+        </div>
+    </nav>
+    <div class="container-full">
+        <aside class="aside" data-visible="false">
+            <div class="top">
+                <div class="return-square return-squarespell">
+                    <div class="details">
+                        <span class="block rounded-full adminc">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                            </svg>
+                        </span>
+                        <div class="persona">
+                            <span class="block entername font-semibold">Omoripe Ashkenome</span>
+                            <span class="block tag text-sm font-normal">Administrator</span>
+                        </div>
+                    </div>
+                    <span class="icon-close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <a href="#" class="page-link active home safe">
+                    <span class="material-symbols-sharp">
+                        grid_view
+                    </span>
+                    <h3 class="options">Home</h3>
+                </a>
+                <!-- <a href="#" class="page-link meetings">
+                    <span class="material-symbols-sharp">
+                        meeting_room
+                    </span>
+                    <h3 class="options">Meetings</h3>
+                </a>
+                <a href="#" class="page-link julie">
+                    <span class="material-symbols-sharp">
+                        interpreter_mode
+                    </span>
+                    <h3 class="options">Julie</h3>
+                </a>
+                <a href="#" class="page-link cartbtn">
+                    <span class="material-symbols-sharp">
+                        shopping_bag
+                    </span>
+                    <h3 class="options">Cart</h3>
+                </a>
+                <a href="#" class="page-link chatappbtn">
+                    <span class="material-symbols-sharp">
+                        chat
+                    </span>
+                    <h3 class="options">Chats</h3>
+                </a>
+                <a href="#" class="page-link">
+                    <span class="material-symbols-sharp">
+                        forum
+                    </span>
+                    <h3 class="options">Blog</h3>
+                </a> -->
+                <a href="#" class="page-link safe settings">
+                    <span class="material-symbols-sharp">
+                        settings
+                    </span>
+                    <h3 class="options">Settings</h3>
+                </a>
+                <a href="#" class="page-link tasks">
+                    <span class="material-symbols-sharp">
+                        settings
+                    </span>
+                    <h3 class="options">Tasks</h3>
+                </a>
+                <a href="#" class="page-link reda">
+                    <span class="material-symbols-sharp">
+                        settings
+                    </span>
+                    <h3 class="options">Redo Attendance</h3>
+                </a>
+                <a href="#" class="page-link live">
+                    <span class="material-symbols-sharp">
+                        settings
+                    </span>
+                    <h3 class="options">Live Activity</h3>
+                </a>
+                <a href="#" class="page-link unsafe">
+                    <span class="material-symbols-sharp">
+                        settings
+                    </span>
+                    <h3 class="options">Employee Records</h3>
+                </a>
+                <a href="../index.html" class="page-link safe">
+                    <span class="material-symbols-sharp">
+                        logout
+                    </span>
+                    <h3 class="options">Back</h3>
+                </a>
+            </div>
+        </aside>
+        <main class="main">
+            <div class="modal">
+                <div class="modal-pack">
+                    <div class="aside-head">
+                        <p class="paragraph">
+                            Create New Employee Account
+                        </p>
+                        <span class="modal-close">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-x-lg" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="line">
+                        <div class="pole">
+                            <span class="issues">First Name</span>
+                            <div class="input-line">
+                                <input type="text" placeholder="First Name" class="inputs" id="fname">
+                            </div>
+                        </div>
+                        <div class="pole"><span class="issues">Last Name</span>
+                            <div class="input-line">
+                                <input type="text" placeholder="Last Name" class="inputs" id="lname">
+                            </div>
+                        </div>
+                        <div class="pole"><span class="issues">Username</span>
+                            <div class="input-line">
+                                <input type="text" placeholder="User Name" class="inputs" id="username">
+                            </div>
+                        </div>
+                        <div class="pole p-4 flex flex-col w-auto bg-blue-700 text-gray-800 rounded-md">
+                            <span class="issues">Email</span>
+                            <input id="email"  type="email" class="inputs border-me border-gray-400 p-1">
+                        </div>
+                        <div class="pole p-4 flex flex-col w-auto bg-blue-700 text-gray-800 rounded-md">
+                            <span class="issues">Password</span>
+                            <button class="genp "> Generate password</button>
+                            <input id="password" readonly=true type="text" class="t inputs password border-me border-gray-400 p-1">
+                        </div>
+                        <div class="pole">
+                            <span class="issues">ID Number</span>
+                            <div class="input-line">
+                                <input type="text" placeholder="TJ/19/234" class="inputs" id="id-number">
+                            </div>
+                        </div>
+                        <div class="pole"><span class="issues">Role</span>
+                            <div class="input-line">
+                                <input type="text" placeholder="E.g. Product Manager" class="inputs" id="role">
+                            </div>
+                        </div>
+                        <div class="pole imageline">
+                            <span class="issues">Image</span>
+                             <div class="camerapart">
+                                 <div class="camera">
+                                    <video id="video">Video stream not available.</video>
+                                    <button id="startbutton">Take photo</button>
+                                  </div>
+                                  <canvas id="canvas"> </canvas>
+                                  <div class="output">
+                                    <img id="photo" alt="The screen capture will appear in this box." />
+                                  </div>
+                             </div>
+                             <span class="y">Or</span>
+                             <div class="j">
+                                <input type="file" class="fileinput" name="file" id="file">
+                             </div>
+                        </div>
+                        <button class="collate" id="collate"><span class="collater"><span class="init-text">Add New</span><span class="mojito chatapp"></span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="main-part home showing pages">
+                <div class="heading">
+                    <div class="home-part">
+                        <h2 class="welcome"><span class="time"></span><span class="namegreeting">User 100</span></h2>
+                    </div>
+                </div>
+                <div class="part1">
+                    <div class="pk profile">
+                        <span class="image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                              </svg>
+                        </span>
+                        <span class="text">
+                            My Profile
+                        </span>
+                    </div>
+                    <div class="pk favourites">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                        </svg>
+                        <span class="text">Managers</span>
+                    </div>
+                    <div class="pk hr">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                        </svg>
+                        <span class="text">HR Registrars</span>
+                    </div>
+                </div>
+                
+                <div class="employee-part">
+                    <h3 class="em-hd">Employees</h3>
+                    <div class="createNew">
+                        <span class="material-symbols-outlined block">
+                           add
+                        </span>
+                        <span>Add New Employee</span>
+                    </div>
+                    <div class="shopping">
+                        <!-- <div class="item">
+                            <span id="1" class="number">1.</span>
+                            <span class="employeeName">Oladimeje Micah Sorowore</span>
+                            <span class="role">Data Engineer</span>
+                            <span class="material-symbols-outlined block">
+                                delete
+                            </span>
+                        </div> -->
+                        <div class="item">Add New employee or review your internet connection to view added employees.</div>
+                    </div>
+                  
+                </div>
+                
+            </div>
+            <section class="settings setting-header pages">
+                <section class="setting-header">
+                    <section class="card">
+                        <header class="setting-heads">
+                            <h1 class="user-name"></h1>
+                        </header>
+                        <div class="setting-image">
+                           <img src="../images/person_FILL0_wght400_GRAD0_opsz48.png" alt="">
+                           <div class="hoverstate">
+                            <img class="img-itself" src="../images/photo_camera_FILL0_wght400_GRAD0_opsz48.png" alt="">
+                           </div>
+                        </div>
+                        <form class="form">
+                            <div class="form1">
+                                <label for="user">Username</label>
+                                <input class="pro susername" type="text" required>
+                                <label for="email">Password</label>
+                                <div class="eye">
+                                    <input class="pro spassword" type="password" required>
+                                    <span class="eyes">
+                                        <span class="material-symbols-outlined">
+                                            visibility_off
+                                        </span>
+                                    </span>
+                                </div>
+                                <label for="email">Date of Birth</label>
+                                <input class="pro sdob" type="date" required>
+                                <label for="email">Date of Hiring</label>
+                                <input class="pro sdoh" type="date" required>
+                            </div>
+                            <div class="form2">
+                                <label for="email">Email</label>
+                                <input class="pro semail" type="email" required>
+                                <label for="email">Phone Number</label>
+                                <input class="pro spn" type="text" required>
+                                <label for="email">Location</label>
+                                <input class="pro sloc" type="text" required>
+                                <label for="email">ID Card Number</label>
+                                <input class="pro sid" type="text" required>
+                                <button class="sbi" type="submit">Update</button>
+                            </div>
+                        </form>
+                    </section>
+                </section>
+            </section>
+            <section class="tasks pages">
+                <h1>This is the tasks page</h1>
+            </section>
+            <section class="reda pages">
+                <h1>This is the redo Attendance page</h1>
+            </section>
+            <section class="live pages">
+                <h1>this is the live pages</h1>
+            </section>
+            <section class="unsafe pages">
+                <table class="w-full bg-white table">
+                    <tr>
+                        <th>Manager</td>
+                        <th>Department</td>
+                        <th>ID Number</td>
+                    </tr>
+                    <tr>
+                        <td>Fortune Ishaku</td>
+                        <td>Finances</td>
+                        <td>EM/F1/12</td>
+                    </tr>
+                    <tr>
+                        <td>Fortune Ishaku</td>
+                        <td>Finances</td>
+                        <td>EM/F1/12</td>
+                    </tr>
+                    <tr>
+                        <td>Fortune Ishaku</td>
+                        <td>Finances</td>
+                        <td>EM/FI/13</td>
+                    </tr>
+               </table>
+            </section>
+        </main> 
+    </div>
+
+
+
+
+
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+            import { getDatabase, ref, set, onValue, get, child, remove } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+            // console.log("free")
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyD24YFDeLj8YCKE54t_gUGArF4gQyhTU7o",
+                authDomain: "employee-attendance-cfb9e.firebaseapp.com",
+                databaseURL: "https://employee-attendance-cfb9e-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "employee-attendance-cfb9e",
+                storageBucket: "employee-attendance-cfb9e.appspot.com",
+                messagingSenderId: "217106293826",
+                appId: "1:217106293826:web:b7def8cb3e3d60272f39db",
+                measurementId: "G-KCYR70J6QF"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const dataBase = getDatabase(app);
+         
+        
+            const db = dataBase;
+            const employeeAccountRef = ref(db, "employees/");
+            let dataLine = document.querySelector(".shopping")
+          
+            onValue(employeeAccountRef, (snapshot) =>{
+               let employeeData = snapshot.val();
+               if(!employeeData){
+                document.querySelector(".item").classList.add("none")
+               }else{
+                if(typeof(employeeData) === "object")employeeData = Object.values(snapshot.val())
+                dataLine.innerHTML = "";
+                let table = document.querySelector(".table")
+                   employeeData.forEach((element, x) => {
+                       let line = document.createElement("tr", HTMLTableRowElement);
+                       line.innerHTML = `<td>${element.name}</td>
+                <td>${element.role}</td>
+                <td>${element.idCardValue}</td>`
+
+                       table.appendChild(line);
+                   });
+                employeeData.forEach((element, x) => {
+                    let pack = document.createElement('div', HTMLDivElement)
+                    pack.id = element.roId;
+                    pack.classList.add('item');
+                    let number = document.createElement('span', HTMLSpanElement);
+                    number.classList.add("number");
+                    number.textContent = `${x + 1}`;
+                    let eName = document.createElement('span', HTMLSpanElement);
+                    eName.classList.add("employeeName");
+                    eName.textContent = `${element.name}`;
+                    let eRole = document.createElement('span', HTMLSpanElement);
+                    eRole.classList.add("role");
+                    eRole.textContent = `${element.role}`;
+                    let eId = document.createElement('span', HTMLSpanElement);
+                    eId.classList.add("role");
+                    eId.textContent = `${element.id}`;
+                    let eChart = document.createElement('span', HTMLSpanElement);
+                    eChart.classList.add("block", "material-symbols-outlined");
+                    eChart.textContent = "analytics";
+                    eChart.onclick = (e) =>{
+                        let thevalue = e.srcElement.parentElement.id;
+                        localStorage.removeItem("value");
+                        localStorage.setItem("value", JSON.stringify(thevalue));
+                        location.href = "./chartingpage.html";
+                    }
+                    let eDelete = document.createElement("span", HTMLSpanElement);
+                    eDelete.classList.add("block", "material-symbols-outlined");
+                    eDelete.textContent = "delete";
+                    eDelete.onclick = (e) =>{
+                        // console.log(e.srcElement.parentElement.id)
+                        set(ref(db, `employees/${e.srcElement.parentElement.id}`), null);
+                    }
+                    let employeeImage = document.createElement("img", HTMLImageElement);
+                    employeeImage.classList.add("emimage");
+                    employeeImage.src = `${element.image}`;
+                    employeeImage.alt = "";
+                    let emContainer = document.createElement("div", HTMLDivElement);
+                    emContainer.classList.add('emimage-container');
+                    emContainer.appendChild(employeeImage);
+                    // pack.appendChild(number);
+                    pack.appendChild(emContainer)
+                    pack.appendChild(eName);
+                    pack.appendChild(eRole);
+                    pack.appendChild(eId);
+                    pack.appendChild(eChart);
+                    pack.appendChild(eDelete)
+                    dataLine.appendChild(pack)
+                });
+            }});
+           
+                let addEmployeeData = (name, id, role, image, password, username, email) => {
+                const dbRef = ref(db);
+               
+                get(child(dbRef, `employees/`)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        let employeeData = snapshot.val();
+                        if(typeof(employeeData) === "object"){
+                            employeeData = Object.values(employeeData);
+                            let roId = employeeData.length
+                            employeeData.push(...[{name, id, role, image, roId, password, username, email}]);
+                            // console.log(employeeData);
+                            set(ref(db, "employees/"), employeeData)
+                        }else{
+                            let roId = employeeData.length
+                            employeeData.push(...[{name, id, role, image, roId, password, username, email}]);
+                            // console.log(employeeData);
+                            set(ref(db, "employees/"), employeeData)
+                        }
+                        
+                    } else {
+                        console.log("No data available");
+                        let theData = [];
+                        let roId = theData.length
+                        theData.push({name, id, role, image, roId, password, username, email})
+                        set(ref(db, "employees/"), theData);
+                    }
+                    document.querySelector(".mojito").classList.add("chatapp");
+                    document.querySelector(".init-text").classList.remove("chatapp");
+                    let modal = document.querySelector(".modal")
+                    let modalpack = document.querySelector(".modal-pack")
+                    modal.classList.remove("displayblock");
+                    modalpack.style.transform = "translateY(30rem)"
+                    let main = document.querySelector(".main");
+                    main.style.overflow = "scroll";
+                    alert(`${name} has been added successfully!`)
+                }).catch((error) => {
+                    console.error(error);
+                });
+                   
+                }
+            let submit = document.getElementById("collate");
+            submit.onclick = () =>{
+                let fname = document.getElementById("fname").value;
+                let lname = document.getElementById("lname").value;
+                let id = document.getElementById("id-number").value;
+                let role = document.getElementById("role").value;
+                let file = document.querySelector("#file");
+                let image = JSON.parse(localStorage.getItem("emimage"));
+                let password = document.getElementById("password").value;
+                let username = document.getElementById("username").value;
+                let email = document.getElementById("email").value
+                let selectedFile = file.files[0];
+                // let image = document.getElementById("image").value;
+                // console.log(image)
+                let theName = fname + " " + lname
+                if(fname === "" || lname ==="" || id === "" || role === "" || password ==="" || !image){
+                    if(fname === "" || lname ==="" || id === "" || role === "")alert("Input missing");
+                    if(!image && !selectedFile)alert("No image");
+                    if(!image && selectedFile){
+                        let min;
+                        const reader = new FileReader();
+                        reader.addEventListener('load', (event) => {
+                            min = event.target.result;
+                            console.log(min);
+                            image = min;
+                            // console.log(theName, id, role, image);
+                            addEmployeeData(theName, id, role, image, password, username, email);
+                            document.getElementById("fname").value = "";
+                            document.getElementById("lname").value = "";
+                            document.getElementById("id-number").value = "";
+                            document.getElementById("role").value = "";
+                            document.getElementById("email").value = "";
+                            localStorage.removeItem("emimage");
+                            document.querySelector(".mojito").classList.remove("chatapp");
+                            document.querySelector(".init-text").classList.add("chatapp");
+                            const mediaStream = video.srcObject;
+      // Through the MediaStream, you can get the MediaStreamTracks with getTracks():
+                            const tracks = mediaStream.getTracks();
+
+                            // Tracks are returned as an array, so if you know you only have one, you can stop it with: 
+                            tracks[0].stop();
+
+                            // Or stop all like so:
+                            tracks.forEach(track => track.stop())
+                        });
+                        // console.log(selectedFile);
+                        reader.readAsDataURL(selectedFile);
+                    }
+                    // if(!selectedFile)alert("No image selected")
+                }
+                if(image){
+                    // console.log(theName, id, role, image);
+                        addEmployeeData(theName, id, role, image, password, username);
+                        document.getElementById("fname").value = "";
+                        document.getElementById("lname").value = "";
+                        document.getElementById("id-number").value = "";
+                        document.getElementById("role").value = "";
+                        document.getElementById("password").value = "";
+                        document.getElementById("email").value = "";
+                        localStorage.removeItem("emimage");
+                        document.querySelector(".mojito").classList.remove("chatapp");
+                        document.querySelector(".init-text").classList.add("chatapp");
+                        const mediaStream = video.srcObject;
+      // Through the MediaStream, you can get the MediaStreamTracks with getTracks():
+                    const tracks = mediaStream.getTracks();
+
+                    // Tracks are returned as an array, so if you know you only have one, you can stop it with: 
+                    tracks[0].stop();
+
+                    // Or stop all like so:
+                    tracks.forEach(track => track.stop())
+                }
+                if(image && selectedFile){
+                    alert("Cannot accesss two different files at the same time")
+                }
+                    
+            }
+            let generatePassword = document.querySelector(".genp");
+
+        function generateP(){
+
+            let generatedPassword = ''
+
+            let char = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^*" 
+
+            for (let i = 1 ; i < 9; i++){
+                var word = Math.floor(Math.random() * char.length + 1)
+                generatedPassword += char.charAt(word)
+            }
+            
+            // console.log(generatedPassword)
+            return generatedPassword
+        }
+        generatePassword.addEventListener("click", (e)=>{
+            e.preventDefault();
+            let valuebox = document.querySelector(".t");
+            // valuebox.type = "text"
+            valuebox.value = generateP();
+
+        });
+
+        let updateData = (susername, semail, spassword, sphoneNumber, sdateofbirth, slocation, sdoh, sid) =>{
+            let type = JSON.parse(sessionStorage.getItem("CompanyuserDatas")).type;
+            console.log(type)
+            let inName = JSON.parse(sessionStorage.getItem("CompanyuserDatas")).userName;
+            let userName = susername.replaceAll(" ", "");
+            let email = semail;
+            let password = spassword;
+            let phoneNumber = sphoneNumber;
+            let dateOfBirth = sdateofbirth;
+            let location = slocation;
+            let dateOfHiring = sdoh;
+            let idCardValue = sid; 
+            let displayName = susername
+            set(ref(db,"users/" + type + "s/" + inName ), {
+                userName,
+                email,
+                password,
+                phoneNumber,
+                dateOfBirth,
+                dateOfHiring,
+                idCardValue,
+                type,
+                displayName
+            } )
+        }
+        let form = document.querySelector(".form");
+        form.addEventListener("submit",(e) =>{
+            e.preventDefault();
+            let susername = document.querySelector(".susername").value;
+            let semail = document.querySelector(".semail").value;
+            let spassword = document.querySelector(".spassword").value;
+            let sid = document.querySelector(".sid").value;
+            let sphoneNumber = document.querySelector(".spn").value;
+            let sdateofbirth = document.querySelector(".sdob").value;
+            let slocation = document.querySelector(".sloc").value;
+            let sdoh = document.querySelector(".sdoh").value;
+            updateData(susername, semail, spassword, sphoneNumber, sdateofbirth, slocation, sdoh, sid);
+            // location.reload();
+        } )
+    </script>    
+    
+    <script src="../scripts/dashboard-scripts.js"></script>
+    <script src="../scripts/chartpage.js"></script>
+    <script src="../scripts/settings.js"></script>
+</body>
+</html>

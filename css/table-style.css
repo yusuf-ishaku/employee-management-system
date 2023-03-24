@@ -1,0 +1,19 @@
+table{
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border-width: 1px;
+    border-color: rgb(220, 220, 253);
+    width: 100%;
+}
+tr:nth-child(even){
+    background-color: rgb(220, 220, 253);
+}
+td{
+    padding: 0.5rem;
+    border-width: 1px;
+    border-color: rgb(181, 181, 238);
+}
+th{
+    text-align: left;
+    padding: 0.5rem;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart for </title>
+    <link rel="stylesheet" href="../css/anime-style.css">
+</head>
+<body>
+    <div class="preload">
+        <span class="finalmojito"></span>
+    </div>
+    <div class="main">
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+        import { getDatabase, ref, set, onValue, get, child } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        // console.log("free")
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyD24YFDeLj8YCKE54t_gUGArF4gQyhTU7o",
+            authDomain: "employee-attendance-cfb9e.firebaseapp.com",
+            databaseURL: "https://employee-attendance-cfb9e-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "employee-attendance-cfb9e",
+            storageBucket: "employee-attendance-cfb9e.appspot.com",
+            messagingSenderId: "217106293826",
+            appId: "1:217106293826:web:b7def8cb3e3d60272f39db",
+            measurementId: "G-KCYR70J6QF"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const dataBase = getDatabase(app);
+
+        const db = dataBase;
+        const employeeAccountRef = ref(db, "employees/");
+        let dataLine = document.querySelector(".shopping")
+        // let maneuver = () =>{
+        //     console.log("smile");
+        // }
+       
+
+        let findData = (value) => {
+            const dbRef = ref(db);
+            
+            get(child(dbRef, `employees/${value}`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    // console.log(snapshot.val());
+                    let data = snapshot.val();
+                    let head = document.querySelector("title");
+                    head.textContent = "";
+                    head.textContent = `Weekly chart info for ${data.name}`;
+                    const ctx = document.getElementById('myChart');
+
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                            datasets: [{
+                                label: `Hours worked by ${data.name}`,
+                                data: [40, 19, 3, 5, 2],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                        // console.log(employeeData);
+                        // set(ref(db, "employees/"), employeeData)
+                } else {
+                    let theDoc = document.querySelector("body");
+                    theDoc.innerHTML = "";
+                    theDoc.innerHTML = "<h1>Charting data for this employee does not exist</h1>"
+                    
+                }
+                document.querySelector(".preload").classList.add("chatapp");
+                // document.querySelector(".init-text").classList.remove("chatapp")
+            }).catch((error) => {
+                console.error(error);
+            });
+                // const employeeAccountRef = ref(db, "employees/");
+                // onValue(employeeAccountRef, (snapshot) => {
+                //     let employeeData = snapshot.val();
+                //     console.log(employeeData);
+                //     if (!employeeData) {
+                //         let theData = []
+                //         theData.push({name, id, role})
+                //         set(ref(db, "employees/"), theData);
+                //     }else if(employeeData){
+                //         console.log(employeeData);
+                //         employeeData.push(...[{name, id, role}]);
+                //         console.log(employeeData);
+                //         // set(ref(db, "employees/"), employeeData);
+                //     }
+                // })
+            }
+            let mid = JSON.parse(localStorage.getItem("value"));
+            // console.log(mid);
+            findData(mid);
+</script>   
+   
+</body>
+</html>

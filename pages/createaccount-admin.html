@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Sign Up</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abyssinica+SIL&family=Balsamiq+Sans&family=Dancing+Script:wght@600&family=Jost&family=Lora&family=Montserrat:wght@200&family=Noto+Serif:ital,wght@1,700&family=Pacifico&family=Playfair+Display&family=Poppins&family=Roboto:wght@300;400&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/anime-style.css">
+</head>
+<body class="bg-blue-200 px-16">
+    <div class="flex flex-row sm:w-4/5 w-11/12 m-auto pt-20 h-4/5">
+        <div class="form-initiate flex flex-col items-center w-full h-fit bg-white rounded-xl p-4  lg:pb-16 lg:pt-10 sm:-mb-4">
+            <p class="form-header text-xl md:text-3xl text-gray-600 block p-2 pb-0">Admin Sign Up</p>
+            <p class="error block text-red-900 text-center  text-sm"></p>
+            <form class="py-3 pt-1">
+                <input type="text" placeholder="Username" id="username" name="username" class="username  mx-auto block p-1 text-xl border-me focus:outline-none border-gray-300 rounded-md sm:w-96 w-full" required><br>
+                <input type="email" placeholder="Email" id="email" name="email" class="email p-1 text-xl mx-auto block border-me focus:outline-none border-gray-300 rounded-md sm:w-96 w-full" required><br>
+                <!-- <label for="fname">First name:</label><br> -->
+                <!-- <label for="lname">Last name:</label><br> -->
+                <input type="text" placeholder="ID Card Number" id="id-number" name="id-number" class="idval p-1 text-xl mx-auto block border-me focus:outline-none border-gray-300 rounded-md sm:w-96 w-full" required><br>
+                <input type="password" placeholder="**************" id="password" name="password" class="password mb-2 sm:mb-3  block mx-auto focus:outline-none p-1 border-me text-xl border-gray-300 rounded-md sm:w-96 w-full" required>
+
+                <button type="submit" value="Submit" class="login flex items-center justify-center border-me mx-auto sm:w-96 w-full text-xl p-1 bg-blue-400 text-white rounded-md"><span class="init-text">Sign up</span><span class="inline-block chatapp mojito"></span></button>
+            </form>
+            
+        </div>
+    </div>
+   
+
+
+
+
+
+
+
+
+
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+            import { getDatabase, ref, set, onValue, get, child } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+            // console.log("free")
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyD24YFDeLj8YCKE54t_gUGArF4gQyhTU7o",
+                authDomain: "employee-attendance-cfb9e.firebaseapp.com",
+                databaseURL: "https://employee-attendance-cfb9e-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "employee-attendance-cfb9e",
+                storageBucket: "employee-attendance-cfb9e.appspot.com",
+                messagingSenderId: "217106293826",
+                appId: "1:217106293826:web:b7def8cb3e3d60272f39db",
+                measurementId: "G-KCYR70J6QF"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const dataBase = getDatabase(app);
+            // let ref = dataBase.ref("users/admin");
+            let data = {
+            }
+            // Define Html elements to work it 
+            let form = document.querySelector("form")
+            let login = document.querySelector(".login");
+            let username = document.querySelector(".username");
+            let email = document.querySelector(".email");
+            let password = document.querySelector(".password");
+            let input = document.querySelectorAll("input");
+            let idVal = document.querySelector(".idval")
+            let error = document.querySelector(".error");
+            input.forEach((element) =>{
+                element.onfocus = ()=>{
+                    error.innerHTML = "";
+                }
+            })
+            // Function for setting error
+            let setError = (errormessage) =>{
+                // error.textContent = "";
+                if (error.innerHTML.includes(errormessage) || error.textContent === errormessage){
+                    error.innerHTML = ""
+                }
+                error.innerHTML += errormessage
+                document.querySelector(".mojito").classList.add("chatapp");
+                document.querySelector(".init-text").classList.remove("chatapp")
+            }
+            // function to submit user data to the database
+            let submitData = (userName, emailValue, passwordValue, idValue) => {
+                // initialize firebase database
+                const db = dataBase;
+                // Remove all whitespaces
+                let userNameForDisplay = userName
+                userName = userName.replaceAll(" ", "");
+               
+                
+                
+                const adminDataRef = ref(db, 'users/Admins/' + userName);
+                // find data at specified path
+                const dbRef = ref(db);
+
+                get(child(dbRef, `users/Admins/${userName}`)).then((snapshot) => {
+                    // Check if an account with the username exists
+                    if (snapshot.exists()) {
+                        setError("<div>Account Already Exists, sign in</div>");
+                    } else {
+                             // specify variables
+                        let userId = "Admins/";
+                        let username = userName;
+                        let email = emailValue;
+                        let password = passwordValue;
+                        let displayName = userNameForDisplay;
+                        let idCardValue = idValue
+                        let type = "Admin"
+                        // create database using values passed in
+                        set(ref(db, "users/" + userId + userName), {
+                            userName,
+                            email,
+                            password,
+                            type,
+                            displayName,
+                            idCardValue
+                        });
+                        
+                        document.querySelector(".mojito").classList.add("chatapp");
+                        document.querySelector(".init-text").classList.remove("chatapp");
+                        location.href = "admin.html";
+                    }
+                }).catch((error) => {
+                    console.error(error);
+                });
+                
+            }
+            // Submit data function
+            form.addEventListener("submit", (event)=>{
+                event.preventDefault();
+                if(email.value === "" || password.value === "" || username.value === ""){
+                    return;
+                }else{
+                    submitData(username.value, email.value, password.value, idVal.value);
+                    email.value = "";
+                    password.value = "";
+                    username.value = "";
+                    idVal.value = "";
+                    document.querySelector(".mojito").classList.remove("chatapp");
+                    document.querySelector(".init-text").classList.add("chatapp");
+                }
+                // form validation
+                // to make sure given values are not empty
+                // if(email.value === "" || password.value === "" || username.value === ""){
+                //     return;
+                // }else{
+                //     console.log(username.value)
+                //     findData(username.value, password.value, email.value);
+                // }
+            })
+            // console.log(dataBase);
+            // console.log(app);
+    </script>
+
+
+</body>
+</html>
