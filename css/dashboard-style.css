@@ -1115,6 +1115,9 @@ span.x{
     background-color: rgb(118, 117, 117);
     padding: 1rem;
 }
+.pointer{
+    cursor: pointer;
+}
 .em-hd{
     display: block;
     margin-block: 1rem;

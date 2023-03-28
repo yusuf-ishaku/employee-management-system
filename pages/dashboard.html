@@ -301,7 +301,13 @@
                 </section>
             </section>
             <section class="tasks pages">
-                <h1>This is the tasks page</h1>
+                <table class="tasktable w-full bg-white">
+                    <tr>
+                        <th>Manager</td>
+                        <th>Department</td>
+                        <th>ID Number</td>
+                    </tr>
+               </table>
             </section>
             <section class="reda pages">
                 <h1>This is the redo Attendance page</h1>
@@ -363,6 +369,8 @@
                 document.querySelector(".item").classList.add("none")
                }else{
                 if(typeof(employeeData) === "object")employeeData = Object.values(snapshot.val())
+                
+                
                 dataLine.innerHTML = "";
                 let table = document.querySelector(".table")
                    employeeData.forEach((element, x) => {
@@ -373,6 +381,25 @@
 
                        table.appendChild(line);
                    });
+
+                let tasktable = document.querySelector(".tasktable");
+                employeeData.forEach((element, x) => {
+                       let line = document.createElement("tr", HTMLTableRowElement);
+                       line.classList.add("pointer")
+                       line.innerHTML = `<td>${element.name}</td>
+                    <td>${element.role}</td>
+                    <td>${element.id}</td>`
+                    line.onclick = () =>{
+                        
+                       }
+                       tasktable.appendChild(line);
+                   });
+
+
+
+
+
+
                 employeeData.forEach((element, x) => {
                     let pack = document.createElement('div', HTMLDivElement)
                     pack.id = element.roId;
