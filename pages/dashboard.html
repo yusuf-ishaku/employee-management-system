@@ -330,6 +330,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
             import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
             import { getDatabase, ref, set, onValue, get, child, remove } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+            import {getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"
             // TODO: Add SDKs for Firebase products that you want to use
             // https://firebase.google.com/docs/web/setup#available-libraries
             // console.log("free")
@@ -350,7 +351,7 @@
             const app = initializeApp(firebaseConfig);
             const analytics = getAnalytics(app);
             const dataBase = getDatabase(app);
-         
+            // let auth = getAuth(app)
         
             const db = dataBase;
             const employeeAccountRef = ref(db, "employees/");
@@ -424,7 +425,7 @@
            
                 let addEmployeeData = (name, id, role, image, password, username, email) => {
                 const dbRef = ref(db);
-               
+                let auth = getAuth(app);
                 get(child(dbRef, `employees/`)).then((snapshot) => {
                     if (snapshot.exists()) {
                         let employeeData = snapshot.val();
@@ -433,12 +434,34 @@
                             let roId = employeeData.length
                             employeeData.push(...[{name, id, role, image, roId, password, username, email}]);
                             // console.log(employeeData);
-                            set(ref(db, "employees/"), employeeData)
+                            set(ref(db, "employees/"), employeeData);
+                            createUserWithEmailAndPassword(auth, email, password)
+                                .then((userCredential) => {
+                                    // Signed in 
+                                    const user = userCredential.user;
+                                    // ...
+                                })
+                                .catch((error) => {
+                                    const errorCode = error.code;
+                                    const errorMessage = error.message;
+                                    // ..
+                                });
                         }else{
                             let roId = employeeData.length
                             employeeData.push(...[{name, id, role, image, roId, password, username, email}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData)
+                            createUserWithEmailAndPassword(auth, email, password)
+                                .then((userCredential) => {
+                                    // Signed in 
+                                    const user = userCredential.user;
+                                    // ...
+                                })
+                                .catch((error) => {
+                                    const errorCode = error.code;
+                                    const errorMessage = error.message;
+                                    // ..
+                                });
                         }
                         
                     } else {
@@ -447,6 +470,17 @@
                         let roId = theData.length
                         theData.push({name, id, role, image, roId, password, username, email})
                         set(ref(db, "employees/"), theData);
+                        createUserWithEmailAndPassword(auth, email, password)
+                            .then((userCredential) => {
+                                // Signed in 
+                                const user = userCredential.user;
+                                // ...
+                            })
+                            .catch((error) => {
+                                const errorCode = error.code;
+                                const errorMessage = error.message;
+                                // ..
+                            });
                     }
                     document.querySelector(".mojito").classList.add("chatapp");
                     document.querySelector(".init-text").classList.remove("chatapp");
