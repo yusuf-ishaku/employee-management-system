@@ -4,5 +4,8 @@
   },
   "scripts": {
     "build:css": "npx tailwindcss -i src/style.css -o css/style.css --watch"
+  },
+  "dependencies": {
+    "countup.js": "^2.6.0"
   }
 }
