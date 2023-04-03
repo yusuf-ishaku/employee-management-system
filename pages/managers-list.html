@@ -114,6 +114,7 @@
                 dN.textContent = element.displayName;
                 iD.textContent = element.idCardValue;
                 pWI.value = element.password;
+                pWI.setAttribute("readonly", true)
                 pWI.type = "password"
                 pWI.classList.add("pwi")
                 pW.appendChild(pWI);
