@@ -105,6 +105,7 @@
             if(typeof(managerData) === "object")managerData = Object.values(managerData);
             // console.log(managerData);
             let table = document.querySelector(".table");
+            table.innerHTML = "";
             // table.innerHTML ="";
             managerData.forEach((element, x) => {
                 let line = document.createElement("tr", HTMLTableRowElement);
@@ -215,6 +216,7 @@
             //     <th>ID Number</th>
             //     <th>Password</th>
             // </tr>`
+                
                 table.appendChild(line);
             });
         });
