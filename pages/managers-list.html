@@ -160,9 +160,9 @@
                         email = inEm.value;
                         idCardValue = inId.value;
                         password = inIU.value;
-                        userName = displayName.replaceAll(" ", "");
-                        console.log(userName1);
-                        set(ref(db, "users/" + "Managers/" + userName1), {
+                        // userName = displayName.replaceAll(" ", "");
+                        // console.log(userName1);
+                        set(ref(db, "users/" + "Managers/" + userName), {
                             userName,
                             email,
                             password,
