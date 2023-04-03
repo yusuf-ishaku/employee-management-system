@@ -43,9 +43,9 @@
         </form>
        <table class="w-full bg-white table">
             <tr>
-                <th>Manager</td>
-                <th>Department</td>
-                <th>ID Number</td>
+                <th>Manager</th>
+                <th>Department</th>
+                <th>ID Number</th>
                 <th>Password</th>
             </tr>
        </table>
@@ -197,7 +197,6 @@
                 pWI.classList.add("pwi")
                 pW.appendChild(pWI);
                 pW.appendChild(eye);
-               
                 line.appendChild(dN);
                 line.appendChild(eM);
                 line.appendChild(iD);
@@ -206,8 +205,10 @@
                 // <td>${element.email}</td>
                 // <td>${element.idCardValue}</td>
                 // <td><input class="bg-blue-600" type="password" value =${element.password} readonly onclick = ${fatal}></input></td>`
-              
-                table.appendChild(line);
+                // table.innerHTML = "";
+                // table.appendChild("<></>");
+                // table.innerHTML = ""
+                table.appendChild(line)
             });
         });
         let generatePassword = document.querySelector(".genp");
