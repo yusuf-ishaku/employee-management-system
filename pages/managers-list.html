@@ -96,6 +96,7 @@
                 let pW = document.createElement("td", HTMLTableSectionElement);
                 let pWI = document.createElement("input", HTMLInputElement);
                 let eye = document.createElement("span", HTMLSpanElement);
+                let eD = document.createElement("span", HTMLSpanElement);
                 eye.classList.add("material-symbols-outlined");
                 eye.textContent = "visibility_off";
                 eye.onclick = (e) =>{
@@ -110,8 +111,14 @@
                         e.target.previousElementSibling.type = "password";
                     }
                 }
+                eD.classList.add("material-symbols-outlined");
+                eD.textContent = "edit";
+                eD.onclick = (e) =>{
+                    console.log(e.target.parentElement.parentElement)
+                }
                 eM.textContent = element.email;
                 dN.textContent = element.displayName;
+                dN.appendChild(eD);
                 iD.textContent = element.idCardValue;
                 pWI.value = element.password;
                 pWI.setAttribute("readonly", true)
