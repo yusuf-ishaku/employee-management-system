@@ -13,6 +13,9 @@ td{
     border-width: 1px;
     border-color: rgb(181, 181, 238);
 }
+.pwi{
+    background: transparent;
+}
 th{
     text-align: left;
     padding: 0.5rem;
