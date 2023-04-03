@@ -39,29 +39,24 @@
             <button type="submit" value="Submit" class="login flex items-center justify-center border-me mx-auto sm:w-96 w-full text-xl p-1 bg-blue-500 text-white rounded-md"><span class="init-text">Submit</span><span class="inline-block chatapp mojito"></span></button>
         </form>
        <table class="w-full bg-white table">
-            <tr>
-                <th>Manager</td>
-                <th>Department</td>
-                <th>ID Number</td>
-            </tr>
-            <tr>
-                <td>Fortune Ishaku</td>
-                <td>Finances</td>
-                <td>EM/F1/12</td>
-            </tr>
-            <tr>
-                <td>Fortune Ishaku</td>
-                <td>Finances</td>
-                <td>EM/F1/12</td>
-            </tr>
-            <tr>
-                <td>Fortune Ishaku</td>
-                <td>Finances</td>
-                <td>EM/FI/13</td>
-            </tr>
+           
        </table>
     </section>
-
+    <div class="tupac z-50">
+        <div class="lojay drop-shadow-2xl ">
+            <span class="material-symbols-outlined back">
+                arrow_back
+            </span>
+            <div class="flex flex-row items-center justify-center">
+                <div>
+                    
+                </div>
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -98,13 +93,103 @@
             let hrData = snapshot.val();
             if(typeof(hrData) === "object")hrData = Object.values(hrData);
             // console.log(hrData);
-            let table = document.querySelector(".table")
+            let table = document.querySelector(".table");
+            table.innerHTML = "";
             hrData.forEach((element, x) => {
                 let line = document.createElement("tr", HTMLTableRowElement);
-                line.innerHTML = `<td>${element.displayName}</td>
-                <td>${element.email}</td>
-                <td>${element.idCardValue}</td>`
-
+                let dN = document.createElement("td", HTMLTableSectionElement);
+                let eM = document.createElement("td", HTMLTableSectionElement);
+                let iD = document.createElement("td", HTMLTableSectionElement);
+                let pW = document.createElement("td", HTMLTableSectionElement);
+                let pWI = document.createElement("input", HTMLInputElement);
+                let eye = document.createElement("span", HTMLSpanElement);
+                let eD = document.createElement("span", HTMLSpanElement);
+                eye.classList.add("material-symbols-outlined");
+                eye.textContent = "visibility_off";
+                eye.onclick = (e) =>{
+                    if(eye.textContent ==="visibility_off"){
+                        eye.textContent = "";
+                        eye.textContent = "visibility";
+                        e.target.previousElementSibling.type = "text";
+                    }
+                    else if(eye.textContent === "visibility"){
+                        eye.textContent = "";
+                        eye.textContent = "visibility_off";
+                        e.target.previousElementSibling.type = "password";
+                    }
+                }
+                eD.classList.add("material-symbols-outlined");
+                eD.textContent = "edit";
+                eD.onclick = (e) =>{
+                    console.log(element);
+                    let manModal = document.querySelector(".tupac");
+                    manModal.style.display = "flex";
+                    let{displayName, email, idCardValue, password, userName, type} = element;
+                    console.log(displayName)
+                    console.log(email);
+                    let userName1 = userName;
+                    console.log(userName1)
+                    let inDn = document.createElement("input", HTMLInputElement);
+                    inDn.type = 'text';
+                    inDn.value = displayName;
+                    let inEm = document.createElement("input", HTMLInputElement);
+                    inEm.type = 'text';
+                    inEm.value = email;
+                    let inId = document.createElement("input", HTMLInputElement);
+                    inId.type = 'text';
+                    inId.value = idCardValue;
+                    let inIU = document.createElement("input", HTMLInputElement);
+                    inIU.type = 'text';
+                    inIU.value = password;
+                    let addBtn = document.createElement("button", HTMLButtonElement);
+                    addBtn.classList.add("manager-btn")
+                    addBtn.textContent = `Edit ${type}`
+                    addBtn.onclick = () =>{
+                        displayName = inDn.value;
+                        email = inEm.value;
+                        idCardValue = inId.value;
+                        password = inIU.value;
+                        // userName = displayName.replaceAll(" ", "");
+                        // console.log(userName1);
+                        set(ref(db, "users/" + "HR Registrars/" + userName), {
+                            userName,
+                            email,
+                            password,
+                            type,
+                            displayName,
+                            idCardValue
+                        });
+                        manModal.style.display = "none"
+                    }
+                    // console.log(manModal.firstElementChild.firstElementChild)
+                    // console.log(manModal.firstElementChild.firstElementChild.nextElementSibling);
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = "";
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = "";
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML ="";
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = "";
+                    // manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.appendChild(inDn);
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.appendChild(inEm);
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.appendChild(inId);
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.appendChild(inIU);
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.appendChild(addBtn);
+                    backButton.onclick = () =>{
+                        manModal.style.display = "none"
+                    }
+                }
+                eM.textContent = element.email;
+                dN.textContent = element.displayName;
+                dN.appendChild(eD);
+                iD.textContent = element.idCardValue;
+                pWI.value = element.password;
+                pWI.setAttribute("readonly", true)
+                pWI.type = "password"
+                pWI.classList.add("pwi")
+                pW.appendChild(pWI);
+                pW.appendChild(eye);
+                line.appendChild(dN);
+                line.appendChild(eM);
+                line.appendChild(iD);
+                line.appendChild(pW)
                 table.appendChild(line);
             });
         });
