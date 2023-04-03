@@ -42,12 +42,12 @@
            
         </form>
        <table class="w-full bg-white table">
-            <tr>
+            <!-- <tr>
                 <th>Manager</th>
                 <th>Department</th>
                 <th>ID Number</th>
                 <th>Password</th>
-            </tr>
+            </tr> -->
        </table>
        
     </section>
@@ -178,7 +178,7 @@
                     manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = "";
                     manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML ="";
                     manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = "";
-                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.appendChild(inDn);
+                    // manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.appendChild(inDn);
                     manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.appendChild(inEm);
                     manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.appendChild(inId);
                     manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.appendChild(inIU);
@@ -207,8 +207,15 @@
                 // <td><input class="bg-blue-600" type="password" value =${element.password} readonly onclick = ${fatal}></input></td>`
                 // table.innerHTML = "";
                 // table.appendChild("<></>");
-                // table.innerHTML = ""
-                table.appendChild(line)
+                // table.innerHTML = "";
+                // table.innerHTML = "";
+            //     table.innerHTML += `<tr>
+            //     <th>Manager</th>
+            //     <th>Department</th>
+            //     <th>ID Number</th>
+            //     <th>Password</th>
+            // </tr>`
+                table.appendChild(line);
             });
         });
         let generatePassword = document.querySelector(".genp");
