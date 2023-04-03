@@ -139,6 +139,7 @@
                     console.log(displayName)
                     console.log(email);
                     let userName1 = userName;
+                    console.log(userName1)
                     let inDn = document.createElement("input", HTMLInputElement);
                     inDn.type = 'text';
                     inDn.value = displayName;
@@ -160,6 +161,7 @@
                         idCardValue = inId.value;
                         password = inIU.value;
                         userName = displayName.replaceAll(" ", "");
+                        console.log(userName1);
                         set(ref(db, "users/" + "Managers/" + userName1), {
                             userName,
                             email,
