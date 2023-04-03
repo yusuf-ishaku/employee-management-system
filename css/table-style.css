@@ -8,6 +8,13 @@ table{
 tr:nth-child(even){
     background-color: rgb(220, 220, 253);
 }
+.manager-btn{
+    border-radius: 0.2rem;
+    border: 1px solid black;
+    background-color: blue;
+    color: white;
+    padding: 0.3rem;
+}
 td{
     padding: 0.5rem;
     border-width: 1px;
@@ -16,6 +23,39 @@ td{
 .pwi{
     background: transparent;
 }
+.material-symbols-outlined{
+    cursor: pointer;
+}
+.tupac{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(77, 76, 76, 0.563);
+    display: none;
+}
+.lojay{
+    padding: 0.6rem;
+    width: 80%;
+    height: fit-content;
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+.lojay > div > div >  input {
+    margin-inline: 15px;
+    width: 80%;
+    height: 15px;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    margin: 0.4rem;
+}
+
 th{
     text-align: left;
     padding: 0.5rem;

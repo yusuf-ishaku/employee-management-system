@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/table-style.css">
 </head>
 <body class="w-full bg-blue-100 ">
-    <section class="w-auto h-fit rounded-lg mt-4 mx-6">
+    <section class="relative w-auto h-fit rounded-lg mt-4 mx-6">
         <button class="adnm w-full my-2 py-3 bg-blue-500 border-white border-2 rounded-md text-white hover:bg-white hover:text-blue-500">
             Add New Manager
         </button>
@@ -49,7 +49,23 @@
                 <th>Password</th>
             </tr>
        </table>
+       
     </section>
+    <div class="tupac z-50">
+        <div class="lojay drop-shadow-2xl ">
+            <span class="material-symbols-outlined back">
+                arrow_back
+            </span>
+            <div class="flex flex-row items-center justify-center">
+                <div>
+                    
+                </div>
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -82,12 +98,14 @@
 
         const db = dataBase;
         const managerRef = ref(db, "users/Managers/");
-      
+        let backButton = document.querySelector(".back");
+        
         onValue(managerRef, (snapshot)  =>{
             let managerData = snapshot.val();
             if(typeof(managerData) === "object")managerData = Object.values(managerData);
             // console.log(managerData);
-            let table = document.querySelector(".table")
+            let table = document.querySelector(".table");
+            // table.innerHTML ="";
             managerData.forEach((element, x) => {
                 let line = document.createElement("tr", HTMLTableRowElement);
                 let dN = document.createElement("td", HTMLTableSectionElement);
@@ -114,7 +132,58 @@
                 eD.classList.add("material-symbols-outlined");
                 eD.textContent = "edit";
                 eD.onclick = (e) =>{
-                    console.log(e.target.parentElement.parentElement)
+                    console.log(element);
+                    let manModal = document.querySelector(".tupac");
+                    manModal.style.display = "flex";
+                    let{displayName, email, idCardValue, password, userName, type} = element;
+                    console.log(displayName)
+                    console.log(email);
+                    let userName1 = userName;
+                    let inDn = document.createElement("input", HTMLInputElement);
+                    inDn.type = 'text';
+                    inDn.value = displayName;
+                    let inEm = document.createElement("input", HTMLInputElement);
+                    inEm.type = 'text';
+                    inEm.value = email;
+                    let inId = document.createElement("input", HTMLInputElement);
+                    inId.type = 'text';
+                    inId.value = idCardValue;
+                    let inIU = document.createElement("input", HTMLInputElement);
+                    inIU.type = 'text';
+                    inIU.value = password;
+                    let addBtn = document.createElement("button", HTMLButtonElement);
+                    addBtn.classList.add("manager-btn")
+                    addBtn.textContent = `Edit ${type}`
+                    addBtn.onclick = () =>{
+                        displayName = inDn.value;
+                        email = inEm.value;
+                        idCardValue = inId.value;
+                        password = inIU.value;
+                        userName = displayName.replaceAll(" ", "");
+                        set(ref(db, "users/" + "Managers/" + userName1), {
+                            userName,
+                            email,
+                            password,
+                            type,
+                            displayName,
+                            idCardValue
+                        });
+                        manModal.style.display = "none"
+                    }
+                    // console.log(manModal.firstElementChild.firstElementChild)
+                    // console.log(manModal.firstElementChild.firstElementChild.nextElementSibling);
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = "";
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = "";
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML ="";
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = "";
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.appendChild(inDn);
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.appendChild(inEm);
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.appendChild(inId);
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.appendChild(inIU);
+                    manModal.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.appendChild(addBtn);
+                    backButton.onclick = () =>{
+                        manModal.style.display = "none"
+                    }
                 }
                 eM.textContent = element.email;
                 dN.textContent = element.displayName;
@@ -125,7 +194,8 @@
                 pWI.type = "password"
                 pWI.classList.add("pwi")
                 pW.appendChild(pWI);
-                pW.appendChild(eye)
+                pW.appendChild(eye);
+               
                 line.appendChild(dN);
                 line.appendChild(eM);
                 line.appendChild(iD);
@@ -134,7 +204,7 @@
                 // <td>${element.email}</td>
                 // <td>${element.idCardValue}</td>
                 // <td><input class="bg-blue-600" type="password" value =${element.password} readonly onclick = ${fatal}></input></td>`
-
+              
                 table.appendChild(line);
             });
         });
