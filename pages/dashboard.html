@@ -365,15 +365,9 @@
                        }
                        tasktable.appendChild(line);
                    });
-
-
-
-
-
-
                 employeeData.forEach((element, x) => {
                     let pack = document.createElement('div', HTMLDivElement)
-                    pack.id = element.roId;
+                    pack.id = x;
                     pack.classList.add('item');
                     let number = document.createElement('span', HTMLSpanElement);
                     number.classList.add("number");
@@ -391,9 +385,10 @@
                     eChart.classList.add("block", "material-symbols-outlined");
                     eChart.textContent = "analytics";
                     eChart.onclick = (e) =>{
-                        let thevalue = e.srcElement.parentElement.id;
-                        localStorage.removeItem("value");
-                        localStorage.setItem("value", JSON.stringify(thevalue));
+                        let thevalue = `employees/${e.srcElement.parentElement.id}`;
+                        // console.log(e.srcElement.parentElement.id);
+                        sessionStorage.removeItem("value");
+                        sessionStorage.setItem("value", JSON.stringify(thevalue));
                         location.href = "./chartingpage.html";
                     }
                     let eDelete = document.createElement("span", HTMLSpanElement);

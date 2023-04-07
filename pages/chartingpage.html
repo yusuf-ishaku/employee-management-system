@@ -55,13 +55,14 @@
         let findData = (value) => {
             const dbRef = ref(db);
             
-            get(child(dbRef, `employees/${value}`)).then((snapshot) => {
+            get(child(dbRef, `${value}`)).then((snapshot) => {
                 if (snapshot.exists()) {
                     // console.log(snapshot.val());
+                    // console.log(value)
                     let data = snapshot.val();
                     let head = document.querySelector("title");
                     head.textContent = "";
-                    head.textContent = `Weekly chart info for ${data.name}`;
+                    head.textContent = `Weekly chart info for ${data.name ? data.name : data.displayName}`;
                     const ctx = document.getElementById('myChart');
 
                     new Chart(ctx, {
@@ -69,7 +70,7 @@
                         data: {
                             labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
                             datasets: [{
-                                label: `Hours worked by ${data.name}`,
+                                label: `Hours worked by ${data.name? data.name : data.displayName}`,
                                 data: [40, 19, 3, 5, 2],
                                 borderWidth: 1
                             }]
@@ -88,30 +89,18 @@
                     let theDoc = document.querySelector("body");
                     theDoc.innerHTML = "";
                     theDoc.innerHTML = "<h1>Charting data for this employee does not exist</h1>"
-                    
+                    let head = document.querySelector("title");
+                    head.textContent = "";
+                    head.textContent = "Charting Data does not exist"
                 }
                 document.querySelector(".preload").classList.add("chatapp");
                 // document.querySelector(".init-text").classList.remove("chatapp")
             }).catch((error) => {
                 console.error(error);
             });
-                // const employeeAccountRef = ref(db, "employees/");
-                // onValue(employeeAccountRef, (snapshot) => {
-                //     let employeeData = snapshot.val();
-                //     console.log(employeeData);
-                //     if (!employeeData) {
-                //         let theData = []
-                //         theData.push({name, id, role})
-                //         set(ref(db, "employees/"), theData);
-                //     }else if(employeeData){
-                //         console.log(employeeData);
-                //         employeeData.push(...[{name, id, role}]);
-                //         console.log(employeeData);
-                //         // set(ref(db, "employees/"), employeeData);
-                //     }
-                // })
+                
             }
-            let mid = JSON.parse(localStorage.getItem("value"));
+            let mid = JSON.parse(sessionStorage.getItem("value"));
             // console.log(mid);
             findData(mid);
 </script>   

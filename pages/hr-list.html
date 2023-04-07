@@ -101,9 +101,19 @@
                 let eM = document.createElement("td", HTMLTableSectionElement);
                 let iD = document.createElement("td", HTMLTableSectionElement);
                 let pW = document.createElement("td", HTMLTableSectionElement);
+                let aN = document.createElement("td", HTMLTableSectionElement);
+                let anE = document.createElement("td", HTMLTableSectionElement);
                 let pWI = document.createElement("input", HTMLInputElement);
                 let eye = document.createElement("span", HTMLSpanElement);
                 let eD = document.createElement("span", HTMLSpanElement);
+                anE.classList.add("material-symbols-outlined");
+                anE.textContent = "analytics";
+                anE.onclick = (e) =>{
+                    let theValue = `users/HR Registrars/${element.userName}`;
+                    sessionStorage.removeItem("value");
+                    sessionStorage.setItem("value", JSON.stringify(theValue));
+                    location.href = "./chartingpage.html";
+                }
                 eye.classList.add("material-symbols-outlined");
                 eye.textContent = "visibility_off";
                 eye.onclick = (e) =>{
@@ -186,10 +196,12 @@
                 pWI.classList.add("pwi")
                 pW.appendChild(pWI);
                 pW.appendChild(eye);
+                aN.appendChild(anE)
                 line.appendChild(dN);
                 line.appendChild(eM);
                 line.appendChild(iD);
-                line.appendChild(pW)
+                line.appendChild(pW);
+                line.appendChild(aN)
                 table.appendChild(line);
             });
         });
