@@ -290,13 +290,32 @@
                 <h1>this is the live pages</h1>
             </section>
             <section class="unsafe pages">
+                <div class="tupac z-50">
+                    <div class="lojay drop-shadow-2xl ">
+                        <span class="material-symbols-outlined back">
+                            arrow_back
+                        </span>
+                        <div class="flex flex-row items-center justify-center">
+                            <div>
+                                
+                            </div>
+                            <div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <table class="w-full bg-white table">
                     <tr>
-                        <th>Manager</td>
-                        <th>Department</td>
-                        <th>ID Number</td>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>ID Number</th>
+                        <th>Age</th>
+                        <th>Status today</th>
+                        <th>Edit</th>
                     </tr>
                </table>
+               
             </section>
         </main> 
     </div>
@@ -347,19 +366,92 @@
                    employeeData.forEach((element, x) => {
                        let line = document.createElement("tr", HTMLTableRowElement);
                        line.innerHTML = `<td>${element.name}</td>
-                <td>${element.role}</td>
-                <td>${element.id}</td>`
-
+                    <td>${element.role}</td>
+                    <td>${element.id}</td>
+                    <td>25</td>
+                    <td>Absent</td>
+                    <td><span class = "material-symbols-outlined">edit</span></td>`
+                    let editBtn = line.lastElementChild.firstElementChild;
+                    let tupac = document.querySelector(".tupac");
+                    let backButton = document.querySelector(".back");
+                    editBtn.onclick = (e) =>{
+                        // console.log(e.srcElement);
+                        tupac.style.display = "flex";
+                        // console.log(element)
+                        let{id,  name, role, email, password, image, roId, username} = element;
+                    // console.log(name)
+                    // console.log(email);
+                    let userName1 = name;
+                    console.log(userName1);
+                    let naDiv = document.createElement("div", HTMLDivElement);
+                    let laDn = document.createElement("label", HTMLLabelElement);
+                    laDn.textContent = "Name";
+                    let inDn = document.createElement("input", HTMLInputElement);
+                    inDn.type = 'text';
+                    inDn.value = name;
+                    naDiv.append(laDn, inDn);
+                    let laDiv = document.createElement("div", HTMLDivElement);
+                    let laEm = document.createElement("label", HTMLLabelElement);
+                    laEm.textContent = "Email"
+                    let inEm = document.createElement("input", HTMLInputElement);
+                    inEm.type = 'text';
+                    inEm.value = email;
+                    laDiv.append(laEm, inEm);
+                    let idDiv = document.createElement("div", HTMLDivElement);
+                    let laId = document.createElement("label", HTMLLabelElement);
+                    laId.textContent = "ID"
+                    let inId = document.createElement("input", HTMLInputElement);
+                    inId.type = 'text';
+                    inId.value = id;
+                    idDiv.append(laId,inId)
+                    let paDiv = document.createElement("div", HTMLDivElement);
+                    let laIU = document.createElement("label", HTMLLabelElement);
+                    laIU.textContent = "Password"
+                    let inIU = document.createElement("input", HTMLInputElement);
+                    inIU.type = 'text';
+                    inIU.value = password;
+                    paDiv.append(laIU, inIU)
+                    let addBtn = document.createElement("button", HTMLButtonElement);
+                    addBtn.classList.add("manager-btn")
+                    addBtn.textContent = `Edit Employee`
+                    addBtn.onclick = () =>{
+                        name = inDn.value;
+                        email = inEm.value;
+                        id = inId.value;
+                        password = inIU.value;
+                        // userName = displayName.replaceAll(" ", "");
+                        // console.log(userName1);
+                        set(ref(db, "employees/" + x), {
+                            id,  name, role, email, password, image, roId, username
+                        });
+                        tupac.style.display = "none"
+                    }
+                    // console.log(manModal.firstElementChild.firstElementChild)
+                    // console.log(manModal.firstElementChild.firstElementChild.nextElementSibling);
+                    tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = "";
+                    tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = "";
+                    tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML ="";
+                    tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = "";
+                    tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.append(naDiv, laDiv);
+                    tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.append(idDiv, paDiv, addBtn);
+                    
+                    backButton.onclick = () =>{
+                        tupac.style.display = "none"
+                    }
+                    }
                        table.appendChild(line);
                    });
 
                 let tasktable = document.querySelector(".tasktable");
                 employeeData.forEach((element, x) => {
+                    // console.dir(element)
                        let line = document.createElement("tr", HTMLTableRowElement);
                        line.classList.add("pointer")
                        line.innerHTML = `<td>${element.name}</td>
                     <td>${element.role}</td>
-                    <td>${element.id}</td>`
+                    <td>${element.id}</td>
+                    <td>25</td>
+                    <td>Absent</td>`
                     line.onclick = () =>{
                         
                        }

@@ -15,6 +15,24 @@ tr:nth-child(even){
     color: white;
     padding: 0.3rem;
 }
+.tupac > .lojay div > div{
+    margin-block: 20px;
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+}
+
+.lojay > div> div > div > input {
+    padding: 0.6rem;
+    font-size: 1rem;
+}
+.lojay > div{
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+}
 td{
     padding: 0.5rem;
     border-width: 1px;

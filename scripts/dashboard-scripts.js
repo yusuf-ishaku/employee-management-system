@@ -73,10 +73,10 @@ if(definingData.type === "Admin"){
     let unsafe = document.querySelector(".unsafe");
     
     unsafe.classList.add("the-flex")
-    console.log(unsafe)
+    // console.log(unsafe)
     analytics.forEach((element) => {
         if (element.classList.contains("profile")) {
-            console.log("profile");
+            // console.log("profile");
             element.onclick = () => {
                 console.log("this is hr")
             }
