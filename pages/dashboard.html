@@ -289,7 +289,17 @@
                </table>
             </section>
             <section class="reda pages">
-                <h1>This is the redo Attendance page</h1>
+                <h1>Redo Attendance</h1>
+                <table class="w-full bg-white attendancetable">
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>ID Number</th>
+                        <th>Age</th>
+                        <th>Status today</th>
+                        <th>Redo Attendance</th>
+                    </tr>
+               </table>
             </section>
             <section class="live pages">
                 <h1>Live Activity</h1>
@@ -386,7 +396,7 @@
                    employeeData.forEach((element, x) => {
                        let line = document.createElement("tr", HTMLTableRowElement);
                        let icon;
-                       if(definingData.type === "HR Registrar"){icon = "edit"}else{icon = "send"};
+                       if(definingData.type === "HR Registrar"){icon = "edit"}else{icon = "videocam"};
                     //    console.log(icon)
                        line.innerHTML = `<td>${element.name}</td>
                     <td>${element.role}</td>
@@ -780,6 +790,33 @@
                 });
                    
         }, {once: true});
+        let reda = document.querySelector(".reda");
+        reda.addEventListener("click", () =>{
+            const dbRef = ref(db);
+            get(child(dbRef, `employees/`)).then((snapshot) => {
+                if(snapshot.exists()) {
+                    let employeeData = snapshot.val();
+                    // console.log(employeeData)
+                        employeeData.forEach((element, x) =>{
+                        let line = document.createElement("tr", HTMLTableRowElement);
+                        let icon;
+                        if(definingData.type === "HR Registrar"){icon = "edit"}else{icon = "send"};
+                             //    console.log(icon)
+                            line.innerHTML = `<td>${element.name}</td>
+                            <td>${element.role}</td>
+                            <td>${element.id}</td>
+                            <td>25</td>
+                            <td>Absent</td>
+                            <td><span class = "material-symbols-outlined">refresh</td>`
+                            let tasktable = document.querySelector(".attendancetable");
+                            tasktable.appendChild(line)
+                        });
+                        
+                }
+                }).catch((error) => {
+                    console.error(error);
+                });
+        })
 
     </script>    
     

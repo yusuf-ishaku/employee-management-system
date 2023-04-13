@@ -8,8 +8,8 @@ persons.forEach((person) =>{
     person.addEventListener("click", ()=>{
         // click function checks the text content of the first child to determine which user was clicked
        if(person.firstElementChild.textContent === "Person 1"){
-        console.log("admin clicked");
-        // location.href="pages/admin.html"
+        // console.log("admin clicked");
+        location.href="pages/admin.html"
        }
        else if(person.firstElementChild.textContent === "Person 2"){
         // console.log("Manager clicked");
