@@ -310,9 +310,13 @@
             // Submit data function
             form.addEventListener("submit", (event)=>{
                 event.preventDefault();
-                if(email.value === "" || password.value === "" || username.value === ""){
+                let vp = password.value
+                if(email.value === "" || vp === "" || username.value === ""){
                     return;
-                }else{
+                }if(!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(vp) || !/[A-Z]/.test(vp) || !/[a-z]/.test(vp) || vp.length <9){
+                    alert("Password must contain uppercase, lowercase, special character, password should not be less than 8 characters")
+                }
+                else{
                     submitData(username.value, email.value, password.value, idVal.value);
                     email.value = "";
                     password.value = "";
