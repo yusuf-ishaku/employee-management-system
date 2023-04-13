@@ -97,10 +97,10 @@
                         const data = snapshot.val();
                         // console.log(data);
                         if (data.password !== userPassword) {
-                            console.log("Password incorrect")
+                            // console.log("Password incorrect")
                             setError("<div>Password Incorrect</div>")
                         } if (data.email !== useremail) {
-                            console.log("Email incorrect");
+                            // console.log("Email incorrect");
                             setError("<div>Email incorrect</div>")
                         } if (data.password === userPassword && data.email === useremail) {
                             sessionStorage.setItem("CompanyuserDatas", JSON.stringify(data));

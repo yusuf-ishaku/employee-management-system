@@ -15,7 +15,9 @@
         rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="../css/dashboard-style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" href="../css/dashboard-style.css">
     <link rel="stylesheet" href="../css/anime-style.css">
     <link rel="stylesheet" href="../css/table-style.css">
 </head>
@@ -277,9 +279,12 @@
             <section class="tasks pages">
                 <table class="tasktable w-full bg-white">
                     <tr>
-                        <th>Manager</td>
-                        <th>Department</td>
-                        <th>ID Number</td>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>ID Number</th>
+                        <th>Age</th>
+                        <th>Status today</th>
+                        <th>Send Notification</th>
                     </tr>
                </table>
             </section>
@@ -289,11 +294,14 @@
             <section class="live pages">
                 <h1>Live Activity</h1>
 
-                <table class="tasktable w-full bg-white">
+                <table class="w-full bg-white activitytable">
                     <tr>
-                        <th>Manager</td>
-                        <th>Department</td>
-                        <th>ID Number</td>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>ID Number</th>
+                        <th>Age</th>
+                        <th>Status today</th>
+                        <th>Edit</th>
                     </tr>
                </table>
             </section>
@@ -370,15 +378,20 @@
                 
                 
                 dataLine.innerHTML = "";
-                let table = document.querySelector(".table")
+                let table = document.querySelector(".table");
+                let tasktable = document.querySelector(".tasktable");
+                let definingData = JSON.parse(sessionStorage.getItem("CompanyuserDatas"));
                    employeeData.forEach((element, x) => {
                        let line = document.createElement("tr", HTMLTableRowElement);
+                       let icon;
+                       if(definingData.type === "HR Registrar"){icon = "edit"}else{icon = "send"};
+                    //    console.log(icon)
                        line.innerHTML = `<td>${element.name}</td>
                     <td>${element.role}</td>
                     <td>${element.id}</td>
                     <td>25</td>
                     <td>Absent</td>
-                    <td><span class = "material-symbols-outlined">edit</span></td>`
+                    <td><span class = "material-symbols-outlined">${icon}</span></td>`
                     let editBtn = line.lastElementChild.firstElementChild;
                     let tupac = document.querySelector(".tupac");
                     let backButton = document.querySelector(".back");
@@ -447,24 +460,29 @@
                         tupac.style.display = "none"
                     }
                     }
-                       table.appendChild(line);
+                    
+                    if(definingData.type === "HR Registrar"){
+                        table.appendChild(line);
+                    }else{
+                        tasktable.appendChild(line);
+                    }
                    });
 
-                let tasktable = document.querySelector(".tasktable");
-                employeeData.forEach((element, x) => {
-                    // console.dir(element)
-                       let line = document.createElement("tr", HTMLTableRowElement);
-                       line.classList.add("pointer")
-                       line.innerHTML = `<td>${element.name}</td>
-                    <td>${element.role}</td>
-                    <td>${element.id}</td>
-                    <td>25</td>
-                    <td>Absent</td>`
-                    line.onclick = () =>{
+                // let tasktable = document.querySelector(".tasktable");
+                // employeeData.forEach((element, x) => {
+                //     // console.dir(element)
+                //        let line = document.createElement("tr", HTMLTableRowElement);
+                //        line.classList.add("pointer")
+                //        line.innerHTML = `<td>${element.name}</td>
+                //     <td>${element.role}</td>
+                //     <td>${element.id}</td>
+                //     <td>25</td>
+                //     <td>Absent</td>`
+                //     line.onclick = () =>{
                         
-                       }
-                       tasktable.appendChild(line);
-                   });
+                //        }
+                //     //    tasktable.appendChild(line);
+                //    });
                 employeeData.forEach((element, x) => {
                     let pack = document.createElement('div', HTMLDivElement)
                     pack.id = x;

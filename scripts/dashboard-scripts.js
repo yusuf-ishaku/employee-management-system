@@ -25,7 +25,7 @@ if(definingData.type === "Admin"){
     analytics.forEach((element) => {
         element.addEventListener("click", () => {
             if (element.classList.contains("profile")) {
-                alert("profile")
+                // alert("profile")
             } if (element.classList.contains("hr")) {
                 // alert("hr")
                 location.href = "../pages/hr-list.html"
