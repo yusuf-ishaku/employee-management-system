@@ -1,15 +1,16 @@
 let definingData = JSON.parse(sessionStorage.getItem("CompanyuserDatas"));
+// console.log(definingData.displayName)
 // // // Set time for greeting
 let greetingPack = document.querySelector(".time");
 let namegreeting = document.querySelector(".namegreeting");
 let settingHeader = document.querySelector(".user-name");
-let displayingType = (container,container2, name, type ) =>{ 
+let displayingType = (container,container2, namer, type ) =>{ 
     container.textContent = "";
-    container.textContent = `${type} ${name}`;
+    container.textContent = `${type} ${namer}`;
     container2.textContent = `${type}`
 }
 let observer = document.querySelector(".tag");
-let theName = document.querySelector(".entername")
+let theName = document.querySelector(".entername");
 let payOb = (container, container2, tag, tag2) =>{
     container.textContent = "";
     container.textContent =  `${tag}`
@@ -18,7 +19,7 @@ let payOb = (container, container2, tag, tag2) =>{
 }
 // Give addresses if the type of login was an admin
 if(definingData.type === "Admin"){
-    displayingType(namegreeting,settingHeader, definingData.displayName, definingData.type);
+    displayingType(namegreeting, settingHeader,definingData.displayName, definingData.type);
     payOb(observer, theName, "Administrator", definingData.displayName);
     let analytics = document.querySelectorAll(".pk");
     analytics.forEach((element) => {
@@ -41,7 +42,7 @@ if(definingData.type === "Admin"){
     })
 })
 }else if(definingData.type === "Manager"){
-    displayingType(namegreeting, definingData.displayName, definingData.type);
+    displayingType(namegreeting,settingHeader, definingData.displayName, definingData.type);
     payOb(observer, theName, "Manager", definingData.displayName);
     let cr = document.querySelector(".createNew");
     document.querySelector(".unsafe").style.display = "none"
@@ -66,7 +67,7 @@ if(definingData.type === "Admin"){
         }
     });
 }else if(definingData.type === "HR Registrar"){
-    displayingType(namegreeting, definingData.displayName, definingData.type);
+    displayingType(namegreeting,settingHeader, definingData.displayName, definingData.type);
     payOb(observer, theName, "HR Registrar", definingData.displayName);
     let analytics = document.querySelectorAll(".pk");
     // document.querySelector(".unsafe").style.display = "flex !important";
