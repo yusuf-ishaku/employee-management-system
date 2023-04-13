@@ -750,7 +750,37 @@
             let sdoh = document.querySelector(".sdoh").value;
             updateData(susername, semail, spassword, sphoneNumber, sdateofbirth, slocation, sdoh, sid);
             // location.reload();
-        } )
+        } );
+        let tasks = document.querySelector(".tasks");
+        tasks.addEventListener("click",() =>{
+            // console.log("wo")
+            const dbRef = ref(db);
+            get(child(dbRef, `employees/`)).then((snapshot) => {
+                if(snapshot.exists()) {
+                    let employeeData = snapshot.val();
+                    // console.log(employeeData)
+                        employeeData.forEach((element, x) =>{
+                        let line = document.createElement("tr", HTMLTableRowElement);
+                        let icon;
+                        if(definingData.type === "HR Registrar"){icon = "edit"}else{icon = "send"};
+                             //    console.log(icon)
+                            line.innerHTML = `<td>${element.name}</td>
+                            <td>${element.role}</td>
+                            <td>${element.id}</td>
+                            <td>25</td>
+                            <td>Absent</td>
+                            <td><span class = "material-symbols-outlined">${icon}</span></td>`
+                            let tasktable = document.querySelector(".tasktable");
+                            tasktable.appendChild(line)
+                        });
+                        
+                }
+                }).catch((error) => {
+                    console.error(error);
+                });
+                   
+        }, {once: true});
+
     </script>    
     
     <script src="../scripts/dashboard-scripts.js"></script>
