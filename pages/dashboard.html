@@ -379,7 +379,9 @@
                 
                 dataLine.innerHTML = "";
                 let table = document.querySelector(".table");
+               
                 let tasktable = document.querySelector(".tasktable");
+                let manTables = [tasktable, document.querySelector(".activitytable")];
                 let definingData = JSON.parse(sessionStorage.getItem("CompanyuserDatas"));
                    employeeData.forEach((element, x) => {
                        let line = document.createElement("tr", HTMLTableRowElement);
@@ -464,7 +466,9 @@
                     if(definingData.type === "HR Registrar"){
                         table.appendChild(line);
                     }else{
-                        tasktable.appendChild(line);
+                        for(let i = 0; i < manTables.length; i++){
+                            manTables[i].appendChild(line)
+                        }
                     }
                    });
 
