@@ -30,7 +30,7 @@
             </span>
             <div class="h-fit p-2 flex flex-col w-auto bg-blue-700 text-gray-800 rounded-md">
                 <button class="genp w-fit h-fit my-2 p-2 text-white rounded-md bg-blue-500"> Generate password</button>
-                <input readonly=true type="text" class="t password border-me border-gray-400 p-1">
+                <input type="text" class="t password border-me border-gray-400 p-1">
             </div>
             <span class="p-2 flex flex-col">
                 <label for="managerid">Id Card Number</label>
@@ -313,7 +313,7 @@
                 let vp = password.value
                 if(email.value === "" || vp === "" || username.value === ""){
                     return;
-                }if(!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(vp) || !/[A-Z]/.test(vp) || !/[a-z]/.test(vp) || vp.length <9){
+                }else if(!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(vp) || !/[A-Z]/.test(vp) || !/[a-z]/.test(vp) || vp.length <9){
                     alert("Password must contain uppercase, lowercase, special character, password should not be less than 8 characters")
                 }
                 else{
