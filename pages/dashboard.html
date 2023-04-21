@@ -548,15 +548,19 @@
                 });
             }});
            
-                let addEmployeeData = (name, id, role, image, password, username, email) => {
+                let addEmployeeData = (name, id, role, image, password, username, email, enterTime, exitTime, timeSpent)=> {
                 const dbRef = ref(db);
                 let auth = getAuth(app);
+                
                 get(child(dbRef, `employees/`)).then((snapshot) => {
                     if (snapshot.exists()) {
                         let employeeData = snapshot.val();
                         if(typeof(employeeData) === "object"){
                             employeeData = Object.values(employeeData);
-                            let roId = employeeData.length
+                            let roId = employeeData.length;
+                            let enterTime = "";
+                            let exitTime = "";
+                            let timeSpent = "";
                             employeeData.push(...[{name, id, role, image, roId, password, username, email, enterTime, exitTime, timeSpent}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData);
@@ -572,7 +576,10 @@
                                     // ..
                                 });
                         }else{
-                            let roId = employeeData.length
+                            let roId = employeeData.length;
+                            let enterTime = "";
+                            let exitTime = "";
+                            let timeSpent = "";
                             employeeData.push(...[{name, id, role, image, roId, password, username, email, enterTime, exitTime, timeSpent}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData)
@@ -592,7 +599,10 @@
                     } else {
                         console.log("No data available");
                         let theData = [];
-                        let roId = theData.length
+                        let roId = theData.length;
+                        let enterTime = "";
+                        let exitTime = "";
+                        let timeSpent = "";
                         theData.push({name, id, role, image, roId, password, username, email, enterTime, exitTime, timeSpent})
                         set(ref(db, "employees/"), theData);
                         createUserWithEmailAndPassword(auth, email, password)
@@ -633,6 +643,7 @@
                 let username = document.getElementById("username").value;
                 let email = document.getElementById("email").value
                 let selectedFile = file.files[0];
+               
                 // let image = document.getElementById("image").value;
                 // console.log(image)
                 let theName = fname + " " + lname
@@ -647,7 +658,7 @@
                             console.log(min);
                             image = min;
                             // console.log(theName, id, role, image);
-                            addEmployeeData(theName, id, role, image, password, username, email);
+                            addEmployeeData(theName, id, role, image, password, username, email, enterTime, exitTime, timeSpent);
                             document.getElementById("fname").value = "";
                             document.getElementById("lname").value = "";
                             document.getElementById("id-number").value = "";
@@ -673,7 +684,7 @@
                 }
                 if(image){
                     // console.log(theName, id, role, image);
-                        addEmployeeData(theName, id, role, image, password, username);
+                        addEmployeeData(theName, id, role, image, password, username, enterTime, exitTime, timeSpent);
                         document.getElementById("fname").value = "";
                         document.getElementById("lname").value = "";
                         document.getElementById("id-number").value = "";
