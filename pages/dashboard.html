@@ -557,7 +557,7 @@
                         if(typeof(employeeData) === "object"){
                             employeeData = Object.values(employeeData);
                             let roId = employeeData.length
-                            employeeData.push(...[{name, id, role, image, roId, password, username, email}]);
+                            employeeData.push(...[{name, id, role, image, roId, password, username, email, enterTime, exitTime, timeSpent}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData);
                             createUserWithEmailAndPassword(auth, email, password)
@@ -573,7 +573,7 @@
                                 });
                         }else{
                             let roId = employeeData.length
-                            employeeData.push(...[{name, id, role, image, roId, password, username, email}]);
+                            employeeData.push(...[{name, id, role, image, roId, password, username, email, enterTime, exitTime, timeSpent}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData)
                             createUserWithEmailAndPassword(auth, email, password)
@@ -593,7 +593,7 @@
                         console.log("No data available");
                         let theData = [];
                         let roId = theData.length
-                        theData.push({name, id, role, image, roId, password, username, email})
+                        theData.push({name, id, role, image, roId, password, username, email, enterTime, exitTime, timeSpent})
                         set(ref(db, "employees/"), theData);
                         createUserWithEmailAndPassword(auth, email, password)
                             .then((userCredential) => {
