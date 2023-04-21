@@ -558,9 +558,7 @@
                         if(typeof(employeeData) === "object"){
                             employeeData = Object.values(employeeData);
                             let roId = employeeData.length;
-                            let enterTime = "";
-                            let exitTime = "";
-                            let timeSpent = "";
+                         
                             employeeData.push(...[{name, id, role, image, roId, password, username, email, enterTime, exitTime, timeSpent}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData);
@@ -641,7 +639,10 @@
                 let image = JSON.parse(localStorage.getItem("emimage"));
                 let password = document.getElementById("password").value;
                 let username = document.getElementById("username").value;
-                let email = document.getElementById("email").value
+                let email = document.getElementById("email").value;
+                let enterTime = "";
+                let exitTime = "";
+                let timeSpent = "";
                 let selectedFile = file.files[0];
                
                 // let image = document.getElementById("image").value;
