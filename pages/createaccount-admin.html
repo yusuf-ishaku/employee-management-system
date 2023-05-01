@@ -95,6 +95,9 @@
             }
             // function to submit user data to the database
             let submitData = (userName, emailValue, passwordValue, idValue) => {
+                let vp = passwordValue
+                if(!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(vp) || !/[A-Z]/.test(vp) || !/[a-z]/.test(vp) || vp.length <9)alert("Password must contain uppercase, lowercase, special character, password should not be less than 8 characters");return
+                
                 // initialize firebase database
                 const db = dataBase;
                 // Remove all whitespaces
