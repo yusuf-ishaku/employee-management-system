@@ -119,37 +119,37 @@
                         <div class="pole">
                             <span class="issues">First Name</span>
                             <div class="input-line">
-                                <input type="text" placeholder="First Name" class="inputs" id="fname">
+                                <input type="text" placeholder="First Name" class="inputs" id="fname" required>
                             </div>
                         </div>
                         <div class="pole"><span class="issues">Last Name</span>
                             <div class="input-line">
-                                <input type="text" placeholder="Last Name" class="inputs" id="lname">
+                                <input type="text" placeholder="Last Name" class="inputs" id="lname" required>
                             </div>
                         </div>
                         <div class="pole"><span class="issues">Username</span>
                             <div class="input-line">
-                                <input type="text" placeholder="User Name" class="inputs" id="username">
+                                <input type="text" placeholder="User Name" class="inputs" id="username" required>
                             </div>
                         </div>
                         <div class="pole p-4 flex flex-col w-auto bg-blue-700 text-gray-800 rounded-md">
                             <span class="issues">Email</span>
-                            <input id="email"  type="email" class="inputs border-me border-gray-400 p-1">
+                            <input id="email"  type="email" class="inputs border-me border-gray-400 p-1" required>
                         </div>
                         <div class="pole p-4 flex flex-col w-auto bg-blue-700 text-gray-800 rounded-md">
                             <span class="issues">Password</span>
                             <button class="genp "> Generate password</button>
-                            <input id="password" readonly=true type="text" class="t inputs password border-me border-gray-400 p-1">
+                            <input id="password" type="text" class="t inputs password border-me border-gray-400 p-1" required>
                         </div>
                         <div class="pole">
                             <span class="issues">ID Number</span>
                             <div class="input-line">
-                                <input type="text" placeholder="TJ/19/234" class="inputs" id="id-number">
+                                <input type="text" placeholder="TJ/19/234" class="inputs" id="id-number" required>
                             </div>
                         </div>
                         <div class="pole"><span class="issues">Role</span>
                             <div class="input-line">
-                                <input type="text" placeholder="E.g. Product Manager" class="inputs" id="role">
+                                <input type="text" placeholder="E.g. Product Manager" class="inputs" id="role" required>
                             </div>
                         </div>
                         <div class="pole imageline">
@@ -283,7 +283,7 @@
                         <th>Role</th>
                         <th>ID Number</th>
                         <th>Age</th>
-                        <th>Status today</th>
+                        <th>Time Spent</th>
                         <th>Send Notification</th>
                     </tr>
                </table>
@@ -296,7 +296,7 @@
                         <th>Role</th>
                         <th>ID Number</th>
                         <th>Age</th>
-                        <th>Status today</th>
+                        <th>Time Spent</th>
                         <th>Redo Attendance</th>
                     </tr>
                </table>
@@ -310,7 +310,7 @@
                         <th>Role</th>
                         <th>ID Number</th>
                         <th>Age</th>
-                        <th>Status today</th>
+                        <th>Time Spent</th>
                         <th>Edit</th>
                     </tr>
                </table>
@@ -336,8 +336,10 @@
                         <th>Name</th>
                         <th>Role</th>
                         <th>ID Number</th>
-                        <th>Age</th>
-                        <th>Status today</th>
+                        <th>Time In</th>
+                        <th>Time Out</th>
+                        <th>Time Spent</th>
+                        <th>Status</th>
                         <th>Edit</th>
                     </tr>
                </table>
@@ -401,8 +403,10 @@
                        line.innerHTML = `<td>${element.name}</td>
                     <td>${element.role}</td>
                     <td>${element.id}</td>
+                    <td>${element.enterTime}</td>
+                    <td>${element.exitTime}</td>
                     <td>${element.timeSpent}</td>
-                    <td>Absent</td>
+                    <td>${element.status}</td>
                     <td><span class = "material-symbols-outlined">${icon}</span></td>`
                     let editBtn = line.lastElementChild.firstElementChild;
                     let tupac = document.querySelector(".tupac");
@@ -551,7 +555,11 @@
                 let addEmployeeData = (name, id, role, image, password, username, email, enterTime, exitTime, timeSpent)=> {
                 const dbRef = ref(db);
                 let auth = getAuth(app);
-                
+                let vp = password;
+                if(!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(vp) || !/[A-Z]/.test(vp) || !/[a-z]/.test(vp) || vp.length <9){
+                    alert("Password must contain uppercase, lowercase, special character, password should not be less than 8 characters")
+                    return
+                }
                 get(child(dbRef, `employees/`)).then((snapshot) => {
                     if (snapshot.exists()) {
                         let employeeData = snapshot.val();
@@ -653,12 +661,18 @@
                     if(!image && !selectedFile)alert("No image");
                     if(!image && selectedFile){
                         let min;
+
                         const reader = new FileReader();
                         reader.addEventListener('load', (event) => {
                             min = event.target.result;
                             // console.log(min);
                             image = min;
                             // console.log(theName, id, role, image);
+                            let vp = password;
+                            if (!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(vp) || !/[A-Z]/.test(vp) || !/[a-z]/.test(vp) || vp.length < 9) {
+                                alert("Password must contain uppercase, lowercase, special character, password should not be less than 8 characters")
+                                return
+                            }
                             addEmployeeData(theName, id, role, image, password, username, email, enterTime, exitTime, timeSpent);
                             document.getElementById("fname").value = "";
                             document.getElementById("lname").value = "";
@@ -684,6 +698,10 @@
                     // if(!selectedFile)alert("No image selected")
                 }
                 if(image){
+                    if(!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(vp) || !/[A-Z]/.test(vp) || !/[a-z]/.test(vp) || vp.length <9){
+                    alert("Password must contain uppercase, lowercase, special character, password should not be less than 8 characters")
+                    return
+                }
                     // console.log(theName, id, role, image);
                         addEmployeeData(theName, id, role, image, password, username, enterTime, exitTime, timeSpent);
                         document.getElementById("fname").value = "";

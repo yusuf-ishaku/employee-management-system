@@ -71,7 +71,7 @@
                             labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
                             datasets: [{
                                 label: `Hours worked by ${data.name? data.name : data.displayName}`,
-                                data: [40, 19, 3, 5, 2],
+                                data: [data.days.Monday.timeSpent, data.days.Tuesday.timeSpent, data.days.Wednesday.timeSpent, data.days.Thursday.timeSpent, data.days.Friday.timeSpent],
                                 borderWidth: 1
                             }]
                         },
