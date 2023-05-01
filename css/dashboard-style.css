@@ -322,6 +322,28 @@ p.price{
     width: 2.8rem;
     height: 2.8rem;
 }
+.twajoodi{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    position: relative;
+    margin-inline: auto;
+    align-self: center;
+    margin-left: 30%;
+    z-index: 9999;
+    object-fit: fill;
+    
+}
+.w-30{
+    width: auto;
+    padding: 0.5rem;
+    height: fit-content;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1000;
+}
 .shopping{
     margin: 0rem auto;
     width: fit-content;
