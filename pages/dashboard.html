@@ -302,7 +302,7 @@
                         <th>Role</th>
                         <th>ID Number</th>
                         <th>Age</th>
-                        <th>Time Spent</th>
+                        <th>Status</th>
                         <th>Redo Attendance</th>
                     </tr>
                </table>
@@ -315,9 +315,11 @@
                         <th>Name</th>
                         <th>Role</th>
                         <th>ID Number</th>
-                        <th>Age</th>
+                        <th>Enter Time</th>
+                        <th>Exit Time</th>
+                        <th>Status</th>
                         <th>Time Spent</th>
-                        <th>Edit</th>
+                        <th>Live</th>
                     </tr>
                </table>
             </section>
@@ -814,7 +816,7 @@
                             <td>${element.role}</td>
                             <td>${element.id}</td>
                             <td>25</td>
-                            <td>Absent</td>
+                            <td>${element.status}</td>
                             <td><span class = "material-symbols-outlined">${icon}</span></td>`
                             let tasktable = document.querySelector(".tasktable");
                             tasktable.appendChild(line)
