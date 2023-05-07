@@ -810,14 +810,31 @@
                         employeeData.forEach((element, x) =>{
                         let line = document.createElement("tr", HTMLTableRowElement);
                         let icon;
+                        let tdName = document.createElement("td", HTMLTableCellElement);
+                        tdName.textContent = element.name
+                        let tdRole = document.createElement("td", HTMLTableCellElement);
+                        tdRole.textContent = element.role
+                        let tdId = document.createElement("td", HTMLTableCellElement);
+                        tdId.textContent = element.id
+                        let tdAge = document.createElement("td", HTMLTableCellElement);
+                        tdAge.textContent = "25"
+                        let tdStatus = document.createElement("td", HTMLTableCellElement);
+                        tdStatus.textContent = element.status;
+                        let tdIcon = document.createElement("td", HTMLTableCellElement);
+                        
                         if(definingData.type === "HR Registrar"){icon = "edit"}else{icon = "send"};
                              //    console.log(icon)
-                            line.innerHTML = `<td>${element.name}</td>
-                            <td>${element.role}</td>
-                            <td>${element.id}</td>
-                            <td>25</td>
-                            <td>${element.status}</td>
-                            <td><span class = "material-symbols-outlined">${icon}</span></td>`
+                             tdIcon.innerHTML = `<span class = "material-symbols-outlined">${icon}</span>`;
+                             tdIcon.onclick = () =>{
+                                let Notification = prompt("Please Enter a Task Notification to be sent")
+                                set(ref(db,"employees/" + element.roId+ "/newNotification"), {Notification} )
+                            }
+                            line.appendChild(tdName);
+                            line.appendChild(tdRole);
+                            line.appendChild(tdId);
+                            line.appendChild(tdAge);
+                            line.appendChild(tdStatus);
+                            line.appendChild(tdIcon);
                             let tasktable = document.querySelector(".tasktable");
                             tasktable.appendChild(line)
                         });
