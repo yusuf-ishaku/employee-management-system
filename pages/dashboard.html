@@ -826,8 +826,9 @@
                              //    console.log(icon)
                              tdIcon.innerHTML = `<span class = "material-symbols-outlined">${icon}</span>`;
                              tdIcon.onclick = () =>{
-                                let Notification = prompt("Please Enter a Task Notification to be sent")
-                                set(ref(db,"employees/" + element.roId+ "/newNotification"), {Notification} )
+                                let body = prompt("Please Enter a Task Notification to be sent")
+                                let title = `Employee notification for ${element.displayName}`
+                                set(ref(db,"employees/" + element.roId+ "/newNotification"), { title , body} )
                             }
                             line.appendChild(tdName);
                             line.appendChild(tdRole);
