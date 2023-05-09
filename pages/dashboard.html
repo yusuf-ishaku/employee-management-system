@@ -824,10 +824,11 @@
                         
                         if(definingData.type === "HR Registrar"){icon = "edit"}else{icon = "send"};
                              //    console.log(icon)
-                             tdIcon.innerHTML = `<span class = "material-symbols-outlined">${icon}</span>`;
-                             tdIcon.onclick = () =>{
-                                let body = prompt("Please Enter a Task Notification to be sent")
-                                let title = `Employee notification for ${element.displayName}`
+                            tdIcon.innerHTML = `<span class = "material-symbols-outlined">${icon}</span>`;
+                            tdIcon.onclick = () =>{
+                                let body = prompt("Please Enter a Task Notification to be sent");
+                                let name = tdName.textContent
+                                let title = `Employee notification for ${element.name}`
                                 set(ref(db,"employees/" + element.roId+ "/newNotification"), { title , body} )
                             }
                             line.appendChild(tdName);
