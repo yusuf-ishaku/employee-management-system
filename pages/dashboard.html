@@ -829,7 +829,7 @@
                                 let body = prompt("Please Enter a Task Notification to be sent");
                                 let name = tdName.textContent
                                 let title = `Employee notification for ${element.name}`
-                                set(ref(db,"employees/" + element.roId+ "/newNotification"), { title , body} )
+                                set(ref(db,"employees/" + x + "/newNotification"), { title , body} )
                             }
                             line.appendChild(tdName);
                             line.appendChild(tdRole);
@@ -856,15 +856,33 @@
                     // console.log(employeeData)
                         employeeData.forEach((element, x) =>{
                         let line = document.createElement("tr", HTMLTableRowElement);
+                        let name = document.createElement("td", HTMLTableCellElement);
+                        name.textContent = element.name
+                        let role1 = document.createElement("td", HTMLTableCellElement);
+                        role1.textContent = element.role;
+                        let id1 = document.createElement("td", HTMLTableCellElement);
+                        id1.textContent = element.id;
+                        let age1 = document.createElement("td", HTMLTableCellElement);
+                        age1.textContent = 25
+                        let status1 = document.createElement("td", HTMLTableCellElement);
+                        status1.textContent = element.status ? element.status : "Not taken";
+                        let refresh1 = document.createElement("td", HTMLTableCellElement);
+                        refresh1.innerHTML = `<span class = "material-symbols-outlined">refresh</td>`;
+                        refresh1.onClick = () =>{
+                            let title = `Notification to take attendance`
+                            let body = `${element.name}, please take attendance`;
+                            set(ref(db,"employees/" + x + "/newNotification"), { title , body} );
+                            alert(`Notification successfully sent to ${element.name}`);
+                        }
                         let icon;
                         if(definingData.type === "HR Registrar"){icon = "edit"}else{icon = "send"};
                              //    console.log(icon)
-                            line.innerHTML = `<td>${element.name}</td>
-                            <td>${element.role}</td>
-                            <td>${element.id}</td>
-                            <td>25</td>
-                            <td>Absent</td>
-                            <td><span class = "material-symbols-outlined">refresh</td>`
+                            // line.innerHTML = `<td>${element.name}</td>
+                            // <td>${element.role}</td>
+                            // <td>${element.id}</td>
+                            // <td>25</td>
+                            // <td>Absent</td>
+                            // <td><span class = "material-symbols-outlined">refresh</td>`
                             let tasktable = document.querySelector(".attendancetable");
                             tasktable.appendChild(line)
                         });
