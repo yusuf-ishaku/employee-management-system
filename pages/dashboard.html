@@ -416,16 +416,14 @@
                     <td>${element.timeSpent}</td>
                     <td>${""}</td>
                     <td><span class = "material-symbols-outlined">${icon}</span></td>`
-                    let editBtn = line.lastElementChild.firstElementChild;
+                    let editBtn = definingData.type === "HR Registrar" ? line.lastElementChild.firstElementChild : null;
                     let tupac = document.querySelector(".tupac");
                     let backButton = document.querySelector(".back");
-                    editBtn.onclick = (e) =>{
-                        // console.log(e.srcElement);
+                    if(definingData.type === "HR Registrar"){
+                        editBtn.onclick = (e) =>{
                         tupac.style.display = "flex";
-                        // console.log(element)
+                        
                         let{id,  name, role, email, password, image, roId, username} = element;
-                    // console.log(name)
-                    // console.log(email);
                     let userName1 = name;
                     console.log(userName1);
                     let naDiv = document.createElement("div", HTMLDivElement);
@@ -459,6 +457,7 @@
                     let addBtn = document.createElement("button", HTMLButtonElement);
                     addBtn.classList.add("manager-btn")
                     addBtn.textContent = `Edit Employee`
+                    }
                     addBtn.onclick = () =>{
                         name = inDn.value;
                         email = inEm.value;
