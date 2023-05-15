@@ -867,24 +867,29 @@
                         let status1 = document.createElement("td", HTMLTableCellElement);
                         status1.textContent = element.status ? element.status : "Not taken";
                         let refresh1 = document.createElement("td", HTMLTableCellElement);
-                        refresh1.innerHTML = `<span class = "material-symbols-outlined">refresh</td>`;
-                        refresh1.onClick = () =>{
+                        let spanrefresh = document.createElement('span',HTMLSpanElement);
+                        spanrefresh.classList.add("material-symbols-outlined");
+                        spanrefresh.textContent = 'refresh'
+                        spanrefresh.style.cursor = "pointer"
+                        spanrefresh.onclick = () =>{
                             let title = `Notification to take attendance`
                             let body = `${element.name}, please take attendance`;
+                            // console.log('go');
                             set(ref(db,"employees/" + x + "/newNotification"), { title , body} );
+                            // console.log('gone')
                             alert(`Notification successfully sent to ${element.name}`);
-                        }
+                        };
+                        refresh1.appendChild(spanrefresh)
                         let icon;
                         if(definingData.type === "HR Registrar"){icon = "edit"}else{icon = "send"};
-                             //    console.log(icon)
-                            // line.innerHTML = `<td>${element.name}</td>
-                            // <td>${element.role}</td>
-                            // <td>${element.id}</td>
-                            // <td>25</td>
-                            // <td>Absent</td>
-                            // <td><span class = "material-symbols-outlined">refresh</td>`
-                            let tasktable = document.querySelector(".attendancetable");
-                            tasktable.appendChild(line)
+                           line.appendChild(name);
+                           line.appendChild(role1);
+                           line.appendChild(id1);
+                           line.appendChild(age1);
+                           line.appendChild(status1);
+                           line.appendChild(refresh1);
+                           let tasktable = document.querySelector(".attendancetable");
+                           tasktable.appendChild(line);
                         });
                         
                 }
