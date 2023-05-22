@@ -395,20 +395,18 @@
                 document.querySelector(".item").classList.add("none")
                }else{
                 if(typeof(employeeData) === "object")employeeData = Object.values(snapshot.val())
-                
-                
                 dataLine.innerHTML = "";
                 let table = document.querySelector(".table");
                
                 let tasktable = document.querySelector(".tasktable");
                 let manTables = [tasktable, document.querySelector(".activitytable")];
                 let definingData = JSON.parse(sessionStorage.getItem("CompanyuserDatas"));
-                   employeeData.forEach((element, x) => {
+                employeeData.forEach((element, x) => {
                        let line = document.createElement("tr", HTMLTableRowElement);
                        let icon;
                        if(definingData.type === "HR Registrar"){icon = "edit"}else{icon = "videocam"};
                     //    console.log(icon)
-                       line.innerHTML = `<td>${element.name}</td>
+                    line.innerHTML = `<td>${element.name}</td>
                     <td>${element.role}</td>
                     <td>${element.id}</td>
                     <td>${element.enterTime}</td>
@@ -417,68 +415,69 @@
                     <td>${""}</td>
                     <td><span class = "material-symbols-outlined">${icon}</span></td>`
                     let editBtn = definingData.type === "HR Registrar" ? line.lastElementChild.firstElementChild : null;
+                    // console.log(line.lastElementChild.firstElementChild)
                     let tupac = document.querySelector(".tupac");
                     let backButton = document.querySelector(".back");
                     if(definingData.type === "HR Registrar"){
                         editBtn.onclick = (e) =>{
-                        tupac.style.display = "flex";
-                        
-                        let{id,  name, role, email, password, image, roId, username} = element;
-                    let userName1 = name;
-                    console.log(userName1);
-                    let naDiv = document.createElement("div", HTMLDivElement);
-                    let laDn = document.createElement("label", HTMLLabelElement);
-                    laDn.textContent = "Name";
-                    let inDn = document.createElement("input", HTMLInputElement);
-                    inDn.type = 'text';
-                    inDn.value = name;
-                    naDiv.append(laDn, inDn);
-                    let laDiv = document.createElement("div", HTMLDivElement);
-                    let laEm = document.createElement("label", HTMLLabelElement);
-                    laEm.textContent = "Email"
-                    let inEm = document.createElement("input", HTMLInputElement);
-                    inEm.type = 'text';
-                    inEm.value = email;
-                    laDiv.append(laEm, inEm);
-                    let idDiv = document.createElement("div", HTMLDivElement);
-                    let laId = document.createElement("label", HTMLLabelElement);
-                    laId.textContent = "ID"
-                    let inId = document.createElement("input", HTMLInputElement);
-                    inId.type = 'text';
-                    inId.value = id;
-                    idDiv.append(laId,inId)
-                    let paDiv = document.createElement("div", HTMLDivElement);
-                    let laIU = document.createElement("label", HTMLLabelElement);
-                    laIU.textContent = "Password"
-                    let inIU = document.createElement("input", HTMLInputElement);
-                    inIU.type = 'text';
-                    inIU.value = password;
-                    paDiv.append(laIU, inIU)
-                    let addBtn = document.createElement("button", HTMLButtonElement);
-                    addBtn.classList.add("manager-btn")
-                    addBtn.textContent = `Edit Employee`
-                    }
-                    addBtn.onclick = () =>{
-                        name = inDn.value;
-                        email = inEm.value;
-                        id = inId.value;
-                        password = inIU.value;
-                        // userName = displayName.replaceAll(" ", "");
-                        // console.log(userName1);
-                        set(ref(db, "employees/" + x), {
-                            id,  name, role, email, password, image, roId, username
-                        });
-                        tupac.style.display = "none"
-                    }
+                            tupac.style.display = "flex";
+                            let{id,  name, role, email, password, image, roId, username} = element;
+                            let userName1 = name;
+                            console.log(userName1);
+                            let naDiv = document.createElement("div", HTMLDivElement);
+                            let laDn = document.createElement("label", HTMLLabelElement);
+                            laDn.textContent = "Name";
+                            let inDn = document.createElement("input", HTMLInputElement);
+                            inDn.type = 'text';
+                            inDn.value = name;
+                            naDiv.append(laDn, inDn);
+                            let laDiv = document.createElement("div", HTMLDivElement);
+                            let laEm = document.createElement("label", HTMLLabelElement);
+                            laEm.textContent = "Email"
+                            let inEm = document.createElement("input", HTMLInputElement);
+                            inEm.type = 'text';
+                            inEm.value = email;
+                            laDiv.append(laEm, inEm);
+                            let idDiv = document.createElement("div", HTMLDivElement);
+                            let laId = document.createElement("label", HTMLLabelElement);
+                            laId.textContent = "ID"
+                            let inId = document.createElement("input", HTMLInputElement);
+                            inId.type = 'text';
+                            inId.value = id;
+                            idDiv.append(laId,inId)
+                            let paDiv = document.createElement("div", HTMLDivElement);
+                            let laIU = document.createElement("label", HTMLLabelElement);
+                            laIU.textContent = "Password"
+                            let inIU = document.createElement("input", HTMLInputElement);
+                            inIU.type = 'text';
+                            inIU.value = password;
+                            paDiv.append(laIU, inIU)
+                            let addBtn = document.createElement("button", HTMLButtonElement);
+                            addBtn.classList.add("manager-btn")
+                            addBtn.textContent = `Edit Employee`;
+                            addBtn.onclick = () => {
+                                name = inDn.value;
+                                email = inEm.value;
+                                id = inId.value;
+                                password = inIU.value;
+                                // userName = displayName.replaceAll(" ", "");
+                                // console.log(userName1);
+                                set(ref(db, "employees/" + x), {
+                                    id, name, role, email, password, image, roId, username
+                                });
+                                tupac.style.display = "none"
+                            };
+                            tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = "";
+                            tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = "";
+                            tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = "";
+                            tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = "";
+                            tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.append(naDiv, laDiv);
+                            tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.append(idDiv, paDiv, addBtn);
+
+                        }
                     // console.log(manModal.firstElementChild.firstElementChild)
                     // console.log(manModal.firstElementChild.firstElementChild.nextElementSibling);
-                    tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = "";
-                    tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerHTML = "";
-                    tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML ="";
-                    tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = "";
-                    tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.append(naDiv, laDiv);
-                    tupac.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.append(idDiv, paDiv, addBtn);
-                    
+                 
                     backButton.onclick = () =>{
                         tupac.style.display = "none"
                     }

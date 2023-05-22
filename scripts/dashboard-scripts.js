@@ -79,7 +79,7 @@ if(definingData.type === "Admin"){
         if (element.classList.contains("profile")) {
             // console.log("profile");
             element.onclick = () => {
-                console.log("this is hr")
+                // console.log("this is hr");
             }
         } if (element.classList.contains("hr")) {
             // console.log("hr");
@@ -204,7 +204,7 @@ close.addEventListener("click", () =>{
         aside.setAttribute("data-visible", "false");
         close.style.display = "none";
     }
-    console.log(window.innerWidth)
+    // console.log(window.innerWidth);
 });
 
 let defineDisplay = () =>{
