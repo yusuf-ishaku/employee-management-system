@@ -73,8 +73,8 @@
             let form = document.querySelector("form")
             let login = document.querySelector(".login");
             let username = document.querySelector(".username");
-            let email = document.querySelector(".email");
-            let password = document.querySelector(".password");
+            let emails = document.querySelector(".email");
+            let passwords = document.querySelector(".password");
             let input = document.querySelectorAll("input");
             let idVal = document.querySelector(".idval")
             let error = document.querySelector(".error");
@@ -96,8 +96,12 @@
             // function to submit user data to the database
             let submitData = (userName, emailValue, passwordValue, idValue) => {
                 let vp = passwordValue
-                if(!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(vp) || !/[A-Z]/.test(vp) || !/[a-z]/.test(vp) || vp.length <9)alert("Password must contain uppercase, lowercase, special character, password should not be less than 8 characters");return
-                
+               
+               
+                if(!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(vp) || !/[A-Z]/.test(vp) || !/[a-z]/.test(vp) || vp.length <9){
+                    alert("Password must contain uppercase, lowercase, special character, password should not be less than 8 characters");
+                    return
+                }else{
                 // initialize firebase database
                 const db = dataBase;
                 // Remove all whitespaces
@@ -109,7 +113,8 @@
                 const adminDataRef = ref(db, 'users/Admins/' + userName);
                 // find data at specified path
                 const dbRef = ref(db);
-
+                document.querySelector(".mojito").classList.remove("chatapp");
+                document.querySelector(".init-text").classList.add("chatapp");
                 get(child(dbRef, `users/Admins/${userName}`)).then((snapshot) => {
                     // Check if an account with the username exists
                     if (snapshot.exists()) {
@@ -132,15 +137,21 @@
                             displayName,
                             idCardValue
                         });
-                        
+                       
+                        emails.value = "";
+                        passwords.value = "";
+                        username.value = "";
+                        idVal.value = "";
                         document.querySelector(".mojito").classList.add("chatapp");
                         document.querySelector(".init-text").classList.remove("chatapp");
+                        // return true
                         location.href = "admin.html";
                     }
                 }).catch((error) => {
                     console.error(error);
                 });
                 
+            }
             }
             // Submit data function
             form.addEventListener("submit", (event)=>{
@@ -149,12 +160,6 @@
                     return;
                 }else{
                     submitData(username.value, email.value, password.value, idVal.value);
-                    email.value = "";
-                    password.value = "";
-                    username.value = "";
-                    idVal.value = "";
-                    document.querySelector(".mojito").classList.remove("chatapp");
-                    document.querySelector(".init-text").classList.add("chatapp");
                 }
            
             });
