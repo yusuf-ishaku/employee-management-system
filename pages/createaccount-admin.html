@@ -72,7 +72,7 @@
             // Define Html elements to work it 
             let form = document.querySelector("form")
             let login = document.querySelector(".login");
-            let username = document.querySelector(".username");
+            let usernames = document.querySelector(".username");
             let emails = document.querySelector(".email");
             let passwords = document.querySelector(".password");
             let input = document.querySelectorAll("input");
@@ -118,7 +118,7 @@
                 get(child(dbRef, `users/Admins/${userName}`)).then((snapshot) => {
                     // Check if an account with the username exists
                     if (snapshot.exists()) {
-                        setError("<div>Account Already Exists, sign in</div>");
+                        setError("<div>Account with that username Already Exists, sign in</div>");
                     } else {
                              // specify variables
                         let userId = "Admins/";
@@ -140,7 +140,7 @@
                        
                         emails.value = "";
                         passwords.value = "";
-                        username.value = "";
+                        usernames.value = "";
                         idVal.value = "";
                         document.querySelector(".mojito").classList.add("chatapp");
                         document.querySelector(".init-text").classList.remove("chatapp");
