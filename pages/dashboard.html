@@ -557,7 +557,7 @@
                 });
             }});
            
-                let addEmployeeData = (name, id, role, image, password, username, email, enterTime, exitTime, timeSpent)=> {
+                let addEmployeeData = (name, id, role, image, password, username, email, enterTime, exitTime, timeSpent, location)=> {
                 const dbRef = ref(db);
                 let auth = getAuth(app);
                 let vp = password;
@@ -591,7 +591,8 @@
                             let enterTime = "";
                             let exitTime = "";
                             let timeSpent = "";
-                            employeeData.push(...[{name, id, role, image, roId, password, username, email, enterTime, exitTime, timeSpent}]);
+                            location = ""
+                            employeeData.push(...[{name, id, role, image, roId, password, username, email, enterTime, exitTime, timeSpent, location}]);
                             // console.log(employeeData);
                             set(ref(db, "employees/"), employeeData)
                             createUserWithEmailAndPassword(auth, email, password)
