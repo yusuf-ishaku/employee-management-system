@@ -282,14 +282,16 @@
                     </section>
                 </section>
             </section>
+
             <section class="tasks pages">
+                <h2>Tasks</h2>
                 <table class="tasktable w-full bg-white">
                     <tr>
                         <th>Name</th>
                         <th>Role</th>
                         <th>ID Number</th>
                         <th>Age</th>
-                        <th>Time Spent</th>
+                        <th>Status</th>
                         <th>Send Notification</th>
                     </tr>
                </table>
@@ -319,7 +321,7 @@
                         <th>Exit Time</th>
                         <th>Status</th>
                         <th>Time Spent</th>
-                        <th>Live</th>
+                       
                     </tr>
                </table>
             </section>
@@ -388,9 +390,27 @@
             const db = dataBase;
             const employeeAccountRef = ref(db, "employees/");
             let dataLine = document.querySelector(".shopping")
-          
+
+            let rupert = (a, b) =>{
+                console.log(a, b);
+
+                let theRegex = /\d+:\d+/gi;
+                let pmRegex = /pm/ig;
+                let amRegex = /am/ig;
+                let founda = a.match(theRegex);
+                let foundb = b.match(theRegex);
+                console.log(amRegex.test(a))
+                if(founda && foundb){
+                    console.log(founda);
+                    console.log(foundb);
+                }
+              
+            }
+
+
             onValue(employeeAccountRef, (snapshot) =>{
                let employeeData = snapshot.val();
+            //    sessionStorage.setItem("employeeData", JSON.stringify(employeeData))
                if(!employeeData){
                 document.querySelector(".item").classList.add("none")
                }else{
@@ -411,9 +431,9 @@
                     <td>${element.id}</td>
                     <td>${element.enterTime}</td>
                     <td>${element.exitTime}</td>
-                    <td>${element.timeSpent}</td>
+                    <td>${rupert(element.exitTime ,element.enterTime)}</td>
                     <td>${""}</td>
-                    <td><span class = "material-symbols-outlined">${icon}</span></td>`
+                    ${definingData.type === "HR Registrar" ? `<td><span class = "material-symbols-outlined">${icon}</span></td>` : ''}`
                     let editBtn = definingData.type === "HR Registrar" ? line.lastElementChild.firstElementChild : null;
                     // console.log(line.lastElementChild.firstElementChild)
                     let tupac = document.querySelector(".tupac");
@@ -491,21 +511,7 @@
                     }
                    });
 
-                // let tasktable = document.querySelector(".tasktable");
-                // employeeData.forEach((element, x) => {
-                //     // console.dir(element)
-                //        let line = document.createElement("tr", HTMLTableRowElement);
-                //        line.classList.add("pointer")
-                //        line.innerHTML = `<td>${element.name}</td>
-                //     <td>${element.role}</td>
-                //     <td>${element.id}</td>
-                //     <td>25</td>
-                //     <td>Absent</td>`
-                //     line.onclick = () =>{
-                        
-                //        }
-                //     //    tasktable.appendChild(line);
-                //    });
+          
                 employeeData.forEach((element, x) => {
                     let pack = document.createElement('div', HTMLDivElement)
                     pack.id = x;
