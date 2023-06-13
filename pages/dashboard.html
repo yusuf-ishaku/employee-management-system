@@ -576,10 +576,13 @@
                         let employeeData = snapshot.val();
                         if(typeof(employeeData) === "object"){
                             employeeData = Object.values(employeeData);
+                            console.log(employeeData)
                             let roId = employeeData.length;
-                         
+                            let timeSpent = "";
+                            let enterTime = "";
+                            let exitTime = "";
                             employeeData.push(...[{name, id, role, image, roId, password, username, email, enterTime, exitTime, timeSpent}]);
-                            // console.log(employeeData);
+                            console.log(employeeData);
                             set(ref(db, "employees/"), employeeData);
                             createUserWithEmailAndPassword(auth, email, password)
                                 .then((userCredential) => {
@@ -594,12 +597,13 @@
                                 });
                         }else{
                             let roId = employeeData.length;
+                            console.log(roId)
                             let enterTime = "";
                             let exitTime = "";
                             let timeSpent = "";
                             location = ""
                             employeeData.push(...[{name, id, role, image, roId, password, username, email, enterTime, exitTime, timeSpent, location}]);
-                            // console.log(employeeData);
+                            console.log(employeeData);
                             set(ref(db, "employees/"), employeeData)
                             createUserWithEmailAndPassword(auth, email, password)
                                 .then((userCredential) => {
@@ -622,6 +626,7 @@
                         let exitTime = "";
                         let timeSpent = "";
                         theData.push({name, id, role, image, roId, password, username, email, enterTime, exitTime, timeSpent})
+                        console.log(theData)
                         set(ref(db, "employees/"), theData);
                         createUserWithEmailAndPassword(auth, email, password)
                             .then((userCredential) => {
@@ -710,6 +715,7 @@
                     // if(!selectedFile)alert("No image selected")
                 }
                 if(image){
+                    let vp = password;
                     if(!/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(vp) || !/[A-Z]/.test(vp) || !/[a-z]/.test(vp) || vp.length <9){
                     alert("Password must contain uppercase, lowercase, special character, password should not be less than 8 characters")
                     return
