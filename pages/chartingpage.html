@@ -60,6 +60,7 @@
                     // console.log(snapshot.val());
                     // console.log(value)
                     let data = snapshot.val();
+                    console.log(data.days)
                     let head = document.querySelector("title");
                     head.textContent = "";
                     head.textContent = `Weekly chart info for ${data.name ? data.name : data.displayName}`;
@@ -68,10 +69,10 @@
                     new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
                             datasets: [{
                                 label: `Hours worked by ${data.name? data.name : data.displayName}`,
-                                data: data.days? [ data.days.monday.timeSpent? data.days.monday.timeSpent : 0, data.days.tuesday ? data.days.tuesday.timeSpent: 0, data.days.wednesday ? data.days.wednesday.timeSpent: 0, data.days.thursday ? data.days.thursday.timeSpent: 0, data.days.friday ? data.days.friday.timeSpent: 0] : [0, 0, 0, 0, 0],
+                                data: data.days ? [ data.days.monday? data.days.monday.timeSpent : 0, data.days.tuesday ? data.days.tuesday.timeSpent: 0, data.days.wednesday ? data.days.wednesday.timeSpent: 0, data.days.thursday ? data.days.thursday.timeSpent: 0, data.days.friday? data.days.friday.timeSpent: 0, data.days.saturday? data.days.saturday.timeSpent : 0, data.days.sunday? data.days.sunday.timeSpent: 0] : [0, 0, 0, 0, 0],
                                 borderWidth: 1
                             }]
                         },
