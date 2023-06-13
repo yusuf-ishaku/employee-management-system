@@ -431,7 +431,7 @@
                     <td>${element.id}</td>
                     <td>${element.enterTime}</td>
                     <td>${element.exitTime}</td>
-                    <td>${rupert(element.exitTime ,element.enterTime)}</td>
+                    <td>${timeSpent}</td>
                     <td>${""}</td>
                     ${definingData.type === "HR Registrar" ? `<td><span class = "material-symbols-outlined">${icon}</span></td>` : ''}`
                     let editBtn = definingData.type === "HR Registrar" ? line.lastElementChild.firstElementChild : null;
