@@ -752,11 +752,11 @@
 
             let generatedPassword = ''
 
-            let char = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^*" 
+            let char = "ABCDEFGHIJKLMNOPQRSTUVabcdefghijklmnopqrstuvwxyz1234567890!@#$%^*" 
 
-            for (let i = 1 ; i < 9; i++){
+            for (let i = 1 ; i < 10; i++){
                 var word = Math.floor(Math.random() * char.length + 1)
-                generatedPassword += char.charAt(word)
+                generatedPassword += char.charAt(word);
             }
             
             // console.log(generatedPassword)
