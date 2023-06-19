@@ -320,8 +320,7 @@
                         <th>Enter Time</th>
                         <th>Exit Time</th>
                         <th>Status</th>
-                        <th>Time Spent</th>
-                       
+                   
                     </tr>
                </table>
             </section>
@@ -431,8 +430,8 @@
                     <td>${element.id}</td>
                     <td>${element.enterTime}</td>
                     <td>${element.exitTime}</td>
-                    <td>${element.timeSpent}</td>
-                    <td>${""}</td>
+                    <td>${element.status ? element.status: "Not taken"}</td>
+                    
                     ${definingData.type === "HR Registrar" ? `<td><span class = "material-symbols-outlined">${icon}</span></td>` : ''}`
                     let editBtn = definingData.type === "HR Registrar" ? line.lastElementChild.firstElementChild : null;
                     // console.log(line.lastElementChild.firstElementChild)
@@ -816,7 +815,14 @@
             get(child(dbRef, `employees/`)).then((snapshot) => {
                 if(snapshot.exists()) {
                     let employeeData = snapshot.val();
+                    let checkEmployees = employeeData.length;
+                    // console.log(checkEmployees)
+                    // console.log(employeeData);
+                    if(!checkEmployees){employeeData = Object.values(employeeData)};
+                    // console.log(minard)
                     // console.log(employeeData)
+                   
+                    if(typeof employeeData)
                         employeeData.forEach((element, x) =>{
                         let line = document.createElement("tr", HTMLTableRowElement);
                         let icon;
@@ -829,7 +835,7 @@
                         let tdAge = document.createElement("td", HTMLTableCellElement);
                         tdAge.textContent = "25"
                         let tdStatus = document.createElement("td", HTMLTableCellElement);
-                        tdStatus.textContent = element.status;
+                        tdStatus.textContent = element.status ? element.status : "Not taken";
                         let tdIcon = document.createElement("td", HTMLTableCellElement);
                         
                         if(definingData.type === "HR Registrar"){icon = "edit"}else{icon = "send"};
@@ -863,6 +869,12 @@
             get(child(dbRef, `employees/`)).then((snapshot) => {
                 if(snapshot.exists()) {
                     let employeeData = snapshot.val();
+                    // console.log(employeeData)
+                    let checkEmployees = employeeData.length;
+                    // console.log(checkEmployees)
+                    // console.log(employeeData);
+                    if(!checkEmployees){employeeData = Object.values(employeeData)};
+                    // console.log(minard)
                     // console.log(employeeData)
                         employeeData.forEach((element, x) =>{
                         let line = document.createElement("tr", HTMLTableRowElement);
