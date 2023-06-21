@@ -345,9 +345,6 @@
                         <th>Name</th>
                         <th>Role</th>
                         <th>ID Number</th>
-                        <th>Time In</th>
-                        <th>Time Out</th>
-                        <th>Time Spent</th>
                         <th>Status</th>
                         <th>Edit</th>
                     </tr>
@@ -425,7 +422,13 @@
                        let icon;
                        if(definingData.type === "HR Registrar"){icon = "edit"}else{icon = "videocam"};
                     //    console.log(icon)
-                    line.innerHTML = `<td>${element.name}</td>
+                    line.innerHTML = definingData.type === "HR Registrar" ?  `<td>${element.name}</td>
+                    <td>${element.role}</td>
+                    <td>${element.id}</td>
+                   
+                    <td>${element.status ? element.status: "Not taken"}</td>
+                    
+                    ${definingData.type === "HR Registrar" ? `<td><span class = "material-symbols-outlined">${icon}</span></td>` : ''}` : `<td>${element.name}</td>
                     <td>${element.role}</td>
                     <td>${element.id}</td>
                     <td>${element.enterTime}</td>
